@@ -12,10 +12,7 @@
   "autoload": {
     "psr-4": {
       "RachidLaasri\\LaravelInstaller\\": "src/"
-    },
-    "files": [
-      "src/RachidLaasri/LaravelInstaller/functions.php"
-    ]
+    }
   },
   "minimum-stability": "stable"
 }
