@@ -6,7 +6,7 @@ First, pull in the package through Composer.
 
 ```
 "require": {
-    "rachidlaasri/laravelinstaller": "1.0"
+    "rachidlaasri/laravel-installer": "1.0"
 }
 ```
 
