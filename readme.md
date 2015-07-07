@@ -14,13 +14,13 @@ And then, include the service provider within `app/config/app.php`.
 
 ```
 'providers' => [
-    'RachidLaasri\LaravelInstaller\Providers\LaravelInstallerServiceProvider::class,
+    RachidLaasri\LaravelInstaller\Providers\LaravelInstallerServiceProvider::class
 ];
 ```
 
 Then, register the middleware within `app/Http/Kernel.php`.
 ```
-    'isInstalled' => \RachidLaasri\LaravelInstaller\Middleware\IsInstalled::class,
+    'isInstalled' => \RachidLaasri\LaravelInstaller\Middleware\IsInstalled::class
 ```
 ## Usage
 
