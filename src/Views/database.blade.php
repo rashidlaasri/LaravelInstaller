@@ -1,4 +1,4 @@
-@extends('LaravelInstaller::layouts.master')
+@extends('installer.layouts.master')
 
 @section('container')
     <div class="panel panel-success">

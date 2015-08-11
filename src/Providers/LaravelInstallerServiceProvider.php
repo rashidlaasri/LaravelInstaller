@@ -34,8 +34,6 @@ class LaravelInstallerServiceProvider extends ServiceProvider
     {
         app('router')->middleware('isInstalled', '\RachidLaasri\LaravelInstaller\Middleware\IsInstalled');
 
-        $this->loadViewsFrom(__DIR__.'/../Views', 'LaravelInstaller');
-
         $this->loadTranslationsFrom(__DIR__.'/../Lang', 'LaravelInstaller');
     }
 
@@ -53,5 +51,9 @@ class LaravelInstallerServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../assets' => public_path('installer'),
         ], 'public');
+
+        $this->publishes([
+            __DIR__.'/../views' => base_path('resources/views/installer'),
+        ]);
     }
 }

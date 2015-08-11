@@ -30,6 +30,6 @@ class DatabaseController extends Controller
     {
         $respond = $this->databaseManager->migrateAndSeed();
 
-        return view('LaravelInstaller::database', compact('respond'));
+        return view('installer.database', compact('respond'));
     }
 }
