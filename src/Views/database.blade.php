@@ -5,7 +5,7 @@
         <div class="panel-heading">
             <h3 class="panel-title">
                 <i class="glyphicon glyphicon-folder-close"></i>
-                {{ trans('LaravelInstaller::messages.database.title') }}
+                {{ trans('messages.database.title') }}
             </h3>
         </div>
         <div class="panel-body">
@@ -15,12 +15,12 @@
                 </div>
             @else
                 <p>
-                    {{ trans('LaravelInstaller::messages.database.success') }}
+                    {{ trans('messages.database.success') }}
                 </p>
             @endif
             @if(!isset($respond['errors']))
                 <a class="btn btn-success" href="/">
-                    {{ trans('LaravelInstaller::messages.database.final') }}
+                    {{ trans('messages.database.final') }}
                 </a>
             @endif
         </div>

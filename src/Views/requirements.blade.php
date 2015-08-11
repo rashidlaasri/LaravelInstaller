@@ -5,7 +5,7 @@
         <div class="panel-heading">
             <h3 class="panel-title">
                 <i class="glyphicon glyphicon-exclamation-sign"></i>
-                {{ trans('LaravelInstaller::messages.requirements.title') }}
+                {{ trans('messages.requirements.title') }}
             </h3>
         </div>
         <div class="panel-body">
@@ -29,7 +29,7 @@
             </div>
             @if(!isset($requirements['errors']))
                 <a class="btn btn-success" href="{{ route('LaravelInstaller::permissions') }}">
-                    {{ trans('LaravelInstaller::messages.next') }}
+                    {{ trans('messages.next') }}
                 </a>
             @endif
         </div>

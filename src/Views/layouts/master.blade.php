@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ trans('LaravelInstaller::messages.title') }}</title>
+    <title>{{ trans('messages.title') }}</title>
 
     <!-- Bootstrap -->
     <link href="http://bootswatch.com/flatly/bootstrap.min.css" rel="stylesheet">

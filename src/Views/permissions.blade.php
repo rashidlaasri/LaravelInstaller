@@ -5,7 +5,7 @@
         <div class="panel-heading">
             <h3 class="panel-title">
                 <i class="glyphicon glyphicon-file"></i>
-                {{ trans('LaravelInstaller::messages.permissions.title') }}
+                {{ trans('messages.permissions.title') }}
             </h3>
         </div>
         <div class="panel-body">
@@ -29,7 +29,7 @@
             </div>
             @if(!isset($permissions['errors']))
                 <a class="btn btn-success" href="{{ route('LaravelInstaller::database') }}">
-                    {{ trans('LaravelInstaller::messages.next') }}
+                    {{ trans('messages.next') }}
                 </a>
             @endif
         </div>

@@ -33,8 +33,6 @@ class LaravelInstallerServiceProvider extends ServiceProvider
     public function boot()
     {
         app('router')->middleware('isInstalled', '\RachidLaasri\LaravelInstaller\Middleware\IsInstalled');
-
-        $this->loadTranslationsFrom(__DIR__.'/../Lang', 'LaravelInstaller');
     }
 
     /**
@@ -54,6 +52,10 @@ class LaravelInstallerServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/../views' => base_path('resources/views/installer'),
+        ]);
+
+        $this->publishes([
+            __DIR__.'/../Lang' => base_path('resources/lang'),
         ]);
     }
 }
