@@ -33,4 +33,10 @@ After that, you can edit :
  
  `app/config/installer.php`
  
- And the language file.
+And the language file :
+ 
+ `resources/lang/en/messages.php`
+ 
+And the views on :
+ 
+ `resources/views/installer/`
