@@ -51,7 +51,7 @@ class LaravelInstallerServiceProvider extends ServiceProvider
         ], 'public');
 
         $this->publishes([
-            __DIR__.'/../views' => base_path('resources/views/installer'),
+            __DIR__.'/../Views' => base_path('resources/views/installer'),
         ]);
 
         $this->publishes([
