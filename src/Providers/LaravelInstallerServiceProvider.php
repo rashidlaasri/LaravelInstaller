@@ -32,7 +32,7 @@ class LaravelInstallerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        app('router')->middleware('isInstalled', '\RachidLaasri\LaravelInstaller\Middleware\IsInstalled');
+        app('router')->middleware('isInstalled', '\RachidLaasri\LaravelInstaller\Middleware\isInstalled');
     }
 
     /**
