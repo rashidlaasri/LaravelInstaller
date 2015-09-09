@@ -1,4 +1,4 @@
-@extends('installer.layouts.master')
+@extends('vendor.installer.layouts.master')
 
 @section('container')
     <div class="panel panel-success">

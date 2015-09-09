@@ -32,6 +32,6 @@ class RequirementsController extends Controller
             config('installer.requirements')
         );
 
-        return view('installer.requirements', compact('requirements'));
+        return view('vendor.installer.requirements', compact('requirements'));
     }
 }
