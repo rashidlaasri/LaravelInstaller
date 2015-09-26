@@ -24,4 +24,14 @@ Route::group(['prefix' => 'install', 'as' => 'LaravelInstaller::', 'middleware' 
         'uses' => 'DatabaseController@database'
     ]);
 
+    get('environment', [
+        'as' => 'environment',
+        'uses' => 'EnvironmentController@environment'
+    ]);
+
+    post('environment/save', [
+        'as' => 'environmentSave',
+        'uses' => 'EnvironmentController@save'
+    ]);
+
 });

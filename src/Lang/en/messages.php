@@ -18,7 +18,7 @@ return [
      */
     'welcome' => [
         'title'   => 'Welcome To The Installer...',
-        'message' => 'Welcome to the setup wizard, please make sure you edited the .env file before clicking next.'
+        'message' => 'Welcome to the setup wizard.',
     ],
 
 
@@ -28,7 +28,7 @@ return [
      *
      */
     'requirements' => [
-        'title' => 'Requirements'
+        'title' => 'Requirements',
     ],
 
 
@@ -38,7 +38,7 @@ return [
      *
      */
     'permissions' => [
-        'title' => 'Permissions'
+        'title' => 'Permissions',
     ],
 
 
@@ -50,6 +50,18 @@ return [
     'database' => [
         'title' => 'Database Installer',
         'success' => 'Congratulations! The script has been installed and ready to be used.',
-        'final' => 'Home page'
-    ]
+        'final' => 'Home page',
+    ],
+
+
+    /**
+     *
+     * Environment page translations.
+     *
+     */
+    'environment' => [
+        'title' => 'Environment Settings',
+        'save' => 'Save .env',
+        'success' => 'Your .env file settings have been saved.',
+    ],
 ];
