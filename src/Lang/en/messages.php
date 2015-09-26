@@ -24,6 +24,19 @@ return [
 
     /**
      *
+     * Environment page translations.
+     *
+     */
+    'environment' => [
+        'title' => 'Environment Settings',
+        'save' => 'Save .env',
+        'success' => 'Your .env file settings have been saved.',
+        'errors' => 'Unable to save the .env file, Please create it manually.',
+    ],
+
+
+    /**
+     *
      * Requirements page translations.
      *
      */
@@ -51,18 +64,5 @@ return [
         'title' => 'Database Installer',
         'success' => 'Congratulations! The script has been installed and ready to be used.',
         'final' => 'Home page',
-    ],
-
-
-    /**
-     *
-     * Environment page translations.
-     *
-     */
-    'environment' => [
-        'title' => 'Environment Settings',
-        'save' => 'Save .env',
-        'success' => 'Your .env file settings have been saved.',
-        'errors' => 'Unable to save the .env file, Please create it manually.',
     ],
 ];
