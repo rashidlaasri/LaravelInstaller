@@ -12,7 +12,7 @@
             <p>
                 {{ trans('messages.welcome.message') }}
             </p>
-            <a class="btn btn-success" href="{{ route('LaravelInstaller::requirements') }}">
+            <a class="btn btn-success" href="{{ route('LaravelInstaller::environment') }}">
                 {{ trans('messages.next') }}
             </a>
         </div>
