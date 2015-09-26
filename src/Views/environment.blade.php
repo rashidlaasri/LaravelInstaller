@@ -9,6 +9,11 @@
             </h3>
         </div>
         <div class="panel-body">
+            @if (session('message'))
+                <div class="alert alert-warning">
+                    {{ session('message') }}
+                </div>
+            @endif
             <form method="post" action="{{ route('LaravelInstaller::environmentSave') }}">
                 <div class="bs-component">
                     <ul class="list-group">

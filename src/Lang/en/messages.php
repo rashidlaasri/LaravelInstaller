@@ -63,5 +63,6 @@ return [
         'title' => 'Environment Settings',
         'save' => 'Save .env',
         'success' => 'Your .env file settings have been saved.',
+        'errors' => 'Unable to save the .env file, Please create it manually.',
     ],
 ];

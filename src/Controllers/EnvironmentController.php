@@ -5,16 +5,22 @@ namespace RachidLaasri\LaravelInstaller\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
+use RachidLaasri\LaravelInstaller\Helpers\EnvironmentManager;
 
 class EnvironmentController extends Controller
 {
 
-    private $envPath, $envExamplePath;
+    /**
+     * @var EnvironmentManager
+     */
+    protected $EnvironmentManager;
 
-    public function __construct()
+    /**
+     * @param EnvironmentManager $environmentManager
+     */
+    public function __construct(EnvironmentManager $environmentManager)
     {
-        $this->envPath = base_path('.env');
-        $this->envExamplePath = base_path('.env.example');
+        $this->EnvironmentManager = $environmentManager;
     }
 
     /**
@@ -24,15 +30,7 @@ class EnvironmentController extends Controller
      */
     public function environment()
     {
-        if (!file_exists($this->envPath)) {
-            if (file_exists($this->envExamplePath)) {
-                copy($this->envExamplePath, $this->envPath);
-            } else {
-                touch($this->envPath);
-            }
-        }
-
-        $envConfig = file_get_contents($this->envPath);
+        $envConfig = $this->EnvironmentManager->getEnvContent();
 
         return view('vendor.installer.environment', compact('envConfig'));
     }
@@ -41,12 +39,16 @@ class EnvironmentController extends Controller
     /**
      * Processes the newly saved environment configuration and redirects back.
      *
+     * @param Request $input
+     * @param Redirector $redirect
      * @return \Illuminate\Http\RedirectResponse
      */
     public function save(Request $input, Redirector $redirect)
     {
-        file_put_contents($this->envPath, $input->get('envConfig'));
-        return $redirect->route('LaravelInstaller::environment');
+        $message = $this->EnvironmentManager->saveFile($input);
+
+        return $redirect->route('LaravelInstaller::environment')
+                        ->with(['message' => $message]);
     }
 
 }
