@@ -3,9 +3,8 @@
 namespace RachidLaasri\LaravelInstaller\Middleware;
 
 use Closure;
-use DB;
 
-class isInstalled
+class canInstall
 {
     /**
      * Handle an incoming request.
@@ -16,13 +15,20 @@ class isInstalled
      */
     public function handle($request, Closure $next)
     {
-        $tables = DB::select('SHOW TABLES');
-
-        if(!empty($tables)) {
-
-            abort(404);
+        if($this->alreadyInstalled()) {
+            return redirect()->route('LaravelInstaller::upgrade');
         }
         
         return $next($request);
+    }
+
+    /**
+     * If application is already installed.
+     *
+     * @return bool
+     */
+    public function alreadyInstalled()
+    {
+        return file_exists(storage_path('installed'));
     }
 }
