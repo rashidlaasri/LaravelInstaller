@@ -52,7 +52,7 @@ class UpgradeManager
             }
         }
 
-        return $this->response(trans('messages.final.finished'));
+        return $this->response(trans('messages.final.finished'), 'success');
     }
 
     /**

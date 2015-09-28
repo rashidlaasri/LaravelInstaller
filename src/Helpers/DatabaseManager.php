@@ -49,7 +49,7 @@ class DatabaseManager
             return $this->response($e->getMessage());
         }
 
-        return $this->response(trans('messages.final.finished'));
+        return $this->response(trans('messages.final.finished'), 'success');
     }
 
     /**
