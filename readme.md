@@ -5,6 +5,8 @@ The current features are :
 
 	- Check For Server Requirements.
 	- Check For Folders Permissions.
+	- Ability to set database information.
+	- Update existing application.
 	- Migrate The Database.
 	- Seed The Tables.
 
@@ -16,7 +18,7 @@ First, pull in the package through Composer.
 
 ```
 "require": {
-    "rachidlaasri/laravel-installer": "1.2"
+    "rachidlaasri/laravel-installer": "1.3"
 }
 ```
 
@@ -40,7 +42,7 @@ Before using this package you need to run :
 php artisan vendor:publish
 ```
 
-You will notice addtional files and folders appear in your project :
+You will notice additional files and folders appear in your project :
  
  - `config/installer.php` : In here you can set the requirements along with the folders permissions for your application to run, by default the array cotaines the default requirements for a basic Laravel app.
  - `public/installer/assets` : This folder contains a css folder and inside of it you will find a `main.css` file, this file is responsible for the styling of your installer, you can overide the default styling and add your own.
@@ -51,4 +53,8 @@ You will notice addtional files and folders appear in your project :
  
 ![Laravel web installer](http://i.imgur.com/0iq09ac.png)
 
-
+## TODO
+- [ ] Create Wiki.
+- [ ] Change installer design.
+- [ ] Refactor some classes.
+- [ ] Support other languages.
