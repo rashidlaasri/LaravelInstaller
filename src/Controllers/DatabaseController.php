@@ -28,8 +28,9 @@ class DatabaseController extends Controller
      */
     public function database()
     {
-        $respond = $this->databaseManager->migrateAndSeed();
+        $response = $this->databaseManager->migrateAndSeed();
 
-        return view('vendor.installer.database', compact('respond'));
+        return redirect()->route('LaravelInstaller::final')
+                         ->with(['message' => $response]);
     }
 }

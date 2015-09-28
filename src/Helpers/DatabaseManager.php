@@ -29,7 +29,7 @@ class DatabaseManager
             Artisan::call('migrate');
         }
         catch(Exception $e){
-            return $this->errorResponse($e->getMessage());
+            return $this->response($e->getMessage());
         }
 
         return $this->seed();
@@ -46,38 +46,24 @@ class DatabaseManager
             Artisan::call('db:seed');
         }
         catch(Exception $e){
-            return $this->errorResponse($e->getMessage());
+            return $this->response($e->getMessage());
         }
 
-        return $this->successResponse();
+        return $this->response(trans('messages.final.finished'));
     }
 
     /**
      * Return a formatted error messages.
      *
      * @param $message
+     * @param string $status
      * @return array
      */
-    private function errorResponse($message)
+    private function response($message, $status = 'danger')
     {
         return array(
-            'errors' => [
-                'message' => $message
-            ]
-        );
-    }
-
-    /**
-     * Return the success message.
-     *
-     * @return array
-     */
-    private function successResponse()
-    {
-        return array(
-            'success' => [
-                'code' => 200
-            ]
+            'status' => $status,
+            'message' => $message
         );
     }
 }
