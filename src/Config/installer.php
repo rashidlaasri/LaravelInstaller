@@ -14,7 +14,6 @@ return [
     */
     'last_version' => '1.0',
     'upgrade' => [
-        'migrations' => '',
         'seeds' => [],
     ],
 
