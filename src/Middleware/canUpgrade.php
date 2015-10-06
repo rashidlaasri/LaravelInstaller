@@ -20,7 +20,7 @@ class canUpgrade
         }
 
         if($this->upToDate()) {
-            return redirect('/');
+            return redirect()->route('LaravelInstaller::welcome');
         }
         
         return $next($request);
