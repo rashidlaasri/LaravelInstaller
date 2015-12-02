@@ -4,22 +4,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Last published version
-    |--------------------------------------------------------------------------
-    |
-    | This is where you can specify the last version of your application
-    | This is used to determine if the application requires an update
-    | The current running version is stored in framework/installed
-    |
-    */
-    'last_version' => '1.0',
-    'upgrade' => [
-        'migrations' => '',
-        'seeds' => [],
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
     | Server Requirements
     |--------------------------------------------------------------------------
     |

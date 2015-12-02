@@ -3,6 +3,7 @@
 namespace RachidLaasri\LaravelInstaller\Middleware;
 
 use Closure;
+use DB;
 
 class canInstall
 {
@@ -16,7 +17,7 @@ class canInstall
     public function handle($request, Closure $next)
     {
         if($this->alreadyInstalled()) {
-            return redirect()->route('LaravelInstaller::upgrade');
+            abort(404);
         }
         
         return $next($request);

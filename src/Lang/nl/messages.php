@@ -57,18 +57,6 @@ return [
 
     /**
      *
-     * upgrade welcome page translations.
-     *
-     */
-    'upgrade' => [
-        'title' => 'Upgrade applicatie',
-        'welcome' => 'Uw draait op het moment versie :current and de laatst beschikbare versie is :latest klik om te upgraden.',
-        'button' => 'Upgrade',
-    ],
-
-
-    /**
-     *
      * Final page translations.
      *
      */

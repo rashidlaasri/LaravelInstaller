@@ -15,9 +15,7 @@ class FinalController extends Controller
      */
     public function finish(InstalledFileManager $fileManager)
     {
-        $fileManager->update(
-            config('installer.last_version')
-        );
+        $fileManager->update();
 
         return view('vendor.installer.finished');
     }

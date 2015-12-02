@@ -57,18 +57,6 @@ return [
 
     /**
      *
-     * upgrade welcome page translations.
-     *
-     */
-    'upgrade' => [
-        'title' => 'Actualizează aplicația',
-        'welcome' => 'Folosiți momentan versiunea :current iar cea mai nouă versiune disponibilă este :latest. Click pentru actualizare.',
-        'button' => 'Actualizează',
-    ],
-
-
-    /**
-     *
      * Final page translations.
      *
      */

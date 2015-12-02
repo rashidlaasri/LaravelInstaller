@@ -8,22 +8,20 @@ class InstalledFileManager
     /**
      * Create installed file.
      *
-     * @param $message
      * @return int
      */
-    public function create($message)
+    public function create()
     {
-        file_put_contents(storage_path('installed'), $message);
+        file_put_contents(storage_path('installed'), '');
     }
 
     /**
      * Update installed file.
      *
-     * @param $message
      * @return int
      */
-    public function update($message)
+    public function update()
     {
-        return $this->create($message);
+        return $this->create();
     }
 }

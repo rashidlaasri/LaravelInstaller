@@ -57,18 +57,6 @@ return [
 
     /**
      *
-     * upgrade welcome page translations.
-     *
-     */
-    'upgrade' => [
-        'title' => 'Mise à jour de l’application',
-        'welcome' => 'Vous utilisez actuellement la version :current et la dernière version disponible est :latest cliquez pour mettre à jour.',
-        'button' => 'Mise à jour',
-    ],
-
-
-    /**
-     *
      * Final page translations.
      *
      */
