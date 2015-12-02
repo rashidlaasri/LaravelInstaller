@@ -17,7 +17,7 @@ return [
      *
      */
     'welcome' => [
-        'title'   => 'Welcome To The Installer...',
+        'title'   => 'Welcome To The Installer',
         'message' => 'Welcome to the setup wizard.',
     ],
 
