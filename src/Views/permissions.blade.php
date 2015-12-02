@@ -1,37 +1,22 @@
 @extends('vendor.installer.layouts.master')
 
+@section('title', trans('messages.permissions.title'))
 @section('container')
-    <div class="panel panel-success">
-        <div class="panel-heading">
-            <h3 class="panel-title">
-                <i class="glyphicon glyphicon-file"></i>
-                {{ trans('messages.permissions.title') }}
-            </h3>
-        </div>
-        <div class="panel-body">
-            <div class="bs-component">
-                <ul class="list-group">
-                    @foreach($permissions['permissions'] as $permission)
-                        <li class="list-group-item">
-                            @if($permission['isSet'])
-                                <span class="badge badge-success">
-                                    {{ $permission['permission'] }}
-                                </span>
-                            @else
-                                <span class="badge badge-danger">
-                                    {{ $permission['permission'] }}
-                                </span>
-                            @endif
-                            {{ $permission['folder'] }}
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-            @if(!isset($permissions['errors']))
-                <a class="btn btn-success" href="{{ route('LaravelInstaller::database') }}">
-                    {{ trans('messages.next') }}
-                </a>
-            @endif
-        </div>
-    </div>
+
+<ul class="list">
+    @foreach($permissions['permissions'] as $permission)
+    <li class="list__item list__item--permissions @if($permission['isSet']) success @else error @endif">
+        {{ $permission['folder'] }}<span>{{ $permission['permission'] }}</span>
+        </li>
+    @endforeach
+</ul>
+
+@if(!isset($permissions['errors']))
+<div class="buttons">
+    <a class="button" href="{{ route('LaravelInstaller::database') }}">
+        {{ trans('messages.next') }}
+    </a>
+</div>
+@endif
+
 @stop

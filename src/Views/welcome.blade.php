@@ -1,20 +1,9 @@
 @extends('vendor.installer.layouts.master')
 
+@section('title', trans('messages.welcome.title'))
 @section('container')
-    <div class="panel panel-success">
-        <div class="panel-heading">
-            <h3 class="panel-title">
-                <i class="glyphicon glyphicon-home"></i>
-                {{ trans('messages.welcome.title') }}
-            </h3>
-        </div>
-        <div class="panel-body">
-            <p>
-                {{ trans('messages.welcome.message') }}
-            </p>
-            <a class="btn btn-success" href="{{ route('LaravelInstaller::environment') }}">
-                {{ trans('messages.next') }}
-            </a>
-        </div>
+    <p class="paragraph">{{ trans('messages.welcome.message') }}</p>
+    <div class="buttons">
+        <a href="{{ route('LaravelInstaller::environment') }}" class="button">{{ trans('messages.next') }}</a>
     </div>
 @stop

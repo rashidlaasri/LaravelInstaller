@@ -1,33 +1,22 @@
 @extends('vendor.installer.layouts.master')
 
+@section('title', trans('messages.environment.title'))
 @section('container')
-    <div class="panel panel-success">
-        <div class="panel-heading">
-            <h3 class="panel-title">
-                <i class="glyphicon glyphicon-file"></i>
-                {{ trans('messages.environment.title') }}
-            </h3>
+    @if (session('message'))
+    <p class="alert">{{ session('message') }}</p>
+    @endif
+    <form method="post" action="{{ route('LaravelInstaller::environmentSave') }}">
+        <textarea class="textarea" name="envConfig">{{ $envConfig }}</textarea>
+        {!! csrf_field() !!}
+        <div class="buttons buttons--right">
+             <button class="button button--light" type="submit">{{ trans('messages.environment.save') }}</button>
         </div>
-        <div class="panel-body">
-            @if (session('message'))
-                <div class="alert alert-warning">
-                    {{ session('message') }}
-                </div>
-            @endif
-            <form method="post" action="{{ route('LaravelInstaller::environmentSave') }}">
-                <div class="bs-component">
-                    <ul class="list-group">
-                        <textarea name="envConfig" rows="10">{{ $envConfig }}</textarea>
-                    </ul>
-                </div>
-                @if(!isset($environment['errors']))
-                    <a class="btn btn-success" href="{{ route('LaravelInstaller::requirements') }}">
-                        {{ trans('messages.next') }}
-                    </a>
-                @endif
-                {!! csrf_field() !!}
-                <input type="submit" class="btn btn-info" style="float: right;" value="{{ trans('messages.environment.save') }}">
-            </form>
-        </div>
+    </form>
+    @if(!isset($environment['errors']))
+    <div class="buttons">
+        <a class="button" href="{{ route('LaravelInstaller::requirements') }}">
+            {{ trans('messages.next') }}
+        </a>
     </div>
+    @endif
 @stop

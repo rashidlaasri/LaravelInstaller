@@ -1,35 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ trans('messages.title') }}</title>
-
-    <!-- Bootstrap -->
-    <link href="http://bootswatch.com/flatly/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Main Style -->
-    <link href="{{ asset('installer/css/main.css') }}" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-<body>
-
-<div class="container">
-    <div class="login-body">
-        <article class="container-login center-block">
-            <section>
-                @yield('container')
-            </section>
-        </article>
+    <link rel="icon" type="image/png" href="{{ asset('installer/img/favicon/favicon-16x16.png') }}" sizes="16x16"/>
+    <link rel="icon" type="image/png" href="{{ asset('installer/img/favicon/favicon-32x32.png') }}" sizes="32x32"/>
+    <link rel="icon" type="image/png" href="{{ asset('installer/img/favicon/favicon-96x96.png') }}" sizes="96x96"/>
+    <link href="{{ asset('installer/css/style.min.css') }}" rel="stylesheet"/>
+  </head>
+  <body>
+    <div class="master">
+      <div class="box">
+        <div class="header">
+            <h1 class="header__title">@yield('title')</h1>
+        </div>
+        <ul class="step">
+          <li class="step__divider"></li>
+          <li class="step__item {{ isActive('LaravelInstaller::final') }}"><i class="step__icon database"></i></li>
+          <li class="step__divider"></li>
+          <li class="step__item {{ isActive('LaravelInstaller::permissions') }}"><i class="step__icon permissions"></i></li>
+          <li class="step__divider"></li>
+          <li class="step__item {{ isActive('LaravelInstaller::requirements') }}"><i class="step__icon requirements"></i></li>
+          <li class="step__divider"></li>
+          <li class="step__item {{ isActive('LaravelInstaller::environment') }}"><i class="step__icon update"></i></li>
+          <li class="step__divider"></li>
+          <li class="step__item {{ isActive('LaravelInstaller::welcome') }}"><i class="step__icon welcome"></i></li>
+          <li class="step__divider"></li>
+        </ul>
+        <div class="main">
+          @yield('container')
+        </div>
+      </div>
     </div>
-</div>
-
-</body>
+  </body>
 </html>
