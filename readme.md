@@ -6,7 +6,6 @@ The current features are :
 	- Check For Server Requirements.
 	- Check For Folders Permissions.
 	- Ability to set database information.
-	- Update existing application.
 	- Migrate The Database.
 	- Seed The Tables.
 
@@ -18,7 +17,7 @@ First, pull in the package through Composer.
 
 ```
 "require": {
-    "rachidlaasri/laravel-installer": "1.3"
+    "rachidlaasri/laravel-installer": "1.4"
 }
 ```
 
@@ -39,7 +38,7 @@ After that, include the service provider within `app/config/app.php`.
 
 Before using this package you need to run :
 ```bash
-php artisan vendor:publish
+php artisan vendor:publish --provider=RachidLaasri\LaravelInstaller\Providers\LaravelInstallerServiceProvider
 ```
 
 You will notice additional files and folders appear in your project :
@@ -51,10 +50,8 @@ You will notice additional files and folders appear in your project :
 
 ## Screenshots
  
-![Laravel web installer](http://i.imgur.com/0iq09ac.png)
+![Laravel web installer](http://i.imgur.com/3vYBPLn.png)
 
 ## TODO
 - [ ] Create Wiki.
-- [ ] Change installer design.
-- [ ] Refactor some classes.
-- [ ] Support other languages.
+- [ ] Support more languages.
