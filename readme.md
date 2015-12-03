@@ -27,7 +27,7 @@ And then run :
 composer update
 ```
 
-After that, include the service provider within `app/config/app.php`.
+After that, include the service provider within `config/app.php`.
 
 ```
 'providers' => [
@@ -38,7 +38,7 @@ After that, include the service provider within `app/config/app.php`.
 
 Before using this package you need to run :
 ```bash
-php artisan vendor:publish --provider=RachidLaasri\LaravelInstaller\Providers\LaravelInstallerServiceProvider
+php artisan vendor:publish --provider="RachidLaasri\LaravelInstaller\Providers\LaravelInstallerServiceProvider"
 ```
 
 You will notice additional files and folders appear in your project :
