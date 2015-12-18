@@ -34,6 +34,9 @@ After that, include the service provider within `config/app.php`.
     RachidLaasri\LaravelInstaller\Providers\LaravelInstallerServiceProvider::class,
 ];
 ```
+
+You can't figure it out? You need more help? Here is a video tutorial for you : [Laravel Installer by Devdojo](https://www.youtube.com/watch?v=Jput5doFYLg)
+
 ## Usage
 
 Before using this package you need to run :
