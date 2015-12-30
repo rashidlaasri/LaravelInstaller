@@ -4,37 +4,37 @@ Route::group(['prefix' => 'install', 'as' => 'LaravelInstaller::', 'namespace' =
 {
     Route::group(['middleware' => 'canInstall'], function()
     {
-        get('/', [
+        Route::get('/', [
             'as' => 'welcome',
             'uses' => 'WelcomeController@welcome'
         ]);
 
-        get('environment', [
+        Route::get('environment', [
             'as' => 'environment',
             'uses' => 'EnvironmentController@environment'
         ]);
 
-        post('environment/save', [
+        Route::post('environment/save', [
             'as' => 'environmentSave',
             'uses' => 'EnvironmentController@save'
         ]);
 
-        get('requirements', [
+        Route::get('requirements', [
             'as' => 'requirements',
             'uses' => 'RequirementsController@requirements'
         ]);
         
-        get('permissions', [
+        Route::get('permissions', [
             'as' => 'permissions',
             'uses' => 'PermissionsController@permissions'
         ]);
 
-        get('database', [
+        Route::get('database', [
             'as' => 'database',
             'uses' => 'DatabaseController@database'
         ]);
 
-        get('final', [
+        Route::get('final', [
             'as' => 'final',
             'uses' => 'FinalController@finish'
         ]);
