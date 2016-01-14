@@ -45,7 +45,7 @@ return [
      */
     'environment' => [
         'title' => 'Ortam Ayarları',
-        'save' => '.env'yi Kaydet',
+        'save' => '.env\'yi Kaydet',
         'success' => '.env dosyanız kaydedildi.',
         'errors' => '.env dosyanız kaydedilemedi, lütfen manuel yaratınız.',
     ],
