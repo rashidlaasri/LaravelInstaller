@@ -3,7 +3,7 @@
 namespace RachidLaasri\LaravelInstaller\Controllers;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use RachidLaasri\LaravelInstaller\Helpers\PermissionsChecker;
 
 class PermissionsController extends Controller
