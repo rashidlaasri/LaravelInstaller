@@ -2,7 +2,7 @@
 
 namespace RachidLaasri\LaravelInstaller\Controllers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use RachidLaasri\LaravelInstaller\Helpers\EnvironmentManager;
