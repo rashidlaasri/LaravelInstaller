@@ -2,7 +2,7 @@
 
 namespace RachidLaasri\LaravelInstaller\Controllers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use RachidLaasri\LaravelInstaller\Helpers\DatabaseManager;
 
 class DatabaseController extends Controller
