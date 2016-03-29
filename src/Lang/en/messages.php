@@ -9,6 +9,7 @@ return [
      */
     'title' => 'Laravel Installer',
     'next' => 'Next Step',
+    'finish' => 'Install',
 
 
     /**
