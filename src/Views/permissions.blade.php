@@ -14,7 +14,7 @@
 @if(!isset($permissions['errors']))
 <div class="buttons">
     <a class="button" href="{{ route('LaravelInstaller::database') }}">
-        {{ trans('messages.next') }}
+        {{ trans('messages.install') }}
     </a>
 </div>
 @endif
