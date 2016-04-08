@@ -51,7 +51,7 @@ return [
      */
     'final' => [
         'title' => 'Finito',
-        'finished' => 'L'applicazione è stata configurata correttamente.',
+        'finished' => 'L\'applicazione è stata configurata correttamente.',
         'exit' => 'Clicca qui per uscire',
     ],
 ];
