@@ -15,7 +15,7 @@ class InstalledFileManager
         file_put_contents(storage_path('installed'), '');
 
         $result = file_get_contents(base_path('.env'));
-        $newLine = "APP_ENV=staging\nSESSION_DRIVER=database\n"
+        $newLine = "APP_ENV=staging\nSESSION_DRIVER=database\n";
         fwrite($result, $newLine);
     }
 
