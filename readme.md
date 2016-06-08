@@ -17,7 +17,7 @@ First, pull in the package through Composer.
 
 ```
 "require": {
-    "Jaapgoorhuis/laravel-installer": "1.4.1"
+    "Jaapgoorhuis/laravel-installer": "1.4.4"
 }
 ```
 
