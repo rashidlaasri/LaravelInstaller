@@ -54,6 +54,8 @@ You will notice additional files and folders appear in your project :
 You have to add this line to your routes.php to let the page's redirect to install if the application is not installed!
 -`Route::group(array('middleware' => ['installation']), function(){ ` : Place this line at top of your routes and place all the other routes in the function.
 
+You also have to add this line to your kernel.php to use the middleware. Add this line in applications route middleware.
+`'installation' => \App\Http\Middleware\Installation::class,`
 ## Screenshots
  
 ![Laravel web installer](http://i.imgur.com/3vYBPLn.png)
