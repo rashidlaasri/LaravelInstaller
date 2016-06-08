@@ -1,8 +1,8 @@
 <?php
 
-namespace Jaapgoorhuis\LaravelInstaller\Controllers;
+namespace RachidLaasri\LaravelInstaller\Controllers;
 
-use Illuminate\Routing\Controller;
+use App\Http\Controllers\Controller;
 
 class WelcomeController extends Controller
 {

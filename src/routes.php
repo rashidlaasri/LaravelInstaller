@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['prefix' => 'install', 'as' => 'LaravelInstaller::', 'namespace' => 'Jaapgoorhuis\LaravelInstaller\Controllers', 'middleware' => 'web'], function()
+Route::group(['prefix' => 'install', 'as' => 'LaravelInstaller::', 'namespace' => 'RachidLaasri\LaravelInstaller\Controllers'], function()
 {
     Route::group(['middleware' => 'canInstall'], function()
     {
