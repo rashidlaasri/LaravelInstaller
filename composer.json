@@ -1,5 +1,5 @@
 {
-  "name": "rachidlaasri/laravel-installer",
+  "name": "jaapgoorhuis/laravel-installer",
   "description": "Laravel web installer",
   "license": "MIT",
   "authors": [
@@ -11,7 +11,7 @@
   "require": {},
   "autoload": {
     "psr-4": {
-      "RachidLaasri\\LaravelInstaller\\": "src/"
+      "Jaapgoorhuis\\LaravelInstaller\\": "src/"
     },
     "files": [
       "src/functions.php"
