@@ -31,7 +31,7 @@ After that, include the service provider within `config/app.php`.
 
 ```
 'providers' => [
-    RachidLaasri\LaravelInstaller\Providers\LaravelInstallerServiceProvider::class,
+    Jaapgoorhuis\LaravelInstaller\Providers\LaravelInstallerServiceProvider::class,
 ];
 ```
 
@@ -41,7 +41,7 @@ You can't figure it out? You need more help? Here is a video tutorial for you : 
 
 Before using this package you need to run :
 ```bash
-php artisan vendor:publish --provider="RachidLaasri\LaravelInstaller\Providers\LaravelInstallerServiceProvider"
+php artisan vendor:publish --provider="Jaapgoorhuis\LaravelInstaller\Providers\LaravelInstallerServiceProvider"
 ```
 
 You will notice additional files and folders appear in your project :
