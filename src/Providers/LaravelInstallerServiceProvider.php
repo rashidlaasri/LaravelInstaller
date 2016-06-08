@@ -1,6 +1,6 @@
 <?php
 
-namespace RachidLaasri\LaravelInstaller\Providers;
+namespace Jaapgoorhuis\LaravelInstaller\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -32,7 +32,7 @@ class LaravelInstallerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        app('router')->middleware('canInstall', '\RachidLaasri\LaravelInstaller\Middleware\canInstall');
+        app('router')->middleware('canInstall', '\Jaapgoorhuis\LaravelInstaller\Middleware\canInstall');
     }
 
     /**
