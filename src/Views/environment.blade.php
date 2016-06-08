@@ -2,8 +2,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
 @section('title', trans('messages.environment.title'))
 @section('container')
-    @if (session('old'))
-    <p class="alert">{{ session('old') }}</p>
+    @if (session('message'))
+    <p class="alert">{{ session('message') }}</p>
     @endif
     <form method="post" action="{{ route('LaravelInstaller::environmentSave') }}">
        
