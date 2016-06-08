@@ -51,6 +51,9 @@ You will notice additional files and folders appear in your project :
  - `resources/views/vendor/installer` : This folder contains the HTML code for your installer, it is 100% customizable, give it a look and see how nice/clean it is.
  - `resources/lang/en/messages.php` : This file holds all the messages/text, currently only English is available, if your application is in another language, you can copy/past it in your language folder and modify it the way you want. If you wanna help us provide more languages for this awesome package please send a pull request https://github.com/RachidLaasri/LaravelInstaller/pulls.
 
+You have to add this line to your routes.php to let the page's redirect to install if the application is not installed!
+-`Route::group(array('middleware' => ['installation']), function(){ ` : Place this line at top of your routes and place all the other routes in the function.
+
 ## Screenshots
  
 ![Laravel web installer](http://i.imgur.com/3vYBPLn.png)

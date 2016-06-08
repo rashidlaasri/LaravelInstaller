@@ -2,8 +2,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
 @section('title', trans('messages.environment.title'))
 @section('container')
-    @if (session('message'))
-    <p class="alert">{{ session('message') }}</p>
+    @if (isset($message))
+    <p class="alert">{{ $message }}</p>
     @endif
     <form method="post" action="{{ route('LaravelInstaller::environmentSave') }}">
        
@@ -97,11 +97,13 @@
              <button class="button button--light" type="submit">{{ trans('messages.environment.save') }}</button>
         </div>
     </form>
-    @if(!isset($environment['errors']))
+    @if(isset($saved))
+    @if($saved == true)
     <div class="buttons">
         <a class="button" href="{{ route('LaravelInstaller::requirements') }}">
             {{ trans('messages.next') }}
         </a>
     </div>
+    @endif
     @endif
 @stop
