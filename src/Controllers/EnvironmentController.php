@@ -2,7 +2,7 @@
 
 namespace RachidLaasri\LaravelInstaller\Controllers;
 
-use App, PDOException, error;
+use App, PDOException, error, pdo;
 
 
 use App\Http\Controllers\Controller;
@@ -112,16 +112,29 @@ MAIL_PASSWORD=".$input->MAIL_PASSWORD."
 MAIL_ENCRYPTION=".$input->MAIL_ENCRYPTION."
 ";
 
-
-        $message = 'Successfully saved';
+try{
+    $dbh = new pdo( 'mysql:host='.$input->DB_HOST.':3306;dbname='.$input->DB_DATABASE,
+                    $input->DB_USERNAME,
+                    $input->DB_PASSWORD,
+                    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    $message = 'Successfully saved';
+    $saved = true;
 
         $myfile = fopen("../.env", "w") or die("Unable to open file!");
         $txt = $file;
         fwrite($myfile, $txt);
         fclose($myfile);
+}
+catch(PDOException $ex){
+    $message = 'Error unable to connect to database! ';
+    $saved = false;
+}
+
+        
 
         return view('vendor.installer.environment', 
             [
+                'saved' => $saved,
                 'message' => $message,
                 'APP_ENV' => $input->APP_ENV,
                 'APP_DEBUG' => $input->APP_DEBUG,
