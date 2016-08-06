@@ -14,8 +14,8 @@
     </form>
     @if(!isset($environment['errors']))
     <div class="buttons">
-        <a class="button" href="{{ route('LaravelInstaller::requirements') }}">
-            {{ trans('messages.next') }}
+        <a class="button" href="{{ route('LaravelInstaller::database') }}">
+            {{ trans('messages.install') }}
         </a>
     </div>
     @endif
