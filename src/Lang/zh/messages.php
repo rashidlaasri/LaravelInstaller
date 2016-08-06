@@ -7,7 +7,7 @@ return [
      * Shared translations.
      *
      */
-    'title' => '安装向导',
+    'title' => '安装系统',
     'next' => '下一步',
     'install' => '安装',
     'finish' => '完成',
@@ -19,8 +19,8 @@ return [
      *
      */
     'welcome' => [
-        'title'   => '安装',
-        'message' => '欢迎使用',
+        'title'   => '萤享',
+        'message' => '欢迎使用『荧享』',
     ],
 
 
@@ -64,7 +64,7 @@ return [
      */
     'final' => [
         'title' => '安装成功',
-        'finished' => '感谢使用',
+        'finished' => '感谢使用『荧享』, 分享知识, 创造影响',
         'exit' => '完成',
     ],
 ];
