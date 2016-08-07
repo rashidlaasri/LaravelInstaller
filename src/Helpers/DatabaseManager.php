@@ -26,7 +26,7 @@ class DatabaseManager
     private function migrate()
     {
         try{
-            Artisan::call('migrate');
+            Artisan::call('migrate', ["--force"=> true ]);
         }
         catch(Exception $e){
             return $this->response($e->getMessage());
