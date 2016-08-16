@@ -7,9 +7,9 @@ return [
      * Shared translations.
      *
      */
-    'title' => 'Laravel Installer',
-    'next' => 'Next Step',
-    'finish' => 'Install',
+    'title' => 'Laravel安装程序',
+    'next' => '下一步',
+    'finish' => '安装',
 
 
     /**
@@ -18,8 +18,8 @@ return [
      *
      */
     'welcome' => [
-        'title'   => 'Welcome To The Installer',
-        'message' => 'Welcome to the setup wizard.',
+        'title'   => '欢迎来到Laravel安装程序',
+        'message' => '欢迎来到安装向导.',
     ],
 
 
@@ -29,7 +29,7 @@ return [
      *
      */
     'requirements' => [
-        'title' => 'Requirements',
+        'title' => '环境要求',
     ],
 
 
@@ -39,7 +39,7 @@ return [
      *
      */
     'permissions' => [
-        'title' => 'Permissions',
+        'title' => '权限',
     ],
 
 
@@ -49,10 +49,10 @@ return [
      *
      */
     'environment' => [
-        'title' => 'Environment Settings',
-        'save' => 'Save .env',
-        'success' => 'Your .env file settings have been saved.',
-        'errors' => 'Unable to save the .env file, Please create it manually.',
+        'title' => '环境设置',
+        'save' => '保存 .env',
+        'success' => '.env 文件保存成功.',
+        'errors' => '无法保存 .env 文件, 请手动创建它.',
     ],
 
 
@@ -62,8 +62,8 @@ return [
      *
      */
     'final' => [
-        'title' => 'Finished',
-        'finished' => 'Application has been successfully installed.',
-        'exit' => 'Click here to exit',
+        'title' => '完成',
+        'finished' => '应用已成功安装.',
+        'exit' => '点击退出',
     ],
 ];
