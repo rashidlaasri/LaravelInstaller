@@ -15,6 +15,7 @@ class DatabaseManager
      */
     public function migrateAndSeed()
     {
+        $this->sqlite();
         return $this->migrate();
     }
 
@@ -65,5 +66,19 @@ class DatabaseManager
             'status' => $status,
             'message' => $message
         );
+    }
+    
+        /**
+     * check database type. If SQLite, then create the database file.
+     */
+    private function sqlite()
+    {
+        if(DB::connection() instanceof SQLiteConnection) {
+            $database = DB::connection()->getDatabaseName();
+            if(!file_exists($database)) {
+                touch($database);
+                DB::reconnect(Config::get('database.default'));
+            }
+        }
     }
 }
