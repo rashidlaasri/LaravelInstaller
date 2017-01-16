@@ -54,7 +54,7 @@ return [
         'success' => 'Your .env file settings have been saved.',
         'errors' => 'Unable to save the .env file, Please create it manually.',
     ],
-    
+
     'install' => 'Install',
 
 
@@ -68,4 +68,43 @@ return [
         'finished' => 'Application has been successfully installed.',
         'exit' => 'Click here to exit',
     ],
+
+    /**
+     *
+     * Update specific translations
+     *
+     */
+    'updater' => [
+        /**
+         *
+         * Welcome page translations for update feature.
+         *
+         */
+        'welcome' => [
+            'title'   => 'Welcome To The Updater',
+            'message' => 'Welcome to the update wizard.',
+        ],
+
+        /**
+         *
+         * Welcome page translations for update feature.
+         *
+         */
+        'overview' => [
+            'title'   => 'Overview',
+            'message' => 'There is 1 update.|There are :number updates.',
+        ],
+
+        /**
+         *
+         * Final page translations.
+         *
+         */
+        'final' => [
+            'title' => 'Finished',
+            'finished' => 'Application\'s database has been successfully updated.',
+            'exit' => 'Click here to exit',
+        ],
+    ],
+
 ];
