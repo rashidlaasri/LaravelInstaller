@@ -23,7 +23,7 @@ Route::group(['prefix' => 'install', 'as' => 'LaravelInstaller::', 'namespace' =
             'as' => 'requirements',
             'uses' => 'RequirementsController@requirements'
         ]);
-        
+
         Route::get('permissions', [
             'as' => 'permissions',
             'uses' => 'PermissionsController@permissions'
@@ -37,6 +37,32 @@ Route::group(['prefix' => 'install', 'as' => 'LaravelInstaller::', 'namespace' =
         Route::get('final', [
             'as' => 'final',
             'uses' => 'FinalController@finish'
+        ]);
+    });
+});
+
+Route::group(['prefix' => 'update', 'as' => 'LaravelUpdater::', 'namespace' => 'RachidLaasri\LaravelInstaller\Controllers', 'middleware' => 'web'], function()
+{
+    Route::group(['middleware' => 'canUpdate'], function()
+    {
+        Route::get('/', [
+            'as' => 'welcome',
+            'uses' => 'UpdateController@welcome'
+        ]);
+
+        Route::get('overview', [
+            'as' => 'overview',
+            'uses' => 'UpdateController@overview'
+        ]);
+
+        Route::get('database', [
+            'as' => 'database',
+            'uses' => 'UpdateController@database'
+        ]);
+
+        Route::get('final', [
+            'as' => 'final',
+            'uses' => 'UpdateController@finish'
         ]);
     });
 });
