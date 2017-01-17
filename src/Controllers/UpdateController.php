@@ -8,6 +8,8 @@ use RachidLaasri\LaravelInstaller\Helpers\DatabaseManager;
 
 class UpdateController extends Controller
 {
+    use \RachidLaasri\LaravelInstaller\Helpers\MigrationsHelper;
+
     /**
      * Display the updater welcome page.
      *
@@ -25,7 +27,10 @@ class UpdateController extends Controller
      */
     public function overview()
     {
-        return view('vendor.installer.update.overview');
+        $migrations = $this->getMigrations();
+        $dbMigrations = $this->getExecutedMigrations();
+
+        return view('vendor.installer.update.overview', ['numberOfUpdatesPending' => count($migrations) - count($dbMigrations)]);
     }
 
     /**

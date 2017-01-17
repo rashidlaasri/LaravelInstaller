@@ -3,11 +3,12 @@
 namespace RachidLaasri\LaravelInstaller\Middleware;
 
 use Closure;
-use DB;
 use RachidLaasri\LaravelInstaller\Middleware\canInstall;
 
 class canUpdate
 {
+    use \RachidLaasri\LaravelInstaller\Helpers\MigrationsHelper;
+
     /**
      * Handle an incoming request.
      *
@@ -39,7 +40,18 @@ class canUpdate
      */
     public function alreadyUpdated()
     {
-        // todo
+        $migrations = $this->getMigrations();
+        $dbMigrations = $this->getExecutedMigrations();
+
+        // If the count of migrations and dbMigrations is equal,
+        // then the update as already been updated.
+        if (count($migrations) == count($dbMigrations)) {
+            return true;
+        }
+
+        // Continue, the app needs an update
         return false;
     }
+
+
 }
