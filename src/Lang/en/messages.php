@@ -77,6 +77,13 @@ return [
     'updater' => [
         /**
          *
+         * Shared translations.
+         *
+         */
+        'title' => 'Laravel Updater',
+
+        /**
+         *
          * Welcome page translations for update feature.
          *
          */
