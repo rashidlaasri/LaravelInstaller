@@ -65,4 +65,49 @@ return [
         'finished' => 'L’application a été installée avec succès.',
         'exit' => 'Cliquez ici pour quitter',
     ],
+
+    /**
+     *
+     * Update specific translations
+     *
+     */
+    'updater' => [
+        /**
+         *
+         * Shared translations.
+         *
+         */
+        'title' => 'Updateur de Laravel',
+
+        /**
+         *
+         * Welcome page translations for update feature.
+         *
+         */
+        'welcome' => [
+            'title'   => 'Bienvenue dans l\'updateur...',
+            'message' => 'Bienvenue dans le programme de mise à jour.',
+        ],
+
+        /**
+         *
+         * Welcome page translations for update feature.
+         *
+         */
+        'overview' => [
+            'title'   => 'Aperçu',
+            'message' => 'Il y a 1 mise à jour.|Il y a :number mises à jour.',
+        ],
+
+        /**
+         *
+         * Final page translations.
+         *
+         */
+        'final' => [
+            'title' => 'Terminé',
+            'finished' => 'L’application a été mise à jour avec succès.',
+            'exit' => 'Cliquez ici pour quitter',
+        ],
+    ],
 ];
