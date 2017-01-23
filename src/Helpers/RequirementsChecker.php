@@ -15,7 +15,7 @@ class RequirementsChecker
     {
         $results = [];
 
-        foreach($requirements as $requirement)
+        foreach($requirements['php'] as $requirement)
         {
             $results['requirements'][$requirement] = true;
 
@@ -25,6 +25,20 @@ class RequirementsChecker
 
                 $results['errors'] = true;
             }
+
+            if(!empty($requirements['apache']))
+            {
+                foreach ($requirements['apache'] as $requirement) {
+                    if(function_exists('apache_get_modules'))
+                    {
+                        if(!in_array($requirement,apache_get_modules()))
+                        {
+                            $results['requirements'][$requirement] = true;
+                        }
+                    }
+                }
+            }
+
         }
 
         return $results;
