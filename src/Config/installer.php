@@ -13,10 +13,15 @@ return [
     |
     */
     'requirements' => [
-        'openssl',
-        'pdo',
-        'mbstring',
-        'tokenizer'
+        'php' => [
+            'openssl',
+            'pdo',
+            'mbstring',
+            'tokenizer',
+        ],
+        'apache' => [
+            'rewrite',
+        ]
     ],
 
     /*
