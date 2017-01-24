@@ -20,7 +20,7 @@ return [
             'tokenizer',
         ],
         'apache' => [
-            'rewrite',
+            'mod_rewrite',
         ]
     ],
 
