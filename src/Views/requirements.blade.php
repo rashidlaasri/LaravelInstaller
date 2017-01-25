@@ -2,11 +2,14 @@
 
 @section('title', trans('messages.requirements.title'))
 @section('container')
-    <ul class="list">
-        @foreach($requirements['requirements'] as $extention => $enabled)
-        <li class="list__item {{ $enabled ? 'success' : 'error' }}">{{ $extention }}</li>
-        @endforeach
-    </ul>
+    @foreach($requirements['requirements'] as $type => $requirement)
+        <h5>{{ ucfirst($type) }}</h5>
+        <ul class="list">
+            @foreach($requirements['requirements'][$type] as $extention => $enabled)
+                <li class="list__item {{ $enabled ? 'success' : 'error' }}">{{ $extention }}</li>
+            @endforeach
+        </ul>
+    @endforeach
 
     @if ( ! isset($requirements['errors']))
         <div class="buttons">
