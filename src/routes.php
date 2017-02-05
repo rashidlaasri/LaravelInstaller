@@ -1,9 +1,7 @@
 <?php
 
-Route::group(['prefix' => 'install', 'as' => 'LaravelInstaller::', 'namespace' => 'RachidLaasri\LaravelInstaller\Controllers', 'middleware' => 'web'], function()
+Route::group(['prefix' => 'install', 'as' => 'LaravelInstaller::', 'namespace' => 'RachidLaasri\LaravelInstaller\Controllers', 'middleware' => ['web','install']], function()
 {
-    Route::group(['middleware' => 'canInstall'], function()
-    {
         Route::get('/', [
             'as' => 'welcome',
             'uses' => 'WelcomeController@welcome'
@@ -38,7 +36,7 @@ Route::group(['prefix' => 'install', 'as' => 'LaravelInstaller::', 'namespace' =
             'as' => 'final',
             'uses' => 'FinalController@finish'
         ]);
-    });
+
 });
 
 Route::group(['prefix' => 'update', 'as' => 'LaravelUpdater::', 'namespace' => 'RachidLaasri\LaravelInstaller\Controllers', 'middleware' => 'web'], function()
