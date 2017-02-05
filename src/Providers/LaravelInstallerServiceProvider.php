@@ -2,7 +2,10 @@
 
 namespace RachidLaasri\LaravelInstaller\Providers;
 
+use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
+use RachidLaasri\LaravelInstaller\Middleware\canInstall;
+use RachidLaasri\LaravelInstaller\Middleware\canUpdate;
 
 class LaravelInstallerServiceProvider extends ServiceProvider
 {
@@ -22,18 +25,20 @@ class LaravelInstallerServiceProvider extends ServiceProvider
     {
         $this->publishFiles();
 
-        include __DIR__ . '/../routes.php';
+        $this->loadRoutesFrom(__DIR__.'/../routes.php');
     }
 
     /**
      * Bootstrap the application events.
      *
-     * @return void
+     * @param Router $router
      */
-    public function boot()
+    public function boot(Router $router)
     {
-        app('router')->middleware('canInstall', '\RachidLaasri\LaravelInstaller\Middleware\canInstall');
-        app('router')->middleware('canUpdate', '\RachidLaasri\LaravelInstaller\Middleware\canUpdate');
+        $router->pushMiddlewareToGroup('web', RedirectInstall::class);
+        $router->middlewareGroup('install',[
+            CanInstall::class
+        ]);
     }
 
     /**
