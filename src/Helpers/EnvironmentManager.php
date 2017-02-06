@@ -52,13 +52,13 @@ class EnvironmentManager
      */
     public function saveFile(Request $input)
     {
-        $message = trans('messages.environment.success');
+        $message = trans('installer_messages.environment.success');
 
         try {
             file_put_contents($this->envPath, $input->get('envConfig'));
         }
         catch(Exception $e) {
-            $message = trans('messages.environment.errors');
+            $message = trans('installer_messages.environment.errors');
         }
 
         return $message;
