@@ -1,6 +1,6 @@
 @extends('vendor.installer.layouts.master')
 
-@section('title', trans('messages.permissions.title'))
+@section('title', trans('installer_messages.permissions.title'))
 @section('container')
     <ul class="list">
         @foreach($permissions['permissions'] as $permission)
@@ -13,7 +13,7 @@
     @if ( ! isset($permissions['errors']))
         <div class="buttons">
             <a class="button" href="{{ route('LaravelInstaller::database') }}">
-                {{ trans('messages.install') }}
+                {{ trans('installer_messages.install') }}
             </a>
         </div>
     @endif

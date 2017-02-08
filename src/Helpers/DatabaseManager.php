@@ -53,7 +53,7 @@ class DatabaseManager
             return $this->response($e->getMessage());
         }
 
-        return $this->response(trans('messages.final.finished'), 'success');
+        return $this->response(trans('installer_messages.final.finished'), 'success');
     }
 
     /**
