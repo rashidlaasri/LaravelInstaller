@@ -40,11 +40,18 @@ return [
         'bootstrap/cache/'       => '775'
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Migration and Custom Commands
+    |--------------------------------------------------------------------------
+    |
+    | This is the default Migrate and Seed process, if you want to add
+    | custom commands just add them to the array list bellow.
+    |
+    */
     'commands' => [
         'migrate',
         'db:seed',
-
-        //add custom commands
     ],
 
 

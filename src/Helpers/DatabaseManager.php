@@ -23,7 +23,7 @@ class DatabaseManager
             try{
                 foreach (Config::get('installer.commands') as $command){
 
-                    Artisan::call($command , ["--force"=> true ]);
+                    Artisan::call($command);
                 }
             }
             catch(Exception $e){
