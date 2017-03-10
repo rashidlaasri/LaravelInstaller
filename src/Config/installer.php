@@ -38,5 +38,14 @@ return [
         'storage/framework/'     => '775',
         'storage/logs/'          => '775',
         'bootstrap/cache/'       => '775'
-    ]
+    ],
+
+    'commands' => [
+        'migrate',
+        'db:seed',
+
+        //add custom commands
+    ],
+
+
 ];
