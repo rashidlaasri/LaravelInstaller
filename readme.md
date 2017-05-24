@@ -17,7 +17,7 @@ First, pull in the package through Composer.
 
 ```
 "require": {
-    "rachidlaasri/laravel-installer": "1.5"
+    "rachidlaasri/laravel-installer": "2.0"
 }
 ```
 
@@ -60,7 +60,3 @@ In order to update your application, go to the `/update` route and follow the in
 ## Screenshots
 
 ![Laravel web installer](http://i.imgur.com/3vYBPLn.png)
-
-## TODO
-- [ ] Create Wiki.
-- [ ] Support more languages.
