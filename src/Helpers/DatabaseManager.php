@@ -12,48 +12,26 @@ class DatabaseManager
 {
 
     /**
-     * Migrate and seed the database.
+     * Custom Commands
      *
      * @return array
      */
-    public function migrateAndSeed()
+    public function commands()
     {
-        $this->sqlite();
-        return $this->migrate();
-    }
+        if(is_array(Config::get('installer.commands'))) {
 
-    /**
-     * Run the migration and call the seeder.
-     *
-     * @return array
-     */
-    private function migrate()
-    {
-        try{
-            Artisan::call('migrate', ["--force"=> true ]);
-        }
-        catch(Exception $e){
-            return $this->response($e->getMessage());
+            try{
+                foreach (Config::get('installer.commands') as $command){
+
+                    Artisan::call($command);
+                }
+            }
+            catch(Exception $e){
+                return $this->response($e->getMessage());
+            }
         }
 
-        return $this->seed();
-    }
-
-    /**
-     * Seed the database.
-     *
-     * @return array
-     */
-    private function seed()
-    {
-        try{
-            Artisan::call('db:seed');
-        }
-        catch(Exception $e){
-            return $this->response($e->getMessage());
-        }
-
-        return $this->response(trans('installer_messages.final.finished'), 'success');
+        return $this->response(trans('messages.final.finished'), 'success');
     }
 
     /**
