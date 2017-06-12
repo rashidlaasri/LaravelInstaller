@@ -2,17 +2,21 @@
 
 namespace RachidLaasri\LaravelInstaller\Controllers;
 
-use Illuminate\Routing\Controller;
+use App\Http\Controllers\Controller;
+
+use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
 {
+
     /**
      * Display the installer welcome page.
      *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Http\Response
      */
     public function welcome()
     {
         return view('vendor.installer.welcome');
     }
+
 }
