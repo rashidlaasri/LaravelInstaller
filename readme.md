@@ -26,12 +26,12 @@ The current features are :
 - Migrate The Database.
 - Seed The Tables.
 
-### Requirements
+## Requirements
 
 * [Laravel 5.1, 5.2, 5.3, 5.4 or newer](https://laravel.com/docs/installation)
 
 
-### Installation
+## Installation
 
 1. From your projects root folder in terminal run:
 
@@ -54,12 +54,12 @@ The current features are :
     php artisan vendor:publish --tag=laravelinstaller
 ```
 
-### Routes
+## Routes
 
 * `/install`
 * `/update`
 
-### Usage
+## Usage
 
 * **Install Routes Notes**
 	* In order to install your application, go to the `/install` route and follow the instructions.
@@ -79,19 +79,19 @@ The current features are :
 |`resources/views/vendor/installer`|This folder contains the HTML code for your installer, it is 100% customizable, give it a look and see how nice/clean it is.|
 |`resources/lang/en/installer_messages.php`|This file holds all the messages/text, currently only English is available, if your application is in another language, you can copy/past it in your language folder and modify it the way you want.|
 
-### Contributing
+## Contributing
 
 * If you have any suggestions please let me know : https://github.com/RachidLaasri/LaravelInstaller/pulls.
 * Please help us provide more languages for this awesome package please send a pull request https://github.com/RachidLaasri/LaravelInstaller/pulls.
 
-### Help
+## Help
 
 * Cannot figure it out? Need more help? Here is a video tutorial: [Laravel Installer by Devdojo](https://www.youtube.com/watch?v=Jput5doFYLg)
 
-### Screenshots
+## Screenshots
 
 ![Laravel web installer](http://i.imgur.com/3vYBPLn.png)
 
-### License
+## License
 
 Laravel Web Installer is licensed under the MIT license. Enjoy!
