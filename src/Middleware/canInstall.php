@@ -16,10 +16,12 @@ class canInstall
      */
     public function handle($request, Closure $next)
     {
+
+        // Possible Feature: Make this some configurable option for easier customization and controversial desire to change it.
         if($this->alreadyInstalled()) {
             abort(404);
         }
-        
+
         return $next($request);
     }
 

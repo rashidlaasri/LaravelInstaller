@@ -7,7 +7,6 @@ use RachidLaasri\LaravelInstaller\Helpers\DatabaseManager;
 
 class DatabaseController extends Controller
 {
-
     /**
      * @var DatabaseManager
      */

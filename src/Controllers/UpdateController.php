@@ -55,7 +55,7 @@ class UpdateController extends Controller
      */
     public function finish(InstalledFileManager $fileManager)
     {
-        //$fileManager->update();
+        $fileManager->update();
 
         return view('vendor.installer.update.finished');
     }
