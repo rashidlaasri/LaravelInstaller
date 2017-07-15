@@ -53,5 +53,4 @@ class canUpdate
         return false;
     }
 
-
 }
