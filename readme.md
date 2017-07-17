@@ -32,7 +32,6 @@ The current features are :
 
 * [Laravel 5.1, 5.2, 5.3, 5.4 or newer](https://laravel.com/docs/installation)
 
-
 ## Installation
 
 1. From your projects root folder in terminal run:
