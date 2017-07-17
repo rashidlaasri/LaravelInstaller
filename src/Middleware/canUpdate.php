@@ -18,16 +18,26 @@ class canUpdate
      */
     public function handle($request, Closure $next)
     {
-        $canInstall = new canInstall;
+        $updateEnabled = filter_var(config('installer.updaterEnabled'), FILTER_VALIDATE_BOOLEAN);
+        switch ($updateEnabled) {
+            case true:
+                $canInstall = new canInstall;
 
-        // if the application has not been installed,
-        // redirect to the installer
-        if (!$canInstall->alreadyInstalled()) {
-            return redirect()->route('LaravelInstaller::welcome');
-        }
+                // if the application has not been installed,
+                // redirect to the installer
+                if (!$canInstall->alreadyInstalled()) {
+                    return redirect()->route('LaravelInstaller::welcome');
+                }
 
-        if($this->alreadyUpdated()) {
-            abort(404);
+                if($this->alreadyUpdated()) {
+                    abort(404);
+                }
+                break;
+
+            case false:
+            default:
+                abort(404);
+                break;
         }
 
         return $next($request);

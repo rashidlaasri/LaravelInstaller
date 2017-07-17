@@ -121,11 +121,22 @@ return [
     | Selected Installed Middlware Option
     |--------------------------------------------------------------------------
     | The selected option fo what happens when an installer intance has been
-    | Default output is to `/resources/views/error/404.blade.php`
+    | Default output is to `/resources/views/error/404.blade.php` if none.
     | The available middleware options include:
     | route, abort, dump, 404, default, ''
     |
     */
     'installedAlreadyAction' => '',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Updater Enabled
+    |--------------------------------------------------------------------------
+    | Can the application run the '/update' route with the migrations.
+    | The default option is set to False if none is present.
+    | Boolean value
+    |
+    */
+    'updaterEnabled' => 'true',
 
 ];
