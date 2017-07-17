@@ -92,4 +92,40 @@ return [
             ],
         ],
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Installed Middlware Options
+    |--------------------------------------------------------------------------
+    | Different available status switch configuration for the
+    | canInstall middleware located in `canInstall.php`.
+    |
+    */
+    'installed' => [
+        'redirectOptions' => [
+            'route' => [
+                'name' => 'welcome',
+                'data' => [],
+            ],
+            'abort' => [
+                'type' => '404',
+            ],
+            'dump' => [
+                'data' => 'Dumping a not found message.',
+            ]
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Selected Installed Middlware Option
+    |--------------------------------------------------------------------------
+    | The selected option fo what happens when an installer intance has been
+    | Default output is to `/resources/views/error/404.blade.php`
+    | The available middleware options include:
+    | route, abort, dump, 404, default, ''
+    |
+    */
+    'installedAlreadyAction' => '',
+
 ];
