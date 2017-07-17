@@ -54,7 +54,7 @@
                     <label for="environment">
                         {{ trans('installer_messages.environment.wizard.form.app_environment_label') }}
                     </label>
-                    <select name="environment" id="environment" onchange='CheckColors(this.value);'>
+                    <select name="environment" id="environment" onchange='checkEnvironment(this.value);'>
                         <option value="local" selected>{{ trans('installer_messages.environment.wizard.form.app_environment_label_local') }}</option>
                         <option value="development">{{ trans('installer_messages.environment.wizard.form.app_environment_label_developement') }}</option>
                         <option value="qa">{{ trans('installer_messages.environment.wizard.form.app_environment_label_qa') }}</option>
@@ -505,7 +505,7 @@
 
 @section('scripts')
     <script type="text/javascript">
-        function CheckColors(val) {
+        function checkEnvironment(val) {
             var element=document.getElementById('environment_text_input');
             if(val=='other') {
                 element.style.display='block';
