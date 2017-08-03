@@ -29,12 +29,11 @@ class FinalInstallManager
      * @param collection $outputLog
      * @return collection
      */
-    private static function generateKey($outputLog)
+    private function generateKey($outputLog)
     {
-        try{
-            Artisan::call('key:generate', ["--force"=> true], $outputLog);
-        }
-        catch(Exception $e){
+        try {
+            Artisan::call('key:generate', ["--force" => true], $outputLog);
+        } catch (Exception $e) {
             return $this->response($e->getMessage());
         }
 
@@ -47,12 +46,11 @@ class FinalInstallManager
      * @param collection $outputLog
      * @return collection
      */
-    private static function publishVendorAssets($outputLog)
+    private function publishVendorAssets($outputLog)
     {
-        try{
-            Artisan::call('vendor:publish',[],$outputLog);
-        }
-        catch(Exception $e){
+        try {
+            Artisan::call('vendor:publish', [], $outputLog);
+        } catch (Exception $e) {
             return $this->response($e->getMessage());
         }
 
