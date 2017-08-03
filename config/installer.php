@@ -139,4 +139,16 @@ return [
     */
     'updaterEnabled' => 'true',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Seeder options
+    |--------------------------------------------------------------------------
+    | By default seeder looks for DatabaseSeeder in App, but in some cases you
+    | may prefer to use other seeder.
+    | Change the array bellow with ['--class' => '\\YourVendor\\YourSeederNamespace' ]
+    | for using other Seeder in the install.
+    |
+    */
+    'seeder' => []
+
 ];

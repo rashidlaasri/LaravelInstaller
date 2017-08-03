@@ -86,7 +86,7 @@ class DatabaseManager
     private function seed($outputLog)
     {
         try {
-            Artisan::call('db:seed', [], $outputLog);
+            Artisan::call('db:seed', config('installer.seeder'), $outputLog);
         } catch (Exception $e) {
             return $this->response($e->getMessage());
         }
