@@ -3,8 +3,8 @@
 namespace RachidLaasri\LaravelInstaller\Controllers;
 
 use Illuminate\Routing\Controller;
-use RachidLaasri\LaravelInstaller\Helpers\InstalledFileManager;
 use RachidLaasri\LaravelInstaller\Helpers\DatabaseManager;
+use RachidLaasri\LaravelInstaller\Helpers\InstalledFileManager;
 
 class UpdateController extends Controller
 {
@@ -30,7 +30,8 @@ class UpdateController extends Controller
         $migrations = $this->getMigrations();
         $dbMigrations = $this->getExecutedMigrations();
 
-        return view('vendor.installer.update.overview', ['numberOfUpdatesPending' => count($migrations) - count($dbMigrations)]);
+        return view('vendor.installer.update.overview',
+            ['numberOfUpdatesPending' => count($migrations) - count($dbMigrations)]);
     }
 
     /**
@@ -44,7 +45,7 @@ class UpdateController extends Controller
         $response = $databaseManager->migrateAndSeed();
 
         return redirect()->route('LaravelUpdater::final')
-                         ->with(['message' => $response]);
+            ->with(['message' => $response]);
     }
 
     /**

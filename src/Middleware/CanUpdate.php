@@ -3,7 +3,6 @@
 namespace RachidLaasri\LaravelInstaller\Middleware;
 
 use Closure;
-use RachidLaasri\LaravelInstaller\Middleware\CanInstall;
 
 class CanUpdate
 {
@@ -12,8 +11,8 @@ class CanUpdate
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure $next
      * @return mixed
      */
     public function handle($request, Closure $next)
@@ -29,7 +28,7 @@ class CanUpdate
                     return redirect()->route('LaravelInstaller::welcome');
                 }
 
-                if($this->alreadyUpdated()) {
+                if ($this->alreadyUpdated()) {
                     abort(404);
                 }
                 break;
