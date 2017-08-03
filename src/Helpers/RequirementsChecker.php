@@ -29,7 +29,7 @@ class RequirementsChecker
                     foreach ($requirements[$type] as $php_requirement) {
                         $results['requirements'][$type][$php_requirement] = true;
 
-                        if (!extension_loaded($requirement)) {
+                        if (!extension_loaded($php_requirement)) {
                             $results['requirements'][$type][$php_requirement] = false;
 
                             $results['errors'] = true;
@@ -43,7 +43,7 @@ class RequirementsChecker
                         if (function_exists('apache_get_modules')) {
                             $results['requirements'][$type][$apache_requirement] = true;
 
-                            if (!in_array($requirement, apache_get_modules())) {
+                            if (!in_array($apache_requirement, apache_get_modules())) {
                                 $results['requirements'][$type][$apache_requirement] = false;
 
                                 $results['errors'] = true;
