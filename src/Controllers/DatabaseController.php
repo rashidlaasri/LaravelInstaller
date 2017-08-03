@@ -30,6 +30,6 @@ class DatabaseController extends Controller
         $response = $this->databaseManager->migrateAndSeed();
 
         return redirect()->route('LaravelInstaller::final')
-                         ->with(['message' => $response]);
+            ->with(['message' => $response]);
     }
 }
