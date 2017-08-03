@@ -3,23 +3,20 @@
 namespace RachidLaasri\LaravelInstaller\Middleware;
 
 use Closure;
-use DB;
-use Redirect;
 
-class canInstall
+class CanInstall
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure $next
      * @return mixed
-     * @param Redirector $redirect
-     * @return \Illuminate\Http\RedirectResponse
+     * @internal param Redirector $redirect
      */
     public function handle($request, Closure $next)
     {
-        if($this->alreadyInstalled()) {
+        if ($this->alreadyInstalled()) {
 
             $installedRedirect = config('installer.installedAlreadyAction');
 

@@ -18,7 +18,7 @@
       "RachidLaasri\\LaravelInstaller\\": "src/"
     },
     "files": [
-      "src/Helpers/functions.php"
+      "helpers/functions.php"
     ]
   },
   "minimum-stability": "stable"

@@ -22,18 +22,15 @@ class RequirementsChecker
     {
         $results = [];
 
-        foreach($requirements as $type => $requirement)
-        {
+        foreach ($requirements as $type => $requirement) {
             switch ($type) {
                 // check php requirements
                 case 'php':
-                    foreach($requirements[$type] as $requirement)
-                    {
-                        $results['requirements'][$type][$requirement] = true;
+                    foreach ($requirements[$type] as $php_requirement) {
+                        $results['requirements'][$type][$php_requirement] = true;
 
-                        if(!extension_loaded($requirement))
-                        {
-                            $results['requirements'][$type][$requirement] = false;
+                        if (!extension_loaded($php_requirement)) {
+                            $results['requirements'][$type][$php_requirement] = false;
 
                             $results['errors'] = true;
                         }
@@ -41,15 +38,13 @@ class RequirementsChecker
                     break;
                 // check apache requirements
                 case 'apache':
-                    foreach ($requirements[$type] as $requirement) {
+                    foreach ($requirements[$type] as $apache_requirement) {
                         // if function doesn't exist we can't check apache modules
-                        if(function_exists('apache_get_modules'))
-                        {
-                            $results['requirements'][$type][$requirement] = true;
+                        if (function_exists('apache_get_modules')) {
+                            $results['requirements'][$type][$apache_requirement] = true;
 
-                            if(!in_array($requirement,apache_get_modules()))
-                            {
-                                $results['requirements'][$type][$requirement] = false;
+                            if (!in_array($apache_requirement, apache_get_modules())) {
+                                $results['requirements'][$type][$apache_requirement] = false;
 
                                 $results['errors'] = true;
                             }
@@ -65,6 +60,7 @@ class RequirementsChecker
     /**
      * Check PHP version requirement.
      *
+     * @param string $minPhpVersion
      * @return array
      */
     public function checkPHPversion(string $minPhpVersion = null)
@@ -82,9 +78,9 @@ class RequirementsChecker
         }
 
         $phpStatus = [
-            'full' => $currentPhpVersion['full'],
-            'current' => $currentPhpVersion['version'],
-            'minimum' => $minVersionPhp,
+            'full'      => $currentPhpVersion['full'],
+            'current'   => $currentPhpVersion['version'],
+            'minimum'   => $minVersionPhp,
             'supported' => $supported
         ];
 
@@ -103,7 +99,7 @@ class RequirementsChecker
         $currentVersion = $filtered[0];
 
         return [
-            'full' => $currentVersionFull,
+            'full'    => $currentVersionFull,
             'version' => $currentVersion
         ];
     }

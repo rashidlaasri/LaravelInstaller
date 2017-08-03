@@ -14,7 +14,7 @@ class DatabaseManager
     /**
      * Migrate and seed the database.
      *
-     * @return array
+     * @return array|collection
      */
     public function migrateAndSeed()
     {
@@ -27,39 +27,37 @@ class DatabaseManager
     }
 
     /**
+     * check database type. If SQLite, then create the database file.
+     *
+     * @param collection $outputLog
+     */
+    private function sqlite($outputLog)
+    {
+        if (DB::connection() instanceof SQLiteConnection) {
+            $database = DB::connection()->getDatabaseName();
+            if (!file_exists($database)) {
+                touch($database);
+                DB::reconnect(Config::get('database.default'));
+            }
+            $outputLog->write('Using SqlLite database: ' . $database, 1);
+        }
+    }
+
+    /**
      * Run the migration and call the seeder.
      *
      * @param collection $outputLog
-     * @return collection
+     * @return array|collection
      */
     private function migrate($outputLog)
     {
-        try{
-            Artisan::call('migrate', ["--force"=> true], $outputLog);
-        }
-        catch(Exception $e){
+        try {
+            Artisan::call('migrate', ["--force" => true], $outputLog);
+        } catch (Exception $e) {
             return $this->response($e->getMessage());
         }
 
         return $this->seed($outputLog);
-    }
-
-    /**
-     * Seed the database.
-     *
-     * @param collection $outputLog
-     * @return array
-     */
-    private function seed($outputLog)
-    {
-        try{
-            Artisan::call('db:seed', [], $outputLog);
-        }
-        catch(Exception $e){
-            return $this->response($e->getMessage());
-        }
-
-        return $this->response(trans('installer_messages.final.finished'), 'success', $outputLog);
     }
 
     /**
@@ -73,26 +71,26 @@ class DatabaseManager
     private function response($message, $status = 'danger', $outputLog)
     {
         return [
-            'status' => $status,
-            'message' => $message,
+            'status'      => $status,
+            'message'     => $message,
             'dbOutputLog' => $outputLog->fetch()
         ];
     }
 
     /**
-     * check database type. If SQLite, then create the database file.
+     * Seed the database.
      *
      * @param collection $outputLog
+     * @return array
      */
-    private function sqlite($outputLog)
+    private function seed($outputLog)
     {
-        if(DB::connection() instanceof SQLiteConnection) {
-            $database = DB::connection()->getDatabaseName();
-            if(!file_exists($database)) {
-                touch($database);
-                DB::reconnect(Config::get('database.default'));
-            }
-            $outputLog->write('Using SqlLite database: ' . $database, 1);
+        try {
+            Artisan::call('db:seed', config('installer.seeder'), $outputLog);
+        } catch (Exception $e) {
+            return $this->response($e->getMessage());
         }
+
+        return $this->response(trans('installer_messages.final.finished'), 'success', $outputLog);
     }
 }

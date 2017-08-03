@@ -13,10 +13,15 @@ class FinalController extends Controller
      * Update installed file and display finished view.
      *
      * @param InstalledFileManager $fileManager
+     * @param FinalInstallManager $finalInstall
+     * @param EnvironmentManager $environment
      * @return \Illuminate\View\View
      */
-    public function finish(InstalledFileManager $fileManager, FinalInstallManager $finalInstall, EnvironmentManager $environment)
-    {
+    public function finish(
+        InstalledFileManager $fileManager,
+        FinalInstallManager $finalInstall,
+        EnvironmentManager $environment
+    ) {
         $finalMessages = $finalInstall->runFinal();
         $finalStatusMessage = $fileManager->update();
         $finalEnvFile = $environment->getEnvContent();
