@@ -6,7 +6,7 @@ use Closure;
 use DB;
 use Redirect;
 
-class canInstall
+class CanInstall
 {
     /**
      * Handle an incoming request.
