@@ -30,7 +30,7 @@ The current features are :
 
 ## Requirements
 
-* [Laravel 5.1, 5.2, 5.3, 5.4 or newer](https://laravel.com/docs/installation)
+* [Laravel 5.1, 5.2, 5.3, 5.4, or 5.5+](https://laravel.com/docs/installation)
 
 ## Installation
 
@@ -40,12 +40,17 @@ The current features are :
     composer require rachidlaasri/laravel-installer
 ```
 
-2. Register the package with laravel in `config/app.php` under `providers` with the following:
+2. Register the package
+
+* Laravel 5.5 and up
+Uses package auto discovery feature, no need to edit the `config/app.php` file.
+
+* Laravel 5.4 and below
+Register the package with laravel in `config/app.php` under `providers` with the following:
 
 ```php
 	'providers' => [
 	    RachidLaasri\LaravelInstaller\Providers\LaravelInstallerServiceProvider::class,
-
 	];
 ```
 
