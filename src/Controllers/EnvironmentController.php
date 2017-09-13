@@ -90,8 +90,8 @@ class EnvironmentController extends Controller
         $validator = Validator::make($request->all(),$rules, $messages);
 
         if ($validator->fails()) {
-            $this->throwValidationException(
-                $request, $validator
+            $this->validateWith(
+                $validator, $request
             );
         }
 
