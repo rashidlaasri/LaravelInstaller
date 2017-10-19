@@ -21,5 +21,12 @@
       "src/Helpers/functions.php"
     ]
   },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "RachidLaasri\\LaravelInstaller\\Providers\\LaravelInstallerServiceProvider"
+      ]
+    }
+  },
   "minimum-stability": "stable"
 }
