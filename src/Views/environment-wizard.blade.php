@@ -41,7 +41,7 @@
                     <label for="app_name">
                         {{ trans('installer_messages.environment.wizard.form.app_name_label') }}
                     </label>
-                    <input type="text" name="app_name" id="app_name" value="Laravel" placeholder="{{ trans('installer_messages.environment.wizard.form.app_name_placeholder') }}" />
+                    <input type="text" name="app_name" id="app_name" value="" placeholder="{{ trans('installer_messages.environment.wizard.form.app_name_placeholder') }}" />
                     @if ($errors->has('app_name'))
                         <span class="error-block">
                             <i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i>
@@ -184,7 +184,7 @@
                     <label for="database_name">
                         {{ trans('installer_messages.environment.wizard.form.db_name_label') }}
                     </label>
-                    <input type="text" name="database_name" id="database_name" value="homestead" placeholder="{{ trans('installer_messages.environment.wizard.form.db_name_placeholder') }}" />
+                    <input type="text" name="database_name" id="database_name" value="" placeholder="{{ trans('installer_messages.environment.wizard.form.db_name_placeholder') }}" />
                     @if ($errors->has('database_name'))
                         <span class="error-block">
                             <i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i>
@@ -197,7 +197,7 @@
                     <label for="database_username">
                         {{ trans('installer_messages.environment.wizard.form.db_username_label') }}
                     </label>
-                    <input type="text" name="database_username" id="database_username" value="homestead" placeholder="{{ trans('installer_messages.environment.wizard.form.db_username_placeholder') }}" />
+                    <input type="text" name="database_username" id="database_username" value="" placeholder="{{ trans('installer_messages.environment.wizard.form.db_username_placeholder') }}" />
                     @if ($errors->has('database_username'))
                         <span class="error-block">
                             <i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i>
@@ -210,7 +210,7 @@
                     <label for="database_password">
                         {{ trans('installer_messages.environment.wizard.form.db_password_label') }}
                     </label>
-                    <input type="password" name="database_password" id="database_password" value="secret" placeholder="{{ trans('installer_messages.environment.wizard.form.db_password_placeholder') }}" />
+                    <input type="password" name="database_password" id="database_password" value="" placeholder="{{ trans('installer_messages.environment.wizard.form.db_password_placeholder') }}" />
                     @if ($errors->has('database_password'))
                         <span class="error-block">
                             <i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i>
