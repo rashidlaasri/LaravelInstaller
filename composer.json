@@ -1,25 +1,37 @@
 {
-  "name": "rachidlaasri/laravel-installer",
-  "description": "Laravel web installer",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Rachid Laasri",
-      "email": "rashidlaasri@gmail.com"
+    "name": "rachidlaasri/laravel-installer",
+    "description": "Laravel web installer",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rachid Laasri",
+            "email": "rashidlaasri@gmail.com"
+        },
+        {
+            "name": "Jeremy Kenedy",
+            "email": "jeremykenedy@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0"
     },
-    {
-      "name": "Jeremy Kenedy",
-      "email": "jeremykenedy@gmail.com"
-    }
-  ],
-  "require": {},
-  "autoload": {
-    "psr-4": {
-      "RachidLaasri\\LaravelInstaller\\": "src/"
+    "autoload": {
+        "psr-4": {
+            "RachidLaasri\\LaravelInstaller\\": "src/"
+        },
+        "files": [
+            "src/Helpers/functions.php"
+        ]
     },
-    "files": [
-      "src/Helpers/functions.php"
-    ]
-  },
-  "minimum-stability": "stable"
+    "extra": {
+        "laravel": {
+            "providers": [
+                "RachidLaasri\\LaravelInstaller\\Providers\\LaravelInstallerServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable"
 }
