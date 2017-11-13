@@ -50,7 +50,7 @@ class FinalInstallManager
     private static function publishVendorAssets($outputLog)
     {
         try{
-            Artisan::call('vendor:publish',[],$outputLog);
+            Artisan::call('vendor:publish', ['--all' => true], $outputLog);
         }
         catch(Exception $e){
             return $this->response($e->getMessage());
