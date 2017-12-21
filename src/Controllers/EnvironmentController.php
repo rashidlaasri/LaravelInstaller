@@ -87,12 +87,11 @@ class EnvironmentController extends Controller
             'environment_custom.required_if' => trans('installer_messages.environment.wizard.form.name_required'),
         ];
 
-        $validator = Validator::make($request->all(),$rules, $messages);
+        $validator = Validator::make($request->all(), $rules, $messages);
 
         if ($validator->fails()) {
-            $this->throwValidationException(
-                $request, $validator
-            );
+            $errors = $validator->errors();
+            return view('vendor.installer.environment-wizard', compact('errors', 'envConfig'));
         }
 
         $results = $this->EnvironmentManager->saveFileWizard($request);
