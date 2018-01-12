@@ -21,7 +21,7 @@ class DatabaseManager
         $outputLog = new BufferedOutput;
 
         $this->sqlite($outputLog);
-        $this->migrate($outputLog);
+       // $this->migrate($outputLog);
 
         return $this->migrate($outputLog);
     }
