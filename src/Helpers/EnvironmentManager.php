@@ -4,6 +4,7 @@ namespace RachidLaasri\LaravelInstaller\Helpers;
 
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Encryption\Encrypter;
 
 class EnvironmentManager
 {
@@ -82,6 +83,26 @@ class EnvironmentManager
         return $message;
     }
 
+
+    /**
+     * @param $data
+     * @return string
+     */
+    public function setEnvironmentValue($data)
+    {
+        $env_file = app()->environmentFilePath();
+        $string = file_get_contents($env_file);
+        foreach ($data as $key => $item) {
+            preg_match("/{$key}=(.*?)[\r\n|\r|\n]/", $string, $matches);
+            if (array_key_exists(1, $matches)) {
+                $current_value = $matches[1];
+                $string = str_replace("{$key}={$current_value}", "{$key}={$item}", $string);
+            }
+        }
+
+        return $string;
+    }
+
     /**
      * Save the form content to the .env file.
      *
@@ -92,38 +113,43 @@ class EnvironmentManager
     {
         $results = trans('installer_messages.environment.success');
 
-        $envFileData =
-        'APP_NAME=' . $request->app_name . "\n" .
-        'APP_ENV=' . $request->environment . "\n" .
-        'APP_KEY=' . 'base64:bODi8VtmENqnjklBmNJzQcTTSC8jNjBysfnjQN59btE=' . "\n" .
-        'APP_DEBUG=' . $request->app_debug . "\n" .
-        'APP_LOG_LEVEL=' . $request->app_log_level . "\n" .
-        'APP_URL=' . $request->app_url . "\n\n" .
-        'DB_CONNECTION=' . $request->database_connection . "\n" .
-        'DB_HOST=' . $request->database_hostname . "\n" .
-        'DB_PORT=' . $request->database_port . "\n" .
-        'DB_DATABASE=' . $request->database_name . "\n" .
-        'DB_USERNAME=' . $request->database_username . "\n" .
-        'DB_PASSWORD=' . $request->database_password . "\n\n" .
-        'BROADCAST_DRIVER=' . $request->broadcast_driver . "\n" .
-        'CACHE_DRIVER=' . $request->cache_driver . "\n" .
-        'SESSION_DRIVER=' . $request->session_driver . "\n" .
-        'QUEUE_DRIVER=' . $request->queue_driver . "\n\n" .
-        'REDIS_HOST=' . $request->redis_hostname . "\n" .
-        'REDIS_PASSWORD=' . $request->redis_password . "\n" .
-        'REDIS_PORT=' . $request->redis_port . "\n\n" .
-        'MAIL_DRIVER=' . $request->mail_driver . "\n" .
-        'MAIL_HOST=' . $request->mail_host . "\n" .
-        'MAIL_PORT=' . $request->mail_port . "\n" .
-        'MAIL_USERNAME=' . $request->mail_username . "\n" .
-        'MAIL_PASSWORD=' . $request->mail_password . "\n" .
-        'MAIL_ENCRYPTION=' . $request->mail_encryption . "\n\n" .
-        'PUSHER_APP_ID=' . $request->pusher_app_id . "\n" .
-        'PUSHER_APP_KEY=' . $request->pusher_app_key . "\n" .
-        'PUSHER_APP_SECRET=' . $request->pusher_app_secret;
+        $key = 'base64:'.base64_encode(
+                Encrypter::generateKey(config('config.app.ciphers'))
+            );
+
+        $data = [
+            'APP_NAME' => $request->app_name,
+            'APP_ENV' => $request->environment,
+            'APP_KEY' => $key,
+            'APP_DEBUG' => $request->app_debug,
+            'APP_LOG_LEVEL' => $request->app_log_level,
+            'APP_URL' => $request->app_url,
+            'DB_CONNECTION' => $request->database_connection,
+            'DB_HOST' => $request->database_hostname,
+            'DB_PORT' => $request->database_port,
+            'DB_DATABASE' => $request->database_name,
+            'DB_USERNAME' => $request->database_username,
+            'DB_PASSWORD' => $request->database_password,
+            'BROADCAST_DRIVER' => $request->broadcast_driver,
+            'CACHE_DRIVER' => $request->cache_driver,
+            'SESSION_DRIVER' => $request->session_driver,
+            'QUEUE_DRIVER' => $request->queue_driver,
+            'REDIS_HOST' => $request->redis_hostname,
+            'REDIS_PASSWORD' => $request->redis_password,
+            'REDIS_PORT' => $request->redis_port,
+            'MAIL_DRIVER' => $request->mail_driver,
+            'MAIL_HOST' => $request->mail_host,
+            'MAIL_PORT' => $request->mail_port,
+            'MAIL_USERNAME' => $request->mail_username,
+            'MAIL_PASSWORD' => $request->mail_password,
+            'MAIL_ENCRYPTION' => $request->mail_encryption,
+            'PUSHER_APP_ID' => $request->pusher_app_id,
+            'PUSHER_APP_KEY' => $request->pusher_app_key,
+            'PUSHER_APP_SECRET' => $request->pusher_app_secret
+        ];
 
         try {
-            file_put_contents($this->envPath, $envFileData);
+            file_put_contents($this->envPath, $this->setEnvironmentValue($data));
 
         }
         catch(Exception $e) {
