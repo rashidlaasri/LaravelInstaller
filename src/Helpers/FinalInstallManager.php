@@ -62,4 +62,20 @@ class FinalInstallManager
 
         return $outputLog;
     }
+    
+    /**
+     * Return a formatted error messages.
+     *
+     * @param $message
+     * @param collection $outputLog
+     * @return array
+     */
+    private function response($message, $outputLog)
+    {
+        return [
+            'status' => 'error',
+            'message' => $message,
+            'dbOutputLog' => $outputLog->fetch()
+        ];
+    }
 }
