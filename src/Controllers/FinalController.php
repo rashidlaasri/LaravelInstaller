@@ -6,6 +6,7 @@ use Illuminate\Routing\Controller;
 use RachidLaasri\LaravelInstaller\Helpers\EnvironmentManager;
 use RachidLaasri\LaravelInstaller\Helpers\FinalInstallManager;
 use RachidLaasri\LaravelInstaller\Helpers\InstalledFileManager;
+use RachidLaasri\LaravelInstaller\Events\LaravelInstallerFinished;
 
 class FinalController extends Controller
 {
@@ -20,6 +21,8 @@ class FinalController extends Controller
         $finalMessages = $finalInstall->runFinal();
         $finalStatusMessage = $fileManager->update();
         $finalEnvFile = $environment->getEnvContent();
+        
+        event(new LaravelInstallerFinished);
 
         return view('vendor.installer.finished', compact('finalMessages', 'finalStatusMessage', 'finalEnvFile'));
     }
