@@ -29,7 +29,9 @@ class UpdateController extends Controller
     {
         $migrations = $this->getMigrations();
         $dbMigrations = $this->getExecutedMigrations();
-
+        if($response["status"]=="error"){
+            return view('vendor.installer.update.overview', ['error_message' => $response["message"]]);
+        }
         return view('vendor.installer.update.overview', ['numberOfUpdatesPending' => count($migrations) - count($dbMigrations)]);
     }
 
