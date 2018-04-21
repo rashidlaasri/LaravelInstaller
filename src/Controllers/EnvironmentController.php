@@ -69,7 +69,7 @@ class EnvironmentController extends Controller
     public function saveClassic(Request $input, Redirector $redirect)
     {
         $message = $this->EnvironmentManager->saveFileClassic($input);
-        
+
         event(new EnvironmentSaved($input));
 
         return $redirect->route('LaravelInstaller::environmentClassic')
@@ -98,7 +98,7 @@ class EnvironmentController extends Controller
         }
 
         $results = $this->EnvironmentManager->saveFileWizard($request);
-        
+
         event(new EnvironmentSaved($request));
 
         return $redirect->route('LaravelInstaller::database')
