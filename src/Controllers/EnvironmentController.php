@@ -97,9 +97,6 @@ class EnvironmentController extends Controller
             return view('vendor.installer.environment-wizard', compact('errors', 'envConfig'));
         }
 
-        if (str_word_count($request['app_name']) > 1)
-            $request['app_name'] = "'". $request['app_name'] ."'";
-
         $results = $this->EnvironmentManager->saveFileWizard($request);
 
         event(new EnvironmentSaved($request));
