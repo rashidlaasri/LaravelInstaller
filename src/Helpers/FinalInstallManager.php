@@ -37,7 +37,7 @@ class FinalInstallManager
             }
         }
         catch(Exception $e){
-            return $this->response($e->getMessage());
+            return static::response($e->getMessage(), $outputLog);
         }
 
         return $outputLog;
@@ -57,7 +57,7 @@ class FinalInstallManager
             }
         }
         catch(Exception $e){
-            return $this->response($e->getMessage());
+            return static::response($e->getMessage(), $outputLog);
         }
 
         return $outputLog;
@@ -70,7 +70,7 @@ class FinalInstallManager
      * @param collection $outputLog
      * @return array
      */
-    private function response($message, $outputLog)
+    private static function response($message, $outputLog)
     {
         return [
             'status' => 'error',
