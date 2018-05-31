@@ -3,7 +3,6 @@
 namespace RachidLaasri\LaravelInstaller\Middleware;
 
 use Closure;
-use RachidLaasri\LaravelInstaller\Middleware\canInstall;
 
 class canUpdate
 {

@@ -19,7 +19,7 @@ trait MigrationsHelper {
     /**
      * Get the migrations that have already been ran.
      *
-     * @return Illuminate\Support\Collection List of migrations
+     * @return \Illuminate\Support\Collection List of migrations
      */
     public function getExecutedMigrations()
     {

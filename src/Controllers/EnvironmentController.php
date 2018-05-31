@@ -2,13 +2,12 @@
 
 namespace RachidLaasri\LaravelInstaller\Controllers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use RachidLaasri\LaravelInstaller\Helpers\EnvironmentManager;
 use RachidLaasri\LaravelInstaller\Events\EnvironmentSaved;
 use Validator;
-use Illuminate\Validation\Rule;
 
 class EnvironmentController extends Controller
 {

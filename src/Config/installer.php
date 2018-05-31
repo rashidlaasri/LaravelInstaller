@@ -20,7 +20,7 @@ return [
     'final' => [
         'key' => true,
         'publish' => false
-    ],    
+    ],
     'requirements' => [
         'php' => [
             'openssl',
@@ -55,7 +55,7 @@ return [
     | Environment Form Wizard Validation Rules & Messages
     |--------------------------------------------------------------------------
     |
-    | This are the default form vield validation rules. Available Rules:
+    | This are the default form field validation rules. Available Rules:
     | https://laravel.com/docs/5.4/validation#available-validation-rules
     |
     */
@@ -99,7 +99,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Installed Middlware Options
+    | Installed Middleware Options
     |--------------------------------------------------------------------------
     | Different available status switch configuration for the
     | canInstall middleware located in `canInstall.php`.
@@ -122,9 +122,9 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Selected Installed Middlware Option
+    | Selected Installed Middleware Option
     |--------------------------------------------------------------------------
-    | The selected option fo what happens when an installer intance has been
+    | The selected option fo what happens when an installer instance has been
     | Default output is to `/resources/views/error/404.blade.php` if none.
     | The available middleware options include:
     | route, abort, dump, 404, default, ''
