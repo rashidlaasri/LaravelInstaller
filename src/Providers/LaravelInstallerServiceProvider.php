@@ -30,7 +30,7 @@ class LaravelInstallerServiceProvider extends ServiceProvider
     /**
      * Bootstrap the application events.
      *
-     * @param $void
+     * @param \Illuminate\Routing\Router $router
      */
     public function boot(Router $router)
     {

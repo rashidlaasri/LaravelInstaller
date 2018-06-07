@@ -2,9 +2,7 @@
 
 namespace RachidLaasri\LaravelInstaller\Controllers;
 
-use App\Http\Controllers\Controller;
-
-use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class WelcomeController extends Controller
 {

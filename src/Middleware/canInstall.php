@@ -13,9 +13,7 @@ class canInstall
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
-     * @return mixed
-     * @param Redirector $redirect
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse|mixed
      */
     public function handle($request, Closure $next)
     {

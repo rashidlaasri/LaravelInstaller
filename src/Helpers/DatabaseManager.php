@@ -28,10 +28,10 @@ class DatabaseManager
     /**
      * Run the migration and call the seeder.
      *
-     * @param collection $outputLog
-     * @return collection
+     * @param \Symfony\Component\Console\Output\BufferedOutput $outputLog
+     * @return array
      */
-    private function migrate($outputLog)
+    private function migrate(BufferedOutput $outputLog)
     {
         try{
             Artisan::call('migrate', ["--force"=> true], $outputLog);
@@ -46,10 +46,10 @@ class DatabaseManager
     /**
      * Seed the database.
      *
-     * @param collection $outputLog
+     * @param \Symfony\Component\Console\Output\BufferedOutput $outputLog
      * @return array
      */
-    private function seed($outputLog)
+    private function seed(BufferedOutput $outputLog)
     {
         try{
             Artisan::call('db:seed', ['--force' => true], $outputLog);
@@ -64,12 +64,12 @@ class DatabaseManager
     /**
      * Return a formatted error messages.
      *
-     * @param $message
+     * @param string $message
      * @param string $status
-     * @param collection $outputLog
+     * @param \Symfony\Component\Console\Output\BufferedOutput $outputLog
      * @return array
      */
-    private function response($message, $status = 'danger', $outputLog)
+    private function response($message, $status = 'danger', BufferedOutput $outputLog)
     {
         return [
             'status' => $status,
@@ -79,11 +79,11 @@ class DatabaseManager
     }
 
     /**
-     * check database type. If SQLite, then create the database file.
+     * Check database type. If SQLite, then create the database file.
      *
-     * @param collection $outputLog
+     * @param \Symfony\Component\Console\Output\BufferedOutput $outputLog
      */
-    private function sqlite($outputLog)
+    private function sqlite(BufferedOutput $outputLog)
     {
         if(DB::connection() instanceof SQLiteConnection) {
             $database = DB::connection()->getDatabaseName();
