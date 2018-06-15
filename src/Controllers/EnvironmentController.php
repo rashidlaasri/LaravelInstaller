@@ -111,7 +111,6 @@ class EnvironmentController extends Controller
                         ->with(['results' => $results]);
     }
 
-
     /**
      * Validate database connection with user credentials (Form Wizard).
      *
