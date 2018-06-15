@@ -99,7 +99,7 @@ class EnvironmentController extends Controller
 
         if (!$this->checkDatabaseConnection($request)) {
             return $redirect->route('LaravelInstaller::environmentWizard')->withInput()->withErrors([
-                'database_connection' => 'Could not connect to the database.',
+                'database_connection' => trans('installer_messages.environment.wizard.form.db_connection_failed'),
             ]);
         }
 
