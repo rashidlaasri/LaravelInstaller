@@ -112,6 +112,7 @@ class EnvironmentController extends Controller
     }
 
     /**
+     * TODO: We can remove this code if PR will be merged: https://github.com/RachidLaasri/LaravelInstaller/pull/162
      * Validate database connection with user credentials (Form Wizard).
      *
      * @param Request $request
