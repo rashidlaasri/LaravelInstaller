@@ -50,9 +50,9 @@ return [
      */
     'environment' => [
         'title' => 'Umgebungsvariablen',
-        'save' => 'Speicher .env',
+        'save' => 'Speichere .env',
         'success' => 'Ihre .env Konfiguration wurde gespeichert.',
-        'errors' => 'Ihre .env Konfiguration konnte nicht gespeichert werden, Bitte erstellen Sie diese Manuell.',
+        'errors' => 'Ihre .env Konfiguration konnte nicht gespeichert werden. Bitte erstellen Sie diese manuell.',
     ],
 
 
@@ -63,7 +63,7 @@ return [
      */
     'final' => [
         'title' => 'Fertig!',
-        'finished' => 'Die Anwendung wurde erfolgreich Installiert.',
-        'exit' => 'Hier Klicken zum Beenden',
+        'finished' => 'Die Anwendung wurde erfolgreich installiert.',
+        'exit' => 'Hier klicken zum Beenden',
     ],
 ];
