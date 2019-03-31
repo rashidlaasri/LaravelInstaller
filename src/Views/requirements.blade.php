@@ -4,47 +4,46 @@
     {{ trans('installer_messages.requirements.templateTitle') }}
 @endsection
 
+@section('icon')
+    {{ asset('installer/img/icons/requirements.svg') }}
+@endsection
+
 @section('title')
-    <i class="fa fa-list-ul fa-fw" aria-hidden="true"></i>
     {{ trans('installer_messages.requirements.title') }}
 @endsection
 
-@section('container')
+@section('main')
 
     @foreach($requirements['requirements'] as $type => $requirement)
-        <ul class="list">
-            <li class="list__item list__title {{ $phpSupportInfo['supported'] ? 'success' : 'error' }}">
-                <strong>{{ ucfirst($type) }}</strong>
-                @if($type == 'php')
-                    <strong>
-                        <small>
-                            (version {{ $phpSupportInfo['minimum'] }} required)
-                        </small>
-                    </strong>
-                    <span class="float-right">
-                        <strong>
-                            {{ $phpSupportInfo['current'] }}
-                        </strong>
-                        <i class="fa fa-fw fa-{{ $phpSupportInfo['supported'] ? 'check-circle-o' : 'exclamation-circle' }} row-icon" aria-hidden="true"></i>
-                    </span>
-                @endif
-            </li>
-            @foreach($requirements['requirements'][$type] as $extention => $enabled)
-                <li class="list__item {{ $enabled ? 'success' : 'error' }}">
-                    {{ $extention }}
-                    <i class="fa fa-fw fa-{{ $enabled ? 'check-circle-o' : 'exclamation-circle' }} row-icon" aria-hidden="true"></i>
-                </li>
-            @endforeach
-        </ul>
+    <ul class="alerts-list">
+        <li class="alert-item is-{{ $phpSupportInfo['supported'] ? 'success' : 'warning' }}">
+            <span class="alert-text">{{ ucfirst($type) }}</span>
+            @if($type == 'php')
+            <b class="alert-details">
+                {{ $phpSupportInfo['current'] }} (version {{ $phpSupportInfo['minimum'] }} required)
+            </b>
+            
+            <i class="alert-icon ion-ios-{{ $phpSupportInfo['supported'] ? 'checkmark-circle' : 'alert' }}"></i>
+            @endif
+        </li>
+        @foreach($requirements['requirements'][$type] as $extention => $enabled)
+        <li class="alert-item is-{{ $enabled ? 'success' : 'warning' }}">
+            <span class="alert-text">{{ $extention }}</span>
+            <i class="alert-icon ion-ios-{{ $enabled ? 'checkmark-circle' : 'alert' }}"></i>
+        </li>
+        @endforeach
+    </ul>
     @endforeach
 
-    @if ( ! isset($requirements['errors']) && $phpSupportInfo['supported'] )
-        <div class="buttons">
-            <a class="button" href="{{ route('LaravelInstaller::permissions') }}">
-                {{ trans('installer_messages.requirements.next') }}
-                <i class="fa fa-angle-right fa-fw" aria-hidden="true"></i>
-            </a>
-        </div>
-    @endif
+@endsection
 
+@section('actions')
+    <a href="{{ route('LaravelInstaller::permissions') }}" class="button is-primary {{ (isset($requirements['errors']) && !$phpSupportInfo['supported']) ? 'is-disabled' : '' }}">
+        <span>{{ trans('installer_messages.requirements.next') }}</span>
+        <i class="ion ion-ios-arrow-forward"></i>
+    </a>
+@endsection
+
+@section('progress')
+    <div class="step-progress" style="width: 40%"></div>
 @endsection

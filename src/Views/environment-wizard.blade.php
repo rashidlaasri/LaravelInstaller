@@ -4,37 +4,37 @@
     {{ trans('installer_messages.environment.wizard.templateTitle') }}
 @endsection
 
+@section('icon')
+    {{ asset('installer/img/icons/environment.svg') }}
+@endsection
+
 @section('title')
-    <i class="fa fa-magic fa-fw" aria-hidden="true"></i>
     {!! trans('installer_messages.environment.wizard.title') !!}
 @endsection
 
-@section('container')
+@section('main')
     <div class="tabs tabs-full">
 
-        <input id="tab1" type="radio" name="tabs" class="tab-input" checked />
-        <label for="tab1" class="tab-label">
-            <i class="fa fa-cog fa-2x fa-fw" aria-hidden="true"></i>
-            <br />
-            {{ trans('installer_messages.environment.wizard.tabs.environment') }}
-        </label>
+        <input id="tab1" type="radio" name="tabs" class="tab-switcher" checked />
+        <input id="tab2" type="radio" name="tabs" class="tab-switcher" />
+        <input id="tab3" type="radio" name="tabs" class="tab-switcher" />
 
-        <input id="tab2" type="radio" name="tabs" class="tab-input" />
-        <label for="tab2" class="tab-label">
-            <i class="fa fa-database fa-2x fa-fw" aria-hidden="true"></i>
-            <br />
-            {{ trans('installer_messages.environment.wizard.tabs.database') }}
-        </label>
+        <div class="tabs-list">
+            <label for="tab1" class="tab-label">
+                {{ trans('installer_messages.environment.wizard.tabs.environment') }}
+            </label>
+            
+            <label for="tab2" class="tab-label">
+                {{ trans('installer_messages.environment.wizard.tabs.database') }}
+            </label>
+                
+            <label for="tab3" class="tab-label">
+                {{ trans('installer_messages.environment.wizard.tabs.application') }}
+            </label>
+        </div>
 
-        <input id="tab3" type="radio" name="tabs" class="tab-input" />
-        <label for="tab3" class="tab-label">
-            <i class="fa fa-cogs fa-2x fa-fw" aria-hidden="true"></i>
-            <br />
-            {{ trans('installer_messages.environment.wizard.tabs.application') }}
-        </label>
-
-        <form method="post" action="{{ route('LaravelInstaller::environmentSaveWizard') }}" class="tabs-wrap">
-            <div class="tab" id="tab1content">
+        <form method="post" action="{{ route('LaravelInstaller::environmentSaveWizard') }}" class="tabs-wrapper">
+            <div class="tab-item" id="tab1content">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                 <div class="form-group {{ $errors->has('app_name') ? ' has-error ' : '' }}">
@@ -134,7 +134,7 @@
                     </button>
                 </div>
             </div>
-            <div class="tab" id="tab2content">
+            <div class="tab-item" id="tab2content">
 
                 <div class="form-group {{ $errors->has('database_connection') ? ' has-error ' : '' }}">
                     <label for="database_connection">
@@ -226,7 +226,7 @@
                     </button>
                 </div>
             </div>
-            <div class="tab" id="tab3content">
+            <div class="tab-item" id="tab3content">
                 <div class="block">
                     <input type="radio" name="appSettingsTabs" id="appSettingsTab1" value="null" checked />
                     <label for="appSettingsTab1">
@@ -520,4 +520,8 @@
             document.getElementById('tab3').checked = true;
         }
     </script>
+@endsection
+
+@section('progress')
+  <div class="step-progress" style="width: 80%"></div>
 @endsection

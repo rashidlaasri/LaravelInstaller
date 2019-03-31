@@ -1,38 +1,39 @@
 @extends('vendor.installer.layouts.master')
 
 @section('template_title')
-    {{ trans('installer_messages.environment.classic.templateTitle') }}
+    {{ trans('installer_messages.environment.menu.templateTitle') }}
+@endsection
+
+@section('icon')
+    {{ asset('installer/img/icons/environment.svg') }}
 @endsection
 
 @section('title')
-    <i class="fa fa-code fa-fw" aria-hidden="true"></i> {{ trans('installer_messages.environment.classic.title') }}
+    {{ trans('installer_messages.environment.menu.title') }}
 @endsection
 
-@section('container')
+@section('main')
 
-    <form method="post" action="{{ route('LaravelInstaller::environmentSaveClassic') }}">
+    <form class="form" method="post" action="{{ route('LaravelInstaller::environmentSaveClassic') }}">
         {!! csrf_field() !!}
-        <textarea class="textarea" name="envConfig">{{ $envConfig }}</textarea>
-        <div class="buttons buttons--right">
-            <button class="button button--light" type="submit">
-            	<i class="fa fa-floppy-o fa-fw" aria-hidden="true"></i>
-             	{!! trans('installer_messages.environment.classic.save') !!}
-            </button>
+
+        <div class="form-controllers">
+            <div class="form-controller is-editor">
+                <textarea class="form-textarea" name="envConfig">{{ $envConfig }}</textarea>
+            </div>
         </div>
+
     </form>
 
-    @if( ! isset($environment['errors']))
-        <div class="buttons-container">
-            <a class="button float-left" href="{{ route('LaravelInstaller::environmentWizard') }}">
-                <i class="fa fa-sliders fa-fw" aria-hidden="true"></i>
-                {!! trans('installer_messages.environment.classic.back') !!}
-            </a>
-            <a class="button float-right" href="{{ route('LaravelInstaller::database') }}">
-                <i class="fa fa-check fa-fw" aria-hidden="true"></i>
-                {!! trans('installer_messages.environment.classic.install') !!}
-                <i class="fa fa-angle-double-right fa-fw" aria-hidden="true"></i>
-            </a>
-        </div>
-    @endif
+@endsection
+    
+@section('actions')
+    <a class="button is-primary {{ isset($environment['errors']) ? 'is-disabled' : '' }}" href="{{ route('LaravelInstaller::database') }}">
+        <span>{!! trans('installer_messages.environment.classic.install') !!}</span>
+        <i class="ion ion-ios-arrow-forward"></i>
+    </a>
+@endsection
 
+@section('progress')
+  <div class="step-progress" style="width: 80%"></div>
 @endsection
