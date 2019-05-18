@@ -95,7 +95,7 @@ class EnvironmentManager
         $envFileData =
         'APP_NAME=\'' . $request->app_name . "'\n" .
         'APP_ENV=' . $request->environment . "\n" .
-        'APP_KEY=' . 'base64:bODi8VtmENqnjklBmNJzQcTTSC8jNjBysfnjQN59btE=' . "\n" .
+        'APP_KEY=' . 'base64:' . base64_encode(str_random(32)) . "\n" .
         'APP_DEBUG=' . $request->app_debug . "\n" .
         'APP_LOG_LEVEL=' . $request->app_log_level . "\n" .
         'APP_URL=' . $request->app_url . "\n\n" .
