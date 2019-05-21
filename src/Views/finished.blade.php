@@ -15,7 +15,11 @@
 @section('main')
 
 	<div class="step-illustration">
-		<img src="{{ asset('installer/img/illustrations/finished.svg') }}" alt="">
+		<img src="{{ asset('installer/img/illustrations/finished-success.svg') }}" alt="">
+	</div>
+
+	<div class="step-illustration">
+		<img src="{{ asset('installer/img/illustrations/finished-warning.svg') }}" alt="">
 	</div>
 
 	<div class="spacer-40"></div>

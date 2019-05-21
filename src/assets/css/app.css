@@ -74,6 +74,7 @@ th {
   text-align: left;
 }
 body {
+  background-color: #f8fafc;
   color: #202a25;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -82,6 +83,10 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  background-image: url("../img/footer.svg");
+  background-position: center bottom;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 .container {
   display: grid;
@@ -90,6 +95,18 @@ body {
   width: 800px;
   grid-template-columns: repeat(3, 2fr);
 }
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 76px;
+  grid-column: span 3;
+}
+.header img {
+  display: block;
+  width: 300px;
+  height: auto;
+}
 .main {
   position: relative;
   display: flex;
@@ -97,7 +114,7 @@ body {
   padding: 30px;
   border-radius: 8px;
   background: #fff;
-  box-shadow: 0 15px 30px 0 rgba(0,0,0,0.11), 0 5px 15px 0 rgba(0,0,0,0.08);
+  box-shadow: 0 20px 48px rgba(32,42,37,0.16);
   grid-column: span 2;
 }
 .main p {
@@ -190,7 +207,11 @@ body.is-loaded .main::after {
   margin-bottom: 20px;
   padding: 40px;
   border-radius: 8px 0 0 8px;
-  background-color: #f7f7fd;
+  background-color: #fff;
+  box-shadow: 0 10px 24px rgba(32,42,37,0.06);
+}
+.step-item {
+  position: relative;
 }
 .step-item,
 .step-item a {
@@ -205,6 +226,7 @@ body.is-loaded .main::after {
   margin-bottom: 16px;
 }
 .step-item::before {
+  z-index: 1;
   margin-right: 16px;
   width: 10px;
   height: 10px;
@@ -213,12 +235,26 @@ body.is-loaded .main::after {
   box-shadow: 0 2px 4px 2px rgba(58,51,197,0.1);
   content: '';
 }
+.step-item:not(:first-child)::after {
+  position: absolute;
+  bottom: 0;
+  left: 5px;
+  width: 4px;
+  height: 40px;
+  background-color: #efeefb;
+  content: '';
+  -webkit-transform: translate3d(-50%, 0, 0);
+          transform: translate3d(-50%, 0, 0);
+}
 .step-item.active::before {
   background: #fff;
   box-shadow: 0 0 0 2px #3a33c5, 0 2px 4px 2px rgba(58,51,197,0.5);
 }
 .step-item.active ~ .step-item {
   opacity: 0.3;
+}
+.step-item.active ~ .step-item::after {
+  display: none;
 }
 .step-item.active ~ .step-item::before {
   background: #202a25;

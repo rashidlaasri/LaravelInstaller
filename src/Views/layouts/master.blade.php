@@ -20,6 +20,10 @@
 </head>
 <body class="app">
     <div class="container">
+
+        <header class="header">
+            <img src="{{ asset('installer/img/brand.svg') }}" alt="Laravel Installer"/>
+        </header>
         
         <aside class="aside">
             @include('vendor.installer.partials.steps')
