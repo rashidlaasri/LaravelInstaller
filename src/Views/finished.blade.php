@@ -23,7 +23,7 @@
 	<div class="form-controllers">
 		@if(session('message')['dbOutputLog'])
 			<div class="form-controller is-editor">
-				<label class="form-label">{{ trans('installer_messages.final.migration') }}</label>
+				<label class="form-label">{!! trans('installer_messages.final.migration') !!}</label>
 				<input type="text" class="form-input" value="{{ session('message')['dbOutputLog'] }}" readonly>
 			</div>
 		@endif
