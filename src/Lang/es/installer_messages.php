@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
      *
      * Traducciones compartidas.
@@ -17,7 +16,7 @@ return [
      *
      */
     'welcome' => [
-        'title'   => 'Bienvenido al instalador',
+        'title' => 'Bienvenido al instalador',
         'message' => 'Bienvenido al asistente de configuración',
     ],
 
@@ -58,7 +57,6 @@ return [
      */
     'final' => [
         'title' => 'Finalizado.',
-        'finished' => 'La aplicación ha sido instalada con éxito!',
         'exit' => 'Haz click aquí para salir.',
     ],
 ];

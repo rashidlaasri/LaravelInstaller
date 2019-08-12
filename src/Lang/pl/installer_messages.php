@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
      *
      * Shared translations.
@@ -16,7 +15,7 @@ return [
      *
      */
     'welcome' => [
-        'title'   => 'Instalacja Laravel',
+        'title' => 'Instalacja Laravel',
         'message' => 'Witaj w kreatorze instalacji.',
     ],
 
@@ -57,7 +56,6 @@ return [
      */
     'final' => [
         'title' => 'Instalacja zakończona',
-        'finished' => 'Aplikacja została poprawnie zainstalowana.',
         'exit' => 'Kliknij aby zakończyć',
     ],
 ];

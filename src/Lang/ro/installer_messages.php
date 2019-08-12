@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
      *
      * Shared translations.
@@ -16,7 +15,7 @@ return [
      *
      */
     'welcome' => [
-        'title'   => 'Bun venit în procesul de instalare...',
+        'title' => 'Bun venit în procesul de instalare...',
         'message' => 'Bun venit în configurarea asistată.',
     ],
 
@@ -57,7 +56,6 @@ return [
      */
     'final' => [
         'title' => 'Am terminat',
-        'finished' => 'Aplicația a fost instalată cu succes.',
         'exit' => 'Click aici pentru a ieși',
     ],
 ];

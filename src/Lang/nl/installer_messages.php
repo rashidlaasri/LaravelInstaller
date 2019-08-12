@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
      *
      * Shared translations.
@@ -16,7 +15,7 @@ return [
      *
      */
     'welcome' => [
-        'title'   => 'Welkom bij het installatie proces...',
+        'title' => 'Welkom bij het installatie proces...',
         'message' => 'Welkom bij de installatiewizard',
     ],
 
@@ -57,7 +56,6 @@ return [
      */
     'final' => [
         'title' => 'Voltooid',
-        'finished' => 'Applicatie is succesvol geïnstalleerd.',
         'exit' => 'Klik hier om af te sluiten.',
     ],
 ];

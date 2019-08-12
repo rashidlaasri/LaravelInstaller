@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
      *
      * Shared translations.
@@ -16,7 +15,7 @@ return [
      *
      */
     'welcome' => [
-        'title'   => 'Tere tulemast Laraveli installerisse',
+        'title' => 'Tere tulemast Laraveli installerisse',
         'message' => 'Tere tulemast installatsiooniviisardisse.',
     ],
 
@@ -57,7 +56,6 @@ return [
      */
     'final' => [
         'title' => 'Lõpetatud',
-        'finished' => 'Laravel on edukalt installitud',
         'exit' => 'Väljumiseks vajuta siia',
     ],
 ];

@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
      *
      * Shared translations.
@@ -16,7 +15,7 @@ return [
      *
      */
     'welcome' => [
-        'title'   => 'تنصيب Laravel',
+        'title' => 'تنصيب Laravel',
         'message' => 'أهلا بك في صفحة تنصيب Laravel',
     ],
 
@@ -57,7 +56,6 @@ return [
      */
     'final' => [
         'title' => 'النهاية',
-        'finished' => 'تم تنصيب البرنامج بنجاح...',
         'exit' => 'إضغط هنا للخروج',
     ],
 ];

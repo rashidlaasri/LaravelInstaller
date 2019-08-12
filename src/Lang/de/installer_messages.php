@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
      *
      * Shared translations.
@@ -17,7 +16,7 @@ return [
      *
      */
     'welcome' => [
-        'title'   => 'Willkommen zum Installer',
+        'title' => 'Willkommen zum Installer',
         'message' => 'Willkommen zum Laravel Installationsassistent.',
     ],
 
@@ -58,7 +57,6 @@ return [
      */
     'final' => [
         'title' => 'Fertig!',
-        'finished' => 'Die Anwendung wurde erfolgreich installiert.',
         'exit' => 'Hier klicken zum Beenden',
     ],
 ];

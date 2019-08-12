@@ -15,7 +15,7 @@ return [
      *
      */
     'welcome' => [
-        'title'   => 'Benvenuto al programma di installazione',
+        'title' => 'Benvenuto al programma di installazione',
         'message' => 'Benvenuto alla configurazione guidata.',
     ],
     /*
@@ -52,7 +52,6 @@ return [
      */
     'final' => [
         'title' => 'Finito',
-        'finished' => 'L\'applicazione è stata configurata correttamente.',
         'exit' => 'Clicca qui per uscire',
     ],
 ];

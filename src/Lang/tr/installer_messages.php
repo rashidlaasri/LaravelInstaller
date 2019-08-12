@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
      *
      * Shared translations.
@@ -22,9 +21,9 @@ return [
      */
     'welcome' => [
         'templateTitle' => 'Kurulum\'a Hoşgeldiniz',
-        'title'   => 'Kurulum',
+        'title' => 'Kurulum',
         'message' => 'Kolay Kurulum Sihirbazı.',
-        'next'    => 'Gereksinimleri Denetle',
+        'next' => 'Gereksinimleri Denetle',
     ],
 
     /*
@@ -35,7 +34,7 @@ return [
     'requirements' => [
         'templateTitle' => 'Adım 1 | Sunucu Gereksinimleri',
         'title' => 'Sunucu Gereksinimleri',
-        'next'    => 'İzinleri Kontrol Et',
+        'next' => 'İzinleri Kontrol Et',
     ],
 
     /*
@@ -175,7 +174,6 @@ return [
     'final' => [
         'title' => 'Kurulum Bitti',
         'templateTitle' => 'Kurulum Bitti',
-        'finished' => 'Uygulama başarıyla kuruldu.',
         'migration' => 'Veritabanı  Konsolu Çıktısı: ',
         'console' => 'Uygulama Konsolu Çıktısı:',
         'log' => 'Kurulum Günlüğü Girişi:',
@@ -212,7 +210,7 @@ return [
          *
          */
         'overview' => [
-            'title'   => 'Genel bakış',
+            'title' => 'Genel bakış',
             'message' => '1 güncelleme var.| :number güncellemeleri var.',
             'install_updates' => 'Güncellemeyi yükle',
         ],
@@ -224,7 +222,6 @@ return [
          */
         'final' => [
             'title' => 'Tamamlandı',
-            'finished' => 'Uygulamanın veritabanını başarıyla güncelleştirildi.',
             'exit' => 'Çıkmak ve uygulamayı başlatmak için buraya tıklayın',
         ],
 

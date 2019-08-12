@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
      *
      * Shared translations.
@@ -17,7 +16,7 @@ return [
      *
      */
     'welcome' => [
-        'title'   => '歡迎來到Laravel安裝程序',
+        'title' => '歡迎來到Laravel安裝程序',
         'message' => '歡迎來到安裝嚮導.',
     ],
 
@@ -58,7 +57,6 @@ return [
      */
     'final' => [
         'title' => '完成',
-        'finished' => '應用已成功安裝.',
         'exit' => '點擊退出',
     ],
 ];

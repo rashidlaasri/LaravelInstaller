@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
      *
      * Shared translations.
@@ -22,9 +21,9 @@ return [
      */
     'welcome' => [
         'templateTitle' => 'Selamat Datang',
-        'title'   => 'Laravel Installer',
+        'title' => 'Laravel Installer',
         'message' => 'Instalasi Mudah dan Persiapan Aplikasi',
-        'next'    => 'Cek Kebutuhan',
+        'next' => 'Cek Kebutuhan',
     ],
 
     /*
@@ -35,7 +34,7 @@ return [
     'requirements' => [
         'templateTitle' => 'Langkah 1 | Kebutuhan Server',
         'title' => 'Kebutuhan Server',
-        'next'    => 'Cek Hak Akses',
+        'next' => 'Cek Hak Akses',
     ],
 
     /*
@@ -176,7 +175,6 @@ return [
     'final' => [
         'title' => 'Instalasi Selesai',
         'templateTitle' => 'Instalasi Selesai',
-        'finished' => 'Aplikasi telah berhasil dipasang.',
         'migration' => 'Keluaran Migration &amp; Seed Console:',
         'console' => 'Keluaran Application Console:',
         'log' => 'Entri Log Aplikasi:',
@@ -203,7 +201,7 @@ return [
          *
          */
         'welcome' => [
-            'title'   => 'Selamat Datang di App Updater',
+            'title' => 'Selamat Datang di App Updater',
             'message' => 'Selamat Datang di update wizard.',
         ],
 
@@ -213,7 +211,7 @@ return [
          *
          */
         'overview' => [
-            'title'   => 'Tinjauan',
+            'title' => 'Tinjauan',
             'message' => 'Ada 1 pembaruan.|Ada :number pembaruan.',
             'install_updates' => 'Pasang Pembaruan',
         ],
@@ -225,7 +223,6 @@ return [
          */
         'final' => [
             'title' => 'Selesai',
-            'finished' => 'Basis Data Aplikasi telah berhasil diperbarui.',
             'exit' => 'Klik disini untuk keluar',
         ],
 

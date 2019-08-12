@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
      *
      * Shared translations.
@@ -22,9 +21,9 @@ return [
      */
     'welcome' => [
         'templateTitle' => 'Welcome',
-        'title'   => 'Laravel Installer',
+        'title' => 'Laravel Installer',
         'message' => 'Easy Installation and Setup Wizard.',
-        'next'    => 'Check Requirements',
+        'next' => 'Check Requirements',
     ],
 
     /*
@@ -35,7 +34,7 @@ return [
     'requirements' => [
         'templateTitle' => 'Step 1 | Server Requirements',
         'title' => 'Server Requirements',
-        'next'    => 'Check Permissions',
+        'next' => 'Check Permissions',
     ],
 
     /*
@@ -177,7 +176,6 @@ return [
     'final' => [
         'title' => 'Installation Finished',
         'templateTitle' => 'Installation Finished',
-        'finished' => 'Application has been successfully installed.',
         'migration' => 'Migration &amp; Seed Console Output:',
         'console' => 'Application Console Output:',
         'log' => 'Installation Log Entry:',
@@ -204,7 +202,7 @@ return [
          *
          */
         'welcome' => [
-            'title'   => 'Welcome To The Updater',
+            'title' => 'Welcome To The Updater',
             'message' => 'Welcome to the update wizard.',
         ],
 
@@ -214,7 +212,7 @@ return [
          *
          */
         'overview' => [
-            'title'   => 'Overview',
+            'title' => 'Overview',
             'message' => 'There is 1 update.|There are :number updates.',
             'install_updates' => 'Install Updates',
         ],
@@ -226,7 +224,6 @@ return [
          */
         'final' => [
             'title' => 'Finished',
-            'finished' => 'Application\'s database has been successfully updated.',
             'exit' => 'Click here to exit',
         ],
 
