@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Validation\Rule;
-
 return [
 
     /*
@@ -15,11 +13,11 @@ return [
     |
     */
     'core' => [
-        'minPhpVersion' => '7.0.0'
+        'minPhpVersion' => '7.0.0',
     ],
     'final' => [
         'key' => true,
-        'publish' => false
+        'publish' => false,
     ],
     'requirements' => [
         'php' => [
@@ -47,7 +45,7 @@ return [
     'permissions' => [
         'storage/framework/'     => '775',
         'storage/logs/'          => '775',
-        'bootstrap/cache/'       => '775'
+        'bootstrap/cache/'       => '775',
     ],
 
     /*
@@ -113,7 +111,7 @@ return [
             ],
             'dump' => [
                 'data' => 'Dumping a not found message.',
-            ]
+            ],
         ],
     ],
 

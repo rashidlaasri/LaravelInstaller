@@ -2,7 +2,7 @@
 
 return [
 
-    /**
+    /*
      *
      * Shared translations.
      *
@@ -15,7 +15,7 @@ return [
         'errorTitle' => 'Terjadi galat sebagai berikut:',
     ],
 
-    /**
+    /*
      *
      * Home page translations.
      *
@@ -27,7 +27,7 @@ return [
         'next'    => 'Cek Kebutuhan',
     ],
 
-    /**
+    /*
      *
      * Requirements page translations.
      *
@@ -38,7 +38,7 @@ return [
         'next'    => 'Cek Hak Akses',
     ],
 
-    /**
+    /*
      *
      * Permissions page translations.
      *
@@ -49,7 +49,7 @@ return [
         'next' => 'Konfigurasi Lingkungan',
     ],
 
-    /**
+    /*
      *
      * Environment page translations.
      *
@@ -68,7 +68,7 @@ return [
             'tabs' => [
                 'environment' => 'Lingkungan',
                 'database' => 'Basis Data',
-                'application' => 'Aplikasi'
+                'application' => 'Aplikasi',
             ],
             'form' => [
                 'name_required' => 'Lingkungan aplikasi harus ditetapkan',
@@ -169,7 +169,7 @@ return [
 
     'install' => 'Pasang',
 
-    /**
+    /*
      *
      * Installed Log translations.
      *
@@ -178,7 +178,7 @@ return [
         'success_log_message' => 'Laravel Installer berhasil DIPASANG pada ',
     ],
 
-    /**
+    /*
      *
      * Final page translations.
      *
@@ -194,20 +194,20 @@ return [
         'exit' => 'Klik disini untuk keluar',
     ],
 
-    /**
+    /*
      *
      * Update specific translations
      *
      */
     'updater' => [
-        /**
+        /*
          *
          * Shared translations.
          *
          */
         'title' => 'Laravel Updater',
 
-        /**
+        /*
          *
          * Welcome page translations for update feature.
          *
@@ -217,7 +217,7 @@ return [
             'message' => 'Selamat Datang di update wizard.',
         ],
 
-        /**
+        /*
          *
          * Welcome page translations for update feature.
          *
@@ -225,10 +225,10 @@ return [
         'overview' => [
             'title'   => 'Tinjauan',
             'message' => 'Ada 1 pembaruan.|Ada :number pembaruan.',
-            'install_updates' => "Pasang Pembaruan"
+            'install_updates' => 'Pasang Pembaruan',
         ],
 
-        /**
+        /*
          *
          * Final page translations.
          *

@@ -7,7 +7,6 @@ use RachidLaasri\LaravelInstaller\Helpers\PermissionsChecker;
 
 class PermissionsController extends Controller
 {
-
     /**
      * @var PermissionsChecker
      */
