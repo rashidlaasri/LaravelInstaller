@@ -4,29 +4,54 @@
     {{ trans('installer_messages.final.templateTitle') }}
 @endsection
 
+@section('icon')
+	{{ asset('installer/img/icons/finished.svg') }}
+@endsection
+
 @section('title')
-    <i class="fa fa-flag-checkered fa-fw" aria-hidden="true"></i>
     {{ trans('installer_messages.final.title') }}
 @endsection
 
-@section('container')
+@section('main')
 
-	@if(session('message')['dbOutputLog'])
-		<p><strong><small>{{ trans('installer_messages.final.migration') }}</small></strong></p>
-		<pre><code>{{ session('message')['dbOutputLog'] }}</code></pre>
-	@endif
+	<div class="step-illustration">
+		<img src="{{ asset('installer/img/illustrations/finished-success.svg') }}" alt="">
+	</div>
 
-	<p><strong><small>{{ trans('installer_messages.final.console') }}</small></strong></p>
-	<pre><code>{{ $finalMessages }}</code></pre>
+	<div class="step-illustration">
+		<img src="{{ asset('installer/img/illustrations/finished-warning.svg') }}" alt="">
+	</div>
 
-	<p><strong><small>{{ trans('installer_messages.final.log') }}</small></strong></p>
-	<pre><code>{{ $finalStatusMessage }}</code></pre>
+	<div class="spacer-40"></div>
+	
+	<div class="form-controllers">
+		@if(session('message')['dbOutputLog'])
+			<div class="form-controller is-editor">
+				<label class="form-label">{{ trans('installer_messages.final.migration') }}</label>
+				<input type="text" class="form-input" value="{{ session('message')['dbOutputLog'] }}" readonly>
+			</div>
+		@endif
 
-	<p><strong><small>{{ trans('installer_messages.final.env') }}</small></strong></p>
-	<pre><code>{{ $finalEnvFile }}</code></pre>
+		<div class="form-controller is-editor">
+			<label class="form-label">{{ trans('installer_messages.final.console') }}</label>
+			<input type="text" class="form-input" value="{{ $finalMessages }}" readonly>
+		</div>
 
-    <div class="buttons">
-        <a href="{{ url('/') }}" class="button">{{ trans('installer_messages.final.exit') }}</a>
-    </div>
+		<div class="form-controller is-editor">
+			<label class="form-label">{{ trans('installer_messages.final.log') }}</label>
+			<input type="text" class="form-input" value="{{ $finalStatusMessage }}" readonly>
+		</div>
+	</div>
 
+@endsection
+
+@section('actions')
+	<a href="{{ url('/') }}" class="button is-primary">
+		<i class="ion ion-ios-checkmark-circle"></i>
+		<span>{{ trans('installer_messages.final.exit') }}</span>
+	</a>
+@endsection
+
+@section('progress')
+  <div class="step-progress is-success" style="width: 100%"></div>
 @endsection

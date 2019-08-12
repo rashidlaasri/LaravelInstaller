@@ -1,7 +1,7 @@
 @extends('vendor.installer.layouts.master-update')
 
 @section('title', trans('installer_messages.updater.welcome.title'))
-@section('container')
+@section('main')
     <p class="paragraph text-center">
     	{{ trans('installer_messages.updater.welcome.message') }}
     </p>
