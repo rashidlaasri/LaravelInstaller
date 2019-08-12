@@ -55,7 +55,6 @@ Route::group(['prefix' => 'install','as' => 'LaravelInstaller::','namespace' => 
 
 Route::group(['prefix' => 'update','as' => 'LaravelUpdater::','namespace' => 'RachidLaasri\LaravelInstaller\Controllers','middleware' => 'web'],function() {
     Route::group(['middleware' => 'update'], function() {
-
         Route::get('/', [
             'as' => 'welcome',
             'uses' => 'UpdateController@welcome'

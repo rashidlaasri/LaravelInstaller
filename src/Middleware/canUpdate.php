@@ -13,30 +13,19 @@ class canUpdate
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
+     * @param  canInstall $installer
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, canInstall $installer)
     {
         $updateEnabled = filter_var(config('installer.updaterEnabled'), FILTER_VALIDATE_BOOLEAN);
-        switch ($updateEnabled) {
-            case true:
-                $canInstall = new canInstall;
 
-                // if the application has not been installed,
-                // redirect to the installer
-                if (!$canInstall->alreadyInstalled()) {
-                    return redirect()->route('LaravelInstaller::welcome');
-                }
+        if($updateEnabled === false || $this->alreadyUpdated()) {
+            abort(404);
+        }
 
-                if($this->alreadyUpdated()) {
-                    abort(404);
-                }
-                break;
-
-            case false:
-            default:
-                abort(404);
-                break;
+        if (!$installer->alreadyInstalled()) {
+            return redirect()->route('LaravelInstaller::welcome');
         }
 
         return $next($request);
@@ -54,12 +43,7 @@ class canUpdate
 
         // If the count of migrations and dbMigrations is equal,
         // then the update as already been updated.
-        if (count($migrations) == count($dbMigrations)) {
-            return true;
-        }
-
-        // Continue, the app needs an update
-        return false;
+        return count($migrations) == count($dbMigrations);
     }
 
 }
