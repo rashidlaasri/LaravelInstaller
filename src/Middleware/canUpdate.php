@@ -13,10 +13,9 @@ class canUpdate
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
-     * @param  canInstall $installer
      * @return mixed
      */
-    public function handle($request, Closure $next, canInstall $installer)
+    public function handle($request, Closure $next)
     {
         $updateEnabled = filter_var(config('installer.updaterEnabled'), FILTER_VALIDATE_BOOLEAN);
 
@@ -24,7 +23,7 @@ class canUpdate
             abort(404);
         }
 
-        if (!$installer->alreadyInstalled()) {
+        if (!(new canInstall)->alreadyInstalled()) {
             return redirect()->route('LaravelInstaller::welcome');
         }
 
