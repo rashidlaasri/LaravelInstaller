@@ -2,7 +2,7 @@
 
 return [
 
-    /**
+    /*
      *
      * Traducciones compartidas.
      *
@@ -11,8 +11,7 @@ return [
     'next' => 'Siguiente',
     'finish' => 'Instalar',
 
-
-    /**
+    /*
      *
      * Traducciones de la página principal.
      *
@@ -22,8 +21,7 @@ return [
         'message' => 'Bienvenido al asistente de configuración',
     ],
 
-
-    /**
+    /*
      *
      * Tranducciones de la página de requisitos.
      *
@@ -32,8 +30,7 @@ return [
         'title' => 'Requisitos',
     ],
 
-
-    /**
+    /*
      *
      * Traducciones de la pagina de permisos.
      *
@@ -42,8 +39,7 @@ return [
         'title' => 'Permisos',
     ],
 
-
-    /**
+    /*
      *
      * Traducciones de la página de entorno.
      *
@@ -55,8 +51,7 @@ return [
         'errors' => 'No es posible crear el archivo .env, por favor intentalo manualmente.',
     ],
 
-
-    /**
+    /*
      *
      * Traducciones de la página final.
      *

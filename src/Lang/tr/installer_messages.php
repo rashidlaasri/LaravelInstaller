@@ -2,7 +2,7 @@
 
 return [
 
-    /**
+    /*
      *
      * Shared translations.
      *
@@ -15,7 +15,7 @@ return [
         'errorTitle' => 'Hatalar tespit edildi :',
     ],
 
-    /**
+    /*
      *
      * Home page translations.
      *
@@ -27,7 +27,7 @@ return [
         'next'    => 'Gereksinimleri Denetle',
     ],
 
-    /**
+    /*
      *
      * Requirements page translations.
      *
@@ -38,7 +38,7 @@ return [
         'next'    => 'İzinleri Kontrol Et',
     ],
 
-    /**
+    /*
      *
      * Permissions page translations.
      *
@@ -49,7 +49,7 @@ return [
         'next' => 'Ortam ayarlarına geç',
     ],
 
-    /**
+    /*
      *
      * Environment page translations.
      *
@@ -68,7 +68,7 @@ return [
             'tabs' => [
                 'environment' => 'Ortam',
                 'database' => 'Veritabanı',
-                'application' => 'Uygulama'
+                'application' => 'Uygulama',
             ],
             'form' => [
                 'name_required' => 'Bir ortam adı gerekiyor.',
@@ -125,7 +125,7 @@ return [
                     'redis_host' => 'Redis Host',
                     'redis_password' => 'Redis Şifre',
                     'redis_port' => 'Redis Port',
-                    
+
                     'mail_label' => 'Mail',
                     'mail_driver_label' => 'Posta Sürücüsü',
                     'mail_driver_placeholder' => 'Posta Sürücüsü',
@@ -139,7 +139,7 @@ return [
                     'mail_password_placeholder' => 'Posta Parolası',
                     'mail_encryption_label' => 'Posta Güvenlik Türü',
                     'mail_encryption_placeholder' => 'Posta Güvenlik Türü',
-                    
+
                     'pusher_label' => 'Pusher',
                     'pusher_app_id_label' => 'İtici Uygulama Kimliği',
                     'pusher_app_id_palceholder' => 'İtici Uygulama Kimliği',
@@ -168,7 +168,7 @@ return [
 
     'install' => 'Kurulum',
 
-    /**
+    /*
      *
      * Installed Log translations.
      *
@@ -177,7 +177,7 @@ return [
         'success_log_message' => 'Uygulama başarıyla KURULDU ',
     ],
 
-    /**
+    /*
      *
      * Final page translations.
      *
@@ -193,20 +193,20 @@ return [
         'exit' => 'Çıkmak için burayı tıklayın',
     ],
 
-    /**
+    /*
      *
      * Update specific translations
      *
      */
     'updater' => [
-        /**
+        /*
          *
          * Shared translations.
          *
          */
         'title' => 'Güncelleyici',
 
-        /**
+        /*
          *
          * Welcome page translations for update feature.
          *
@@ -216,7 +216,7 @@ return [
             'message' => 'Güncelleme sihirbazına hoş geldiniz.',
         ],
 
-        /**
+        /*
          *
          * Welcome page translations for update feature.
          *
@@ -224,10 +224,10 @@ return [
         'overview' => [
             'title'   => 'Genel bakış',
             'message' => '1 güncelleme var.| :number güncellemeleri var.',
-            'install_updates' => "Güncellemeyi yükle"
+            'install_updates' => 'Güncellemeyi yükle',
         ],
 
-        /**
+        /*
          *
          * Final page translations.
          *
