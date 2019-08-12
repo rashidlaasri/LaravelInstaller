@@ -73,7 +73,6 @@ return [
                 'app_environment_label' => 'Окружение приложения',
                 'app_environment_label_local' => 'Локальное',
                 'app_environment_label_developement' => 'Разработочное',
-                'app_environment_label_qa' => 'Qa',
                 'app_environment_label_production' => 'Продакшн',
                 'app_environment_label_other' => 'Другое',
                 'app_environment_placeholder_other' => 'Введите свое окружение ...',

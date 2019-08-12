@@ -77,7 +77,6 @@ return [
                 'app_environment_label' => 'Uygulama Ortamı',
                 'app_environment_label_local' => 'Yerel',
                 'app_environment_label_developement' => 'Geliştirme',
-                'app_environment_label_qa' => 'qa',
                 'app_environment_label_production' => 'Üretim',
                 'app_environment_label_other' => 'Diğer',
                 'app_environment_placeholder_other' => 'Çevrenizi girin ...',

@@ -77,7 +77,6 @@ return [
                 'app_environment_label' => 'สภาพแวดล้อมของแอป',
                 'app_environment_label_local' => 'ในประเทศ',
                 'app_environment_label_developement' => 'พัฒนาการ',
-                'app_environment_label_qa' => 'Qa',
                 'app_environment_label_production' => 'การผลิต',
                 'app_environment_label_other' => 'อื่น ๆ',
                 'app_environment_placeholder_other' => 'เข้าสู่สภาพแวดล้อมของคุณ ...',

@@ -77,7 +77,6 @@ return [
                 'app_environment_label' => 'Lingkungan Aplikasi',
                 'app_environment_label_local' => 'Lokal',
                 'app_environment_label_developement' => 'Pengembangan',
-                'app_environment_label_qa' => 'Qa',
                 'app_environment_label_production' => 'Produksi',
                 'app_environment_label_other' => 'Lainnya',
                 'app_environment_placeholder_other' => 'Masukan lingkungan...',

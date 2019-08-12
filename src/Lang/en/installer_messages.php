@@ -77,7 +77,6 @@ return [
                 'app_environment_label' => 'App Environment',
                 'app_environment_label_local' => 'Local',
                 'app_environment_label_developement' => 'Development',
-                'app_environment_label_qa' => 'Qa',
                 'app_environment_label_production' => 'Production',
                 'app_environment_label_other' => 'Other',
                 'app_environment_placeholder_other' => 'Enter your environment...',
