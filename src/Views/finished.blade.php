@@ -18,12 +18,8 @@
 		<img src="{{ asset('installer/img/illustrations/finished-success.svg') }}" alt="">
 	</div>
 
-	<div class="step-illustration">
-		<img src="{{ asset('installer/img/illustrations/finished-warning.svg') }}" alt="">
-	</div>
-
 	<div class="spacer-40"></div>
-	
+
 	<div class="form-controllers">
 		@if(session('message')['dbOutputLog'])
 			<div class="form-controller is-editor">
