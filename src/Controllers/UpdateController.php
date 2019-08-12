@@ -31,7 +31,7 @@ class UpdateController extends Controller
         $dbMigrations = $this->getExecutedMigrations();
 
         return view('vendor.installer.update.overview', [
-            'numberOfUpdatesPending' => count($migrations) - count($dbMigrations)]
+            'numberOfUpdatesPending' => count($migrations) - count($dbMigrations), ]
         );
     }
 

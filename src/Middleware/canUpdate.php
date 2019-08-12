@@ -19,11 +19,11 @@ class canUpdate
     {
         $updateEnabled = filter_var(config('installer.updaterEnabled'), FILTER_VALIDATE_BOOLEAN);
 
-        if($updateEnabled === false || $this->alreadyUpdated()) {
+        if ($updateEnabled === false || $this->alreadyUpdated()) {
             abort(404);
         }
 
-        if (!(new canInstall)->alreadyInstalled()) {
+        if (! (new canInstall)->alreadyInstalled()) {
             return redirect()->route('LaravelInstaller::welcome');
         }
 
@@ -44,5 +44,4 @@ class canUpdate
         // then the update as already been updated.
         return count($migrations) == count($dbMigrations);
     }
-
 }

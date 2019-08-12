@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 trait MigrationsHelper
 {
     /**
-     * Get the migrations in /database/migrations
+     * Get the migrations in /database/migrations.
      *
      * @return array Array of migration names, empty if no migrations are existing
      */

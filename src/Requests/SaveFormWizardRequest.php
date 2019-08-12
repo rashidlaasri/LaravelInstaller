@@ -33,7 +33,6 @@ class SaveFormWizardRequest extends FormRequest
         return config('installer.environment.form.rules');
     }
 
-
     /**
      * Get custom messages for validator errors.
      *
@@ -42,7 +41,7 @@ class SaveFormWizardRequest extends FormRequest
     public function messages()
     {
         return [
-            'environment_custom.required_if' => trans('installer_messages.environment.wizard.form.name_required')
+            'environment_custom.required_if' => trans('installer_messages.environment.wizard.form.name_required'),
         ];
     }
 }

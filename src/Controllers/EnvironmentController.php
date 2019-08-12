@@ -84,7 +84,7 @@ class EnvironmentController extends Controller
      */
     public function saveWizard(SaveFormWizardRequest $request)
     {
-        if (!$this->checkDatabaseConnection($request)) {
+        if (! $this->checkDatabaseConnection($request)) {
             return redirect()
                 ->back()
                 ->withInput()
@@ -106,7 +106,7 @@ class EnvironmentController extends Controller
      * Validate database connection with user credentials (Form Wizard).
      *
      * @param Request $request
-     * @return boolean
+     * @return bool
      */
     private function checkDatabaseConnection(Request $request)
     {

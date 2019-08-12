@@ -41,6 +41,7 @@ class canInstall
                     break;
             }
         }
+
         return $next($request);
     }
 
