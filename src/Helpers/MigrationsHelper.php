@@ -1,18 +1,20 @@
 <?php
 
 namespace RachidLaasri\LaravelInstaller\Helpers;
+
 use Illuminate\Support\Facades\DB;
 
-trait MigrationsHelper {
-
+trait MigrationsHelper
+{
     /**
      * Get the migrations in /database/migrations
      *
-     * @return array Array of migrations name, empty if no migrations are existing
+     * @return array Array of migration names, empty if no migrations are existing
      */
     public function getMigrations()
     {
-        $migrations = glob(database_path().DIRECTORY_SEPARATOR.'migrations'.DIRECTORY_SEPARATOR.'*.php');
+        $migrations = glob(database_path('migrations/*.php'));
+
         return str_replace('.php', '', $migrations);
     }
 
@@ -23,7 +25,6 @@ trait MigrationsHelper {
      */
     public function getExecutedMigrations()
     {
-        // migrations table should exist, if not, user will receive an error.
         return DB::table('migrations')->get()->pluck('migration');
     }
 }
