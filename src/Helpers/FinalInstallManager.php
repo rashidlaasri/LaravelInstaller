@@ -31,12 +31,11 @@ class FinalInstallManager
      */
     private static function generateKey(BufferedOutput $outputLog)
     {
-        try{
-            if (config('installer.final.key')){
-                Artisan::call('key:generate', ["--force"=> true], $outputLog);
+        try {
+            if (config('installer.final.key')) {
+                Artisan::call('key:generate', ['--force'=> true], $outputLog);
             }
-        }
-        catch(Exception $e){
+        } catch (Exception $e) {
             return static::response($e->getMessage(), $outputLog);
         }
 
@@ -51,12 +50,11 @@ class FinalInstallManager
      */
     private static function publishVendorAssets(BufferedOutput $outputLog)
     {
-        try{
-            if (config('installer.final.publish')){
+        try {
+            if (config('installer.final.publish')) {
                 Artisan::call('vendor:publish', ['--all' => true], $outputLog);
             }
-        }
-        catch(Exception $e){
+        } catch (Exception $e) {
             return static::response($e->getMessage(), $outputLog);
         }
 
@@ -75,7 +73,7 @@ class FinalInstallManager
         return [
             'status' => 'error',
             'message' => $message,
-            'dbOutputLog' => $outputLog->fetch()
+            'dbOutputLog' => $outputLog->fetch(),
         ];
     }
 }

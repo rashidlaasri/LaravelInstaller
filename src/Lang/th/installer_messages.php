@@ -2,7 +2,7 @@
 
 return [
 
-    /**
+    /*
      *
      * Shared translations.
      *
@@ -15,7 +15,7 @@ return [
         'errorTitle' => 'ข้อผิดพลาดต่อไปนี้เกิดขึ้น:',
     ],
 
-    /**
+    /*
      *
      * Home page translations.
      *
@@ -27,7 +27,7 @@ return [
         'next'    => 'ตรวจสอบข้อกำหนด',
     ],
 
-    /**
+    /*
      *
      * Requirements page translations.
      *
@@ -38,7 +38,7 @@ return [
         'next'    => 'ตรวจสอบการอนุญาต',
     ],
 
-    /**
+    /*
      *
      * Permissions page translations.
      *
@@ -49,7 +49,7 @@ return [
         'next' => 'กำหนดค่าสภาพแวดล้อม',
     ],
 
-    /**
+    /*
      *
      * Environment page translations.
      *
@@ -68,7 +68,7 @@ return [
             'tabs' => [
                 'environment' => 'สิ่งแวดล้อม',
                 'database' => 'ฐานข้อมูล',
-                'application' => 'แอพพลิเคชั่น'
+                'application' => 'แอพพลิเคชั่น',
             ],
             'form' => [
                 'name_required' => 'ต้องระบุชื่อสภาพแวดล้อม',
@@ -169,7 +169,7 @@ return [
 
     'install' => 'ติดตั้ง',
 
-    /**
+    /*
      *
      * Installed Log translations.
      *
@@ -178,7 +178,7 @@ return [
         'success_log_message' => 'ติดตั้ง Laravel สำเร็จติดตั้งแล้ว',
     ],
 
-    /**
+    /*
      *
      * Final page translations.
      *
@@ -194,20 +194,20 @@ return [
         'exit' => 'คลิกที่นี่เพื่อออก',
     ],
 
-    /**
+    /*
      *
      * Update specific translations
      *
      */
     'updater' => [
-        /**
+        /*
          *
          * Shared translations.
          *
          */
         'title' => 'Laravel Updater',
 
-        /**
+        /*
          *
          * Welcome page translations for update feature.
          *
@@ -217,7 +217,7 @@ return [
             'message' => 'ยินดีต้อนรับสู่ตัวช่วยการอัพเดต',
         ],
 
-        /**
+        /*
          *
          * Welcome page translations for update feature.
          *
@@ -225,10 +225,10 @@ return [
         'overview' => [
             'title'   => 'ภาพรวม',
             'message' => 'มีการอัปเดต 1 รายการ | มี: อัปเดตตัวเลข',
-            'install_updates' => "ติดตั้งการปรับปรุง"
+            'install_updates' => 'ติดตั้งการปรับปรุง',
         ],
 
-        /**
+        /*
          *
          * Final page translations.
          *

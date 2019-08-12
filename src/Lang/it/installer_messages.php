@@ -1,6 +1,7 @@
 <?php
+
 return [
-    /**
+    /*
      *
      * Shared translations.
      *
@@ -8,7 +9,7 @@ return [
     'title' => 'Laravel Installer',
     'next' => 'Passo successivo',
     'finish' => 'Installa',
-    /**
+    /*
      *
      * Home page translations.
      *
@@ -17,7 +18,7 @@ return [
         'title'   => 'Benvenuto al programma di installazione',
         'message' => 'Benvenuto alla configurazione guidata.',
     ],
-    /**
+    /*
      *
      * Requirements page translations.
      *
@@ -25,7 +26,7 @@ return [
     'requirements' => [
         'title' => 'Requisiti',
     ],
-    /**
+    /*
      *
      * Permissions page translations.
      *
@@ -33,7 +34,7 @@ return [
     'permissions' => [
         'title' => 'Permessi',
     ],
-    /**
+    /*
      *
      * Environment page translations.
      *
@@ -44,7 +45,7 @@ return [
         'success' => 'La configurazione del file .env &egrave; stata salvata correttamente.',
         'errors' => 'Impossibile salvare il file .env, per favore crealo manualmente.',
     ],
-    /**
+    /*
      *
      * Final page translations.
      *

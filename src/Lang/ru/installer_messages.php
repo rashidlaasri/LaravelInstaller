@@ -2,7 +2,7 @@
 
 return [
 
-    /**
+    /*
      *
      * Shared translations.
      *
@@ -10,8 +10,7 @@ return [
     'title'        => 'Установка Laravel',
     'next'         => 'Следующий шаг',
 
-
-    /**
+    /*
      *
      * Home page translations.
      *
@@ -22,8 +21,7 @@ return [
         'next'    => 'Следующий шаг',
     ],
 
-
-    /**
+    /*
      *
      * Requirements page translations.
      *
@@ -32,9 +30,8 @@ return [
         'title' => 'Необходимые модули',
         'next'  => 'Следующий шаг',
     ],
-    
 
-    /**
+    /*
      *
      * Permissions page translations.
      *
@@ -44,8 +41,7 @@ return [
         'next'  => 'Следующий шаг',
     ],
 
-
-    /**
+    /*
      *
      * Environment page translations.
      *
@@ -64,7 +60,7 @@ return [
             'tabs' => [
                 'environment' => 'Окружение',
                 'database' => 'База данных',
-                'application' => 'Приложение'
+                'application' => 'Приложение',
             ],
             'form' => [
                 'name_required' => 'Требуется имя среды.',
@@ -165,8 +161,7 @@ return [
         'errors'  => 'Произошла ошибка при сохранении файла .env, пожалуйста, сохраните его вручную',
     ],
 
-
-    /**
+    /*
      *
      * Final page translations.
      *

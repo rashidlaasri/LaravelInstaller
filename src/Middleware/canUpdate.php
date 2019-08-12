@@ -24,11 +24,11 @@ class canUpdate
 
                 // if the application has not been installed,
                 // redirect to the installer
-                if (!$canInstall->alreadyInstalled()) {
+                if (! $canInstall->alreadyInstalled()) {
                     return redirect()->route('LaravelInstaller::welcome');
                 }
 
-                if($this->alreadyUpdated()) {
+                if ($this->alreadyUpdated()) {
                     abort(404);
                 }
                 break;
@@ -61,5 +61,4 @@ class canUpdate
         // Continue, the app needs an update
         return false;
     }
-
 }
