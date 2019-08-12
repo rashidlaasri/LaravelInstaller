@@ -72,8 +72,6 @@ Route::group(['prefix' => 'update','as' => 'LaravelUpdater::','namespace' => 'Ra
         ]);
     });
 
-    // This needs to be out of the middleware because right after the migration has been
-    // run, the middleware sends a 404.
     Route::get('final', [
         'as' => 'final',
         'uses' => 'UpdateController@finish'
