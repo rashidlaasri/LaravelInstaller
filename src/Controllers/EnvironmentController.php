@@ -3,13 +3,13 @@
 namespace RachidLaasri\LaravelInstaller\Controllers;
 
 use Exception;
-use Illuminate\Routing\Controller;
+use Validator;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\DB;
-use RachidLaasri\LaravelInstaller\Helpers\EnvironmentManager;
 use RachidLaasri\LaravelInstaller\Events\EnvironmentSaved;
-use Validator;
+use RachidLaasri\LaravelInstaller\Helpers\EnvironmentManager;
 
 class EnvironmentController extends Controller
 {
@@ -97,7 +97,7 @@ class EnvironmentController extends Controller
             return $redirect->route('LaravelInstaller::environmentWizard')->withInput()->withErrors($validator->errors());
         }
 
-        if (!$this->checkDatabaseConnection($request)) {
+        if (! $this->checkDatabaseConnection($request)) {
             return $redirect->route('LaravelInstaller::environmentWizard')->withInput()->withErrors([
                 'database_connection' => trans('installer_messages.environment.wizard.form.db_connection_failed'),
             ]);
@@ -116,7 +116,7 @@ class EnvironmentController extends Controller
      * Validate database connection with user credentials (Form Wizard).
      *
      * @param Request $request
-     * @return boolean
+     * @return bool
      */
     private function checkDatabaseConnection(Request $request)
     {
@@ -142,6 +142,7 @@ class EnvironmentController extends Controller
 
         try {
             DB::connection()->getPdo();
+
             return true;
         } catch (Exception $e) {
             return false;
