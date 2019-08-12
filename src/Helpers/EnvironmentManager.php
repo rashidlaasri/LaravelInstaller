@@ -109,7 +109,7 @@ class EnvironmentManager
         'BROADCAST_DRIVER=' . $request->broadcast_driver . "\n" .
         'CACHE_DRIVER=' . $request->cache_driver . "\n" .
         'SESSION_DRIVER=' . $request->session_driver . "\n" .
-        'QUEUE_DRIVER=' . $request->queue_driver . "\n\n" .
+        'QUEUE_CONNECTION=' . $request->queue_connection . "\n\n" .
         'REDIS_HOST=' . $request->redis_hostname . "\n" .
         'REDIS_PASSWORD=' . $request->redis_password . "\n" .
         'REDIS_PORT=' . $request->redis_port . "\n\n" .

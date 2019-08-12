@@ -76,11 +76,11 @@
                         {{ trans('installer_messages.environment.wizard.form.app_debug_label') }}
                     </label>
                     <label for="app_debug_true">
-                        <input type="radio" name="app_debug" id="app_debug_true" value=true checked />
+                        <input type="radio" name="app_debug" id="app_debug_true" value="1" checked />
                         {{ trans('installer_messages.environment.wizard.form.app_debug_label_true') }}
                     </label>
                     <label for="app_debug_false">
-                        <input type="radio" name="app_debug" id="app_debug_false" value=false />
+                        <input type="radio" name="app_debug" id="app_debug_false" value="0" />
                         {{ trans('installer_messages.environment.wizard.form.app_debug_label_false') }}
                     </label>
                     @if ($errors->has('app_debug'))
@@ -273,8 +273,8 @@
                             @endif
                         </div>
 
-                        <div class="form-group {{ $errors->has('queue_driver') ? ' has-error ' : '' }}">
-                            <label for="queue_driver">{{ trans('installer_messages.environment.wizard.form.app_tabs.queue_label') }}
+                        <div class="form-group {{ $errors->has('queue_connection') ? ' has-error ' : '' }}">
+                            <label for="queue_connection">{{ trans('installer_messages.environment.wizard.form.app_tabs.queue_label') }}
                                 <sup>
                                     <a href="https://laravel.com/docs/5.4/queues" target="_blank" title="{{ trans('installer_messages.environment.wizard.form.app_tabs.more_info') }}">
                                         <i class="fa fa-info-circle fa-fw" aria-hidden="true"></i>
@@ -282,11 +282,11 @@
                                     </a>
                                 </sup>
                             </label>
-                            <input type="text" name="queue_driver" id="queue_driver" value="sync" placeholder="{{ trans('installer_messages.environment.wizard.form.app_tabs.queue_placeholder') }}" />
-                            @if ($errors->has('queue_driver'))
+                            <input type="text" name="queue_connection" id="queue_connection" value="sync" placeholder="{{ trans('installer_messages.environment.wizard.form.app_tabs.queue_placeholder') }}" />
+                            @if ($errors->has('queue_connection'))
                                 <span class="error-block">
                                     <i class="fa fa-fw fa-exclamation-triangle" aria-hidden="true"></i>
-                                    {{ $errors->first('queue_driver') }}
+                                    {{ $errors->first('queue_connection') }}
                                 </span>
                             @endif
                         </div>
