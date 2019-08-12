@@ -3,13 +3,12 @@
 namespace RachidLaasri\LaravelInstaller\Controllers;
 
 use Exception;
-use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Redirector;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
-use RachidLaasri\LaravelInstaller\Helpers\EnvironmentManager;
 use RachidLaasri\LaravelInstaller\Events\EnvironmentSaved;
-use Validator;
+use RachidLaasri\LaravelInstaller\Helpers\EnvironmentManager;
+use RachidLaasri\LaravelInstaller\Requests\SaveFormWizardRequest;
 
 class EnvironmentController extends Controller
 {
@@ -64,55 +63,46 @@ class EnvironmentController extends Controller
      * Processes the newly saved environment configuration (Classic).
      *
      * @param Request $input
-     * @param Redirector $redirect
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function saveClassic(Request $input, Redirector $redirect)
+    public function saveClassic(Request $input)
     {
         $message = $this->EnvironmentManager->saveFileClassic($input);
 
         event(new EnvironmentSaved($input));
 
-        return $redirect->route('LaravelInstaller::environmentClassic')
-                        ->with(['message' => $message]);
+        return redirect()
+            ->route('LaravelInstaller::environmentClassic')
+            ->with(['message' => $message]);
     }
 
     /**
      * Processes the newly saved environment configuration (Form Wizard).
      *
-     * @param Request $request
-     * @param Redirector $redirect
+     * @param \RachidLaasri\LaravelInstaller\SaveFormWizardRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function saveWizard(Request $request, Redirector $redirect)
+    public function saveWizard(SaveFormWizardRequest $request)
     {
-        $rules = config('installer.environment.form.rules');
-        $messages = [
-            'environment_custom.required_if' => trans('installer_messages.environment.wizard.form.name_required'),
-        ];
-
-        $validator = Validator::make($request->all(), $rules, $messages);
-
-        if ($validator->fails()) {
-            return $redirect->route('LaravelInstaller::environmentWizard')->withInput()->withErrors($validator->errors());
-        }
-
         if (!$this->checkDatabaseConnection($request)) {
-            return $redirect->route('LaravelInstaller::environmentWizard')->withInput()->withErrors([
-                'database_connection' => trans('installer_messages.environment.wizard.form.db_connection_failed'),
-            ]);
+            return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors([
+                    'database_connection' => trans('installer_messages.environment.wizard.form.db_connection_failed'),
+                ]);
         }
 
         $results = $this->EnvironmentManager->saveFileWizard($request);
 
         event(new EnvironmentSaved($request));
 
-        return $redirect->route('LaravelInstaller::database')
-                        ->with(['results' => $results]);
+        return redirect()
+            ->route('LaravelInstaller::database')
+            ->with(['results' => $results]);
     }
 
     /**
-     * TODO: We can remove this code if PR will be merged: https://github.com/RachidLaasri/LaravelInstaller/pull/162
      * Validate database connection with user credentials (Form Wizard).
      *
      * @param Request $request
@@ -142,9 +132,10 @@ class EnvironmentController extends Controller
 
         try {
             DB::connection()->getPdo();
-            return true;
         } catch (Exception $e) {
             return false;
         }
+
+        return true;
     }
 }

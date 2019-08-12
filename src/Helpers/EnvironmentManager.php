@@ -49,7 +49,8 @@ class EnvironmentManager
      *
      * @return string
      */
-    public function getEnvPath() {
+    public function getEnvPath()
+    {
         return $this->envPath;
     }
 
@@ -58,7 +59,8 @@ class EnvironmentManager
      *
      * @return string
      */
-    public function getEnvExamplePath() {
+    public function getEnvExamplePath()
+    {
         return $this->envExamplePath;
     }
 
@@ -74,8 +76,7 @@ class EnvironmentManager
 
         try {
             file_put_contents($this->envPath, $input->get('envConfig'));
-        }
-        catch(Exception $e) {
+        } catch (Exception $e) {
             $message = trans('installer_messages.environment.errors');
         }
 
@@ -124,9 +125,7 @@ class EnvironmentManager
 
         try {
             file_put_contents($this->envPath, $envFileData);
-
-        }
-        catch(Exception $e) {
+        } catch (Exception $e) {
             $results = trans('installer_messages.environment.errors');
         }
 
