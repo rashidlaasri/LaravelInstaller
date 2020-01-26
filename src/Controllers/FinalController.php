@@ -3,10 +3,10 @@
 namespace RachidLaasri\LaravelInstaller\Controllers;
 
 use Illuminate\Routing\Controller;
+use RachidLaasri\LaravelInstaller\Events\LaravelInstallerFinished;
 use RachidLaasri\LaravelInstaller\Helpers\EnvironmentManager;
 use RachidLaasri\LaravelInstaller\Helpers\FinalInstallManager;
 use RachidLaasri\LaravelInstaller\Helpers\InstalledFileManager;
-use RachidLaasri\LaravelInstaller\Events\LaravelInstallerFinished;
 
 class FinalController extends Controller
 {
