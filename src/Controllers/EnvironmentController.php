@@ -85,8 +85,7 @@ class EnvironmentController extends Controller
     public function saveWizard(SaveFormWizardRequest $request)
     {
         if (! $this->checkDatabaseConnection($request)) {
-            return redirect()
-                ->back()
+            return back()
                 ->withInput()
                 ->withErrors([
                     'database_connection' => trans('installer_messages.environment.wizard.form.db_connection_failed'),
