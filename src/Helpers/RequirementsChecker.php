@@ -4,6 +4,7 @@ namespace RachidLaasri\LaravelInstaller\Helpers;
 
 class RequirementsChecker
 {
+
     /**
      * Minimum PHP Version Supported (Override is in installer.php config file).
      *
@@ -21,17 +22,34 @@ class RequirementsChecker
     {
         $results = [];
 
-        foreach ($requirements as $type => $requirement) {
+        foreach($requirements as $type => $requirement)
+        {
             switch ($type) {
                 // check php requirements
                 case 'php':
-                    foreach ($requirements[$type] as $requirement) {
-                        $results['requirements'][$type][$requirement] = true;
+                    foreach($requirements[$type] as $reqType => $subRequirements)
+                    {
+                        foreach ($subRequirements as $subRequirement)
+                        {
+                            $results['requirements'][$type][$subRequirement] = true;
 
-                        if (! extension_loaded($requirement)) {
-                            $results['requirements'][$type][$requirement] = false;
+                            if ($reqType == 'ext') {
+                                if(!extension_loaded($subRequirement))
+                                {
+                                    $results['requirements'][$type][$subRequirement] = false;
 
-                            $results['errors'] = true;
+                                    $results['errors'] = true;
+                                }
+                            }
+
+                            if ($reqType == 'class') {
+                                if (!class_exists($subRequirement))
+                                {
+                                    $results['requirements'][$type][$subRequirement] = false;
+
+                                    $results['errors'] = true;
+                                }
+                            }
                         }
                     }
                     break;
@@ -39,10 +57,12 @@ class RequirementsChecker
                 case 'apache':
                     foreach ($requirements[$type] as $requirement) {
                         // if function doesn't exist we can't check apache modules
-                        if (function_exists('apache_get_modules')) {
+                        if(function_exists('apache_get_modules'))
+                        {
                             $results['requirements'][$type][$requirement] = true;
 
-                            if (! in_array($requirement, apache_get_modules())) {
+                            if(!in_array($requirement,apache_get_modules()))
+                            {
                                 $results['requirements'][$type][$requirement] = false;
 
                                 $results['errors'] = true;
@@ -79,14 +99,14 @@ class RequirementsChecker
             'full' => $currentPhpVersion['full'],
             'current' => $currentPhpVersion['version'],
             'minimum' => $minVersionPhp,
-            'supported' => $supported,
+            'supported' => $supported
         ];
 
         return $phpStatus;
     }
 
     /**
-     * Get current Php version information.
+     * Get current Php version information
      *
      * @return array
      */
@@ -98,7 +118,7 @@ class RequirementsChecker
 
         return [
             'full' => $currentVersionFull,
-            'version' => $currentVersion,
+            'version' => $currentVersion
         ];
     }
 
@@ -111,4 +131,5 @@ class RequirementsChecker
     {
         return $this->_minPhpVersion;
     }
+
 }

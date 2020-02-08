@@ -3,6 +3,7 @@
 namespace RachidLaasri\LaravelInstaller\Middleware;
 
 use Closure;
+use DB;
 use Redirect;
 
 class canInstall
@@ -12,11 +13,14 @@ class canInstall
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
-     * @return \Illuminate\Http\RedirectResponse|mixed
+     * @return mixed
+     * @param Redirector $redirect
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function handle($request, Closure $next)
     {
-        if ($this->alreadyInstalled()) {
+        if($this->alreadyInstalled()) {
+
             $installedRedirect = config('installer.installedAlreadyAction');
 
             switch ($installedRedirect) {
@@ -24,7 +28,6 @@ class canInstall
                 case 'route':
                     $routeName = config('installer.installed.redirectOptions.route.name');
                     $data = config('installer.installed.redirectOptions.route.message');
-
                     return redirect()->route($routeName)->with(['data' => $data]);
                     break;
 
@@ -44,7 +47,6 @@ class canInstall
                     break;
             }
         }
-
         return $next($request);
     }
 

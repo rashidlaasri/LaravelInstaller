@@ -11,7 +11,7 @@ class FinalInstallManager
     /**
      * Run final commands.
      *
-     * @return string
+     * @return collection
      */
     public function runFinal()
     {
@@ -26,16 +26,17 @@ class FinalInstallManager
     /**
      * Generate New Application Key.
      *
-     * @param \Symfony\Component\Console\Output\BufferedOutput $outputLog
-     * @return \Symfony\Component\Console\Output\BufferedOutput|array
+     * @param collection $outputLog
+     * @return collection
      */
-    private static function generateKey(BufferedOutput $outputLog)
+    private static function generateKey($outputLog)
     {
-        try {
-            if (config('installer.final.key')) {
-                Artisan::call('key:generate', ['--force'=> true], $outputLog);
+        try{
+            if (config('installer.final.key')){
+                Artisan::call('key:generate', ["--force"=> true], $outputLog);
             }
-        } catch (Exception $e) {
+        }
+        catch(Exception $e){
             return static::response($e->getMessage(), $outputLog);
         }
 
@@ -45,35 +46,36 @@ class FinalInstallManager
     /**
      * Publish vendor assets.
      *
-     * @param \Symfony\Component\Console\Output\BufferedOutput $outputLog
-     * @return \Symfony\Component\Console\Output\BufferedOutput|array
+     * @param collection $outputLog
+     * @return collection
      */
-    private static function publishVendorAssets(BufferedOutput $outputLog)
+    private static function publishVendorAssets($outputLog)
     {
-        try {
-            if (config('installer.final.publish')) {
+        try{
+            if (config('installer.final.publish')){
                 Artisan::call('vendor:publish', ['--all' => true], $outputLog);
             }
-        } catch (Exception $e) {
+        }
+        catch(Exception $e){
             return static::response($e->getMessage(), $outputLog);
         }
 
         return $outputLog;
     }
-
+    
     /**
      * Return a formatted error messages.
      *
      * @param $message
-     * @param \Symfony\Component\Console\Output\BufferedOutput $outputLog
+     * @param collection $outputLog
      * @return array
      */
-    private static function response($message, BufferedOutput $outputLog)
+    private static function response($message, $outputLog)
     {
         return [
             'status' => 'error',
             'message' => $message,
-            'dbOutputLog' => $outputLog->fetch(),
+            'dbOutputLog' => $outputLog->fetch()
         ];
     }
 }

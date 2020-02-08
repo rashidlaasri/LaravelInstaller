@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Validation\Rule;
+
 return [
 
     /*
@@ -13,12 +15,12 @@ return [
     |
     */
     'core' => [
-        'minPhpVersion' => '7.0.0',
+        'minPhpVersion' => '7.0.0'
     ],
     'final' => [
         'key' => true,
-        'publish' => false,
-    ],
+        'publish' => false
+    ],    
     'requirements' => [
         'php' => [
             'openssl',
@@ -45,7 +47,7 @@ return [
     'permissions' => [
         'storage/framework/'     => '775',
         'storage/logs/'          => '775',
-        'bootstrap/cache/'       => '775',
+        'bootstrap/cache/'       => '775'
     ],
 
     /*
@@ -53,7 +55,7 @@ return [
     | Environment Form Wizard Validation Rules & Messages
     |--------------------------------------------------------------------------
     |
-    | This are the default form field validation rules. Available Rules:
+    | This are the default form vield validation rules. Available Rules:
     | https://laravel.com/docs/5.4/validation#available-validation-rules
     |
     */
@@ -63,7 +65,10 @@ return [
                 'app_name'              => 'required|string|max:50',
                 'environment'           => 'required|string|max:50',
                 'environment_custom'    => 'required_if:environment,other|max:50',
-                'app_debug'             => 'required|boolean',
+                'app_debug'             => [
+                    'required',
+                    Rule::in(['true', 'false']),
+                ],
                 'app_log_level'         => 'required|string|max:50',
                 'app_url'               => 'required|url',
                 'database_connection'   => 'required|string|max:50',
@@ -71,7 +76,7 @@ return [
                 'database_port'         => 'required|numeric',
                 'database_name'         => 'required|string|max:50',
                 'database_username'     => 'required|string|max:50',
-                'database_password'     => 'nullable|string|max:50',
+                'database_password'     => 'required|string|max:50',
                 'broadcast_driver'      => 'required|string|max:50',
                 'cache_driver'          => 'required|string|max:50',
                 'session_driver'        => 'required|string|max:50',
@@ -94,7 +99,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Installed Middleware Options
+    | Installed Middlware Options
     |--------------------------------------------------------------------------
     | Different available status switch configuration for the
     | canInstall middleware located in `canInstall.php`.
@@ -111,15 +116,15 @@ return [
             ],
             'dump' => [
                 'data' => 'Dumping a not found message.',
-            ],
+            ]
         ],
     ],
 
     /*
     |--------------------------------------------------------------------------
-    | Selected Installed Middleware Option
+    | Selected Installed Middlware Option
     |--------------------------------------------------------------------------
-    | The selected option fo what happens when an installer instance has been
+    | The selected option fo what happens when an installer intance has been
     | Default output is to `/resources/views/error/404.blade.php` if none.
     | The available middleware options include:
     | route, abort, dump, 404, default, ''

@@ -2,7 +2,7 @@
 
 return [
 
-    /*
+    /**
      *
      * Shared translations.
      *
@@ -15,7 +15,7 @@ return [
         'errorTitle' => 'The Following errors occurred:',
     ],
 
-    /*
+    /**
      *
      * Home page translations.
      *
@@ -27,7 +27,7 @@ return [
         'next'    => 'Check Requirements',
     ],
 
-    /*
+    /**
      *
      * Requirements page translations.
      *
@@ -38,7 +38,7 @@ return [
         'next'    => 'Check Permissions',
     ],
 
-    /*
+    /**
      *
      * Permissions page translations.
      *
@@ -49,7 +49,7 @@ return [
         'next' => 'Configure Environment',
     ],
 
-    /*
+    /**
      *
      * Environment page translations.
      *
@@ -68,7 +68,7 @@ return [
             'tabs' => [
                 'environment' => 'Environment',
                 'database' => 'Database',
-                'application' => 'Application',
+                'application' => 'Application'
             ],
             'form' => [
                 'name_required' => 'An environment name is required.',
@@ -95,7 +95,6 @@ return [
                 'app_log_level_label_emergency' => 'emergency',
                 'app_url_label' => 'App Url',
                 'app_url_placeholder' => 'App Url',
-                'db_connection_failed' => 'Could not connect to the database.',
                 'db_connection_label' => 'Database Connection',
                 'db_connection_label_mysql' => 'mysql',
                 'db_connection_label_sqlite' => 'sqlite',
@@ -170,7 +169,7 @@ return [
 
     'install' => 'Install',
 
-    /*
+    /**
      *
      * Installed Log translations.
      *
@@ -179,7 +178,7 @@ return [
         'success_log_message' => 'Laravel Installer successfully INSTALLED on ',
     ],
 
-    /*
+    /**
      *
      * Final page translations.
      *
@@ -195,20 +194,20 @@ return [
         'exit' => 'Click here to exit',
     ],
 
-    /*
+    /**
      *
      * Update specific translations
      *
      */
     'updater' => [
-        /*
+        /**
          *
          * Shared translations.
          *
          */
         'title' => 'Laravel Updater',
 
-        /*
+        /**
          *
          * Welcome page translations for update feature.
          *
@@ -218,7 +217,7 @@ return [
             'message' => 'Welcome to the update wizard.',
         ],
 
-        /*
+        /**
          *
          * Welcome page translations for update feature.
          *
@@ -226,10 +225,10 @@ return [
         'overview' => [
             'title'   => 'Overview',
             'message' => 'There is 1 update.|There are :number updates.',
-            'install_updates' => 'Install Updates',
+            'install_updates' => "Install Updates"
         ],
 
-        /*
+        /**
          *
          * Final page translations.
          *

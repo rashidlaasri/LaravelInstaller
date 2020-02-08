@@ -1,6 +1,7 @@
 <?php
 
-if (! function_exists('isActive')) {
+if ( ! function_exists('isActive'))
+{
     /**
      * Set the active class to the current opened menu.
      *
@@ -16,8 +17,6 @@ if (! function_exists('isActive')) {
         if (Route::currentRouteName() == $route) {
             return $className;
         }
-        if (strpos(URL::current(), $route)) {
-            return $className;
-        }
+        if (strpos(URL::current(), $route)) return $className;
     }
 }

@@ -2,7 +2,7 @@
 
 return [
 
-    /*
+    /**
      *
      * Shared translations.
      *
@@ -15,7 +15,8 @@ return [
         'errorTitle' => 'Les erreurs suivantes sont survenues:',
     ],
 
-    /*
+
+    /**
      *
      * Home page translations.
      *
@@ -26,7 +27,8 @@ return [
         'next'    => 'Vérifier les prérequis',
     ],
 
-    /*
+
+    /**
      *
      * Requirements page translations.
      *
@@ -37,7 +39,8 @@ return [
         'next'    => 'Vérifier les Permissions',
     ],
 
-    /*
+
+    /**
      *
      * Permissions page translations.
      *
@@ -48,7 +51,8 @@ return [
         'next' => 'Configurer l\'Environment',
     ],
 
-    /*
+
+    /**
      *
      * Environment page translations.
      *
@@ -67,7 +71,7 @@ return [
             'tabs' => [
                 'environment' => 'Environnement',
                 'database' => 'Base de donnée',
-                'application' => 'Application',
+                'application' => 'Application'
             ],
             'form' => [
                 'name_required' => 'Un nom d\'environnement est requis.',
@@ -168,7 +172,8 @@ return [
 
     'install' => 'Installer',
 
-    /*
+
+    /**
      *
      * Final page translations.
      *
@@ -184,20 +189,20 @@ return [
         'exit' => 'Cliquez ici pour quitter',
     ],
 
-    /*
+    /**
      *
      * Update specific translations
      *
      */
     'updater' => [
-        /*
+        /**
          *
          * Shared translations.
          *
          */
         'title' => 'Mise à jour de Laravel',
 
-        /*
+        /**
          *
          * Welcome page translations for update feature.
          *
@@ -207,7 +212,7 @@ return [
             'message' => 'Bienvenue dans le programme de mise à jour.',
         ],
 
-        /*
+        /**
          *
          * Welcome page translations for update feature.
          *
@@ -215,10 +220,10 @@ return [
         'overview' => [
             'title'   => 'Aperçu',
             'message' => 'Il y a 1 mise à jour.|Il y a :number mises à jour.',
-            'install_updates' => 'Installer la mise à jour',
+            'install_updates' => "Installer la mise à jour"
         ],
 
-        /*
+        /**
          *
          * Final page translations.
          *

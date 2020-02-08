@@ -2,7 +2,7 @@
 
 return [
 
-    /*
+    /**
      *
      * Shared translations.
      *
@@ -11,7 +11,8 @@ return [
     'next' => '下一步',
     'finish' => '安裝',
 
-    /*
+
+    /**
      *
      * Home page translations.
      *
@@ -21,7 +22,8 @@ return [
         'message' => '歡迎來到安裝嚮導.',
     ],
 
-    /*
+
+    /**
      *
      * Requirements page translations.
      *
@@ -30,7 +32,8 @@ return [
         'title' => '環境要求',
     ],
 
-    /*
+
+    /**
      *
      * Permissions page translations.
      *
@@ -39,7 +42,8 @@ return [
         'title' => '權限',
     ],
 
-    /*
+
+    /**
      *
      * Environment page translations.
      *
@@ -51,7 +55,8 @@ return [
         'errors' => '無法保存 .env 文件, 請手動創建它.',
     ],
 
-    /*
+
+    /**
      *
      * Final page translations.
      *
