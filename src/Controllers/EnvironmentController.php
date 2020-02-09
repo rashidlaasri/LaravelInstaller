@@ -138,6 +138,8 @@ class EnvironmentController extends Controller
 
         if ($validator->fails()) {
             $errors = $validator->errors();
+            $envConfig = $this->EnvironmentManager->getEnvContent();
+
             return view('vendor.installer.environment-wizard', compact('errors', 'envConfig'));
         }
 
