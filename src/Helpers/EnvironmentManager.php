@@ -23,7 +23,7 @@ class EnvironmentManager
     public function __construct()
     {
         $this->envPath = base_path('bootstrap/.env');
-        $this->envExamplePath = base_path('.env.example');
+        $this->envExamplePath = base_path('bootstrap/.env.example');
     }
 
     /**
