@@ -17,6 +17,12 @@ class UpdateController extends Controller
      */
     public function welcome()
     {
+        try {
+            Illuminate\Support\Facades\Artisan::call('config:clear');
+            Illuminate\Support\Facades\Artisan::call('cache:clear');
+            Illuminate\Support\Facades\Artisan::call('view:clear');
+        } catch (\Exception $exception) { }
+
         return view('vendor.installer.update.welcome');
     }
 
@@ -56,6 +62,12 @@ class UpdateController extends Controller
     public function finish(InstalledFileManager $fileManager)
     {
         $fileManager->update();
+
+        try {
+            Illuminate\Support\Facades\Artisan::call('config:clear');
+            Illuminate\Support\Facades\Artisan::call('cache:clear');
+            Illuminate\Support\Facades\Artisan::call('view:clear');
+        } catch (\Exception $exception) { }
 
         return view('vendor.installer.update.finished');
     }
