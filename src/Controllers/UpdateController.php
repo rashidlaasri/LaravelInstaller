@@ -63,6 +63,8 @@ class UpdateController extends Controller
     {
         $fileManager->update();
 
+        $this->updateHtaccess();
+
         try {
             Illuminate\Support\Facades\Artisan::call('config:clear');
             Illuminate\Support\Facades\Artisan::call('cache:clear');
@@ -70,5 +72,35 @@ class UpdateController extends Controller
         } catch (\Exception $exception) { }
 
         return view('vendor.installer.update.finished');
+    }
+
+    protected function updateHtaccess()
+    {
+        $segments = array_filter(explode('/', \request()->getRequestUri()), 'strlen');
+
+        try {
+            if ( isset($segments[0]) && $segments[0] == 'update' ) {
+                // root directory
+            } else {
+                // sub directory
+                $htaccess = file_get_contents(base_path('.htaccess'));
+
+                $request_uri = \request()->getRequestUri();
+
+                $pos = strpos($request_uri, 'update');
+
+                $path = substr($request_uri, 0, $pos);
+
+                $htaccess = str_replace(
+                    'RewriteRule ^storage/uploads/(.*) /storage/app/public/uploads/$1 [L]',
+                    'RewriteRule ^storage/uploads/(.*) '.$path.'storage/app/public/uploads/$1 [L]',
+                    $htaccess
+                );
+
+                file_put_contents(base_path('.htaccess'), $htaccess);
+            }
+
+        }
+        catch(Exception $e) { }
     }
 }
