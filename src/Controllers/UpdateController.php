@@ -18,9 +18,9 @@ class UpdateController extends Controller
     public function welcome()
     {
         try {
-            Illuminate\Support\Facades\Artisan::call('config:clear');
-            Illuminate\Support\Facades\Artisan::call('cache:clear');
-            Illuminate\Support\Facades\Artisan::call('view:clear');
+            \Illuminate\Support\Facades\Artisan::call('config:clear');
+            \Illuminate\Support\Facades\Artisan::call('cache:clear');
+            \Illuminate\Support\Facades\Artisan::call('view:clear');
         } catch (\Exception $exception) { }
 
         return view('vendor.installer.update.welcome');
@@ -66,9 +66,9 @@ class UpdateController extends Controller
         $this->updateHtaccess();
 
         try {
-            Illuminate\Support\Facades\Artisan::call('config:clear');
-            Illuminate\Support\Facades\Artisan::call('cache:clear');
-            Illuminate\Support\Facades\Artisan::call('view:clear');
+            \Illuminate\Support\Facades\Artisan::call('config:clear');
+            \Illuminate\Support\Facades\Artisan::call('cache:clear');
+            \Illuminate\Support\Facades\Artisan::call('view:clear');
         } catch (\Exception $exception) { }
 
         return view('vendor.installer.update.finished');
