@@ -93,6 +93,8 @@ class EnvironmentManager
     {
         $results = trans('installer_messages.environment.success');
 
+
+
         $envFileData =
         'APP_NAME=\'' . $request->app_name . "'\n" .
         'APP_ENV=' . $request->environment . "\n" .
