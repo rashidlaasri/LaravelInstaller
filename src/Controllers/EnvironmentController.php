@@ -139,6 +139,9 @@ class EnvironmentController extends Controller
                 ],
             ],
         ]);
+        
+        // Purge any cached config values at run-time by the DatabaseManager instance
+        DB::purge();
 
         try {
             DB::connection()->getPdo();
