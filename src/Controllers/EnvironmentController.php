@@ -140,6 +140,8 @@ class EnvironmentController extends Controller
             ],
         ]);
 
+        DB::purge();
+
         try {
             DB::connection()->getPdo();
 
