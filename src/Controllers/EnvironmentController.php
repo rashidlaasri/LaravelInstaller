@@ -69,7 +69,13 @@ class EnvironmentController extends Controller
      */
     public function saveClassic(Request $input, Redirector $redirect)
     {
-        $message = $this->EnvironmentManager->saveFileClassic($input);
+        $saveFile = $this->EnvironmentManager->saveFileClassic($input);
+
+        if ($saveFile) {
+            $message = trans('installer_messages.environment.success');
+        } else {
+            $message = trans('installer_messages.environment.errors');
+        }
 
         event(new EnvironmentSaved($input));
 
@@ -103,7 +109,13 @@ class EnvironmentController extends Controller
             ]);
         }
 
-        $results = $this->EnvironmentManager->saveFileWizard($request);
+        $saveFile = $this->EnvironmentManager->saveFileWizard($request);
+
+        if ($saveFile) {
+            $results = trans('installer_messages.environment.success');
+        } else {
+            $results = trans('installer_messages.environment.errors');
+        }
 
         event(new EnvironmentSaved($request));
 
