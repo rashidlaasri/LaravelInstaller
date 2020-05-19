@@ -63,7 +63,7 @@ return [
                 'app_name'              => 'required|string|max:50',
                 'environment'           => 'required|string|max:50',
                 'environment_custom'    => 'required_if:environment,other|max:50',
-                'app_debug'             => 'required|boolean',
+                'app_debug'             => 'required|string',
                 'app_log_level'         => 'required|string|max:50',
                 'app_url'               => 'required|url',
                 'database_connection'   => 'required|string|max:50',
