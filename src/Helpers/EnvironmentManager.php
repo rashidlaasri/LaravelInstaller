@@ -69,31 +69,27 @@ class EnvironmentManager
      * Save the edited content to the .env file.
      *
      * @param Request $input
-     * @return string
+     * @return bool
      */
     public function saveFileClassic(Request $input)
     {
-        $message = trans('installer_messages.environment.success');
-
         try {
             file_put_contents($this->envPath, $input->get('envConfig'));
         } catch (Exception $e) {
-            $message = trans('installer_messages.environment.errors');
+            return false;
         }
 
-        return $message;
+        return true;
     }
 
     /**
      * Save the form content to the .env file.
      *
      * @param Request $request
-     * @return string
+     * @return bool
      */
     public function saveFileWizard(Request $request)
     {
-        $results = trans('installer_messages.environment.success');
-
         $envFileData =
         'APP_NAME=\''.$request->app_name."'\n".
         'APP_ENV='.$request->environment."\n".
@@ -127,9 +123,9 @@ class EnvironmentManager
         try {
             file_put_contents($this->envPath, $envFileData);
         } catch (Exception $e) {
-            $results = trans('installer_messages.environment.errors');
+            return false;
         }
 
-        return $results;
+        return true;
     }
 }
