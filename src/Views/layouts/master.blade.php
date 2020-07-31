@@ -102,6 +102,9 @@
                 </div>
             </div>
         </div>
+        <div class="loader-wrapper" id="myLoader">
+            <div class="loader"></div>
+        </div>
         @yield('scripts')
         <script type="text/javascript">
             var x = document.getElementById('error_alert');
@@ -109,6 +112,17 @@
             y.onclick = function() {
                 x.style.display = "none";
             };
+
+            // Add Loader to each a tag
+            var elements = document.getElementsByTagName('a');
+            for(var i = 0, len = elements.length; i < len; i++) {
+                elements[i].onclick = function () {
+                    var x = document.getElementById("myLoader");
+                    if (x.style.display === "none") {
+                        x.style.display = "block";
+                    }
+                }
+            }
         </script>
     </body>
 </html>

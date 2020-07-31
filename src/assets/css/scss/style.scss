@@ -1346,3 +1346,39 @@ svg:not(:root) {
 		border-radius: 0 0 3px 3px;
 	}
 }
+
+.loader-wrapper{
+	display: none;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0,0,0,0.5);
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	right: 0px;
+	left: 0px;
+	z-index: 9;
+}
+
+.loader{
+	border: 16px solid #f3f3f3; /* Light grey */
+	border-top: 16px solid #3498db; /* Blue */
+	border-radius: 50%;
+	width: 120px;
+	height: 120px;
+	-webkit-animation: spin 2s linear infinite; /* Safari */
+	animation: spin 2s linear infinite;
+	margin: auto;
+	margin-top: 95px;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+	0% { -webkit-transform: rotate(0deg); }
+	100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
