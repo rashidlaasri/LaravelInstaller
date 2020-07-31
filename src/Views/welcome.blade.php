@@ -17,5 +17,12 @@
         {{ trans('installer_messages.welcome.next') }}
         <i class="fa fa-angle-right fa-fw" aria-hidden="true"></i>
       </a>
+
+      <!-- overjump all the single steps -->
+      <a class="button float-right" href="{{ route('LaravelInstaller::database') }}">
+        <i class="fa fa-check fa-fw" aria-hidden="true"></i>
+        {!! trans('installer_messages.welcome.skipAndInstall') !!}
+        <i class="fa fa-angle-double-right fa-fw" aria-hidden="true"></i>
+      </a>
     </p>
 @endsection

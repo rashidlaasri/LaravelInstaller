@@ -11,7 +11,8 @@ class InstalledFileManager
      */
     public function create()
     {
-        $installedLogFile = storage_path('installed');
+        $installedLogFileName = config('installer.installedFileName', 'installed');
+        $installedLogFile = storage_path($installedLogFileName);
 
         $dateStamp = date('Y/m/d h:i:sa');
 
@@ -36,5 +37,11 @@ class InstalledFileManager
     public function update()
     {
         return $this->create();
+    }
+
+    public function alreadyInstalled()
+    {
+        $installedLogFileName = config('installer.installedFileName', 'installed');
+        return file_exists(storage_path($installedLogFileName));
     }
 }
