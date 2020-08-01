@@ -4,6 +4,7 @@ namespace RachidLaasri\LaravelInstaller\Controllers;
 
 use Illuminate\Routing\Controller;
 use RachidLaasri\LaravelInstaller\Helpers\CommandManager;
+use Illuminate\Http\Request;
 
 class CommandController extends Controller
 {
@@ -25,11 +26,14 @@ class CommandController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function command()
+    public function commands(Request $request)
     {
         $response = $this->commandManager->executeCommands();
 
-        return redirect()->route('LaravelInstaller::final')
-                         ->with(['commandMessage' => $response]);
+        $request->session()->put(['commandMessage' => $response]);
+        $request->session()->reflash();
+        $request->session()->save();
+
+        return redirect()->route('LaravelInstaller::final');
     }
 }

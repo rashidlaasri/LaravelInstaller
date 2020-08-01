@@ -107,21 +107,29 @@
         </div>
         @yield('scripts')
         <script type="text/javascript">
-            var x = document.getElementById('error_alert');
-            var y = document.getElementById('close_alert');
-            y.onclick = function() {
-                x.style.display = "none";
-            };
+            try {
+                var x = document.getElementById('error_alert');
+                var y = document.getElementById('close_alert');
+                y.onclick = function () {
+                    x.style.display = "none";
+                };
+            }
+            catch (e) {
+            }
 
-            // Add Loader to each a tag
-            var elements = document.getElementsByTagName('a');
-            for(var i = 0, len = elements.length; i < len; i++) {
-                elements[i].onclick = function () {
-                    var x = document.getElementById("myLoader");
-                    if (x.style.display === "none") {
-                        x.style.display = "block";
+            try {
+                window.onload = function () {
+                    document.getElementById("myLoader").style.display = "none";
+
+                    var elements = document.getElementsByTagName('a');
+                    for (var i = 0, len = elements.length; i < len; i++) {
+                        elements[i].onclick = function () {
+                            document.getElementById("myLoader").style.display = "block";
+                        }
                     }
-                }
+                };
+            }
+            catch (e) {
             }
         </script>
     </body>

@@ -25,8 +25,8 @@ return [
         'templateTitle' => 'Welcome',
         'title'   => 'Laravel Installer',
         'message' => 'Easy Installation and Setup Wizard.',
-        'next'    => 'Step-by-step configuration',
-        'skipAndInstall' => 'Skip and install immediately'
+        'next'    => 'Step-by-step Configuration',
+        'skipAndInstall' => 'Install immediately'
     ],
 
     /*

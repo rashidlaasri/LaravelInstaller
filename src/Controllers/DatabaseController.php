@@ -2,6 +2,7 @@
 
 namespace RachidLaasri\LaravelInstaller\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use RachidLaasri\LaravelInstaller\Helpers\DatabaseManager;
 
@@ -23,13 +24,16 @@ class DatabaseController extends Controller
     /**
      * Migrate and seed the database.
      *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function database()
+    public function database(Request $request)
     {
         $response = $this->databaseManager->migrateAndSeed();
 
-        return redirect()->route('LaravelInstaller::command')
-                         ->with(['databaseMessage' => $response]);
+        $request->session()->put(['databaseMessage' => $response]);
+        $request->session()->save();
+        $request->session()->reflash();
+
+        return redirect()->route('LaravelInstaller::command');
     }
 }

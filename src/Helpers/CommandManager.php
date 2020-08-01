@@ -22,10 +22,11 @@ class CommandManager
         $commands = config('installer.commands');
         $response = [];
 
-        foreach ($commands as $command){
-            array_push ($response, $this->execute($command, $outputLog));
+        if (is_array($commands) && count($commands) > 0){
+            foreach ($commands as $command) {
+                array_push($response, $this->execute($command, $outputLog));
+            }
         }
-
         return $response;
     }
 

@@ -39,7 +39,7 @@ class InstalledFileManager
         return $this->create();
     }
 
-    public function alreadyInstalled()
+    public static function alreadyInstalled()
     {
         $installedLogFileName = config('installer.installedFileName', 'installed');
         return file_exists(storage_path($installedLogFileName));
