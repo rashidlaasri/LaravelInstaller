@@ -46,6 +46,11 @@ Route::group(['prefix' => 'install', 'as' => 'LaravelInstaller::', 'namespace' =
         'uses' => 'DatabaseController@database',
     ]);
 
+    Route::get('command', [
+        'as' => 'command',
+        'uses' => 'CommandController@commands',
+    ]);
+
     Route::get('final', [
         'as' => 'final',
         'uses' => 'FinalController@finish',

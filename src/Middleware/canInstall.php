@@ -4,6 +4,7 @@ namespace RachidLaasri\LaravelInstaller\Middleware;
 
 use Closure;
 use Redirect;
+use RachidLaasri\LaravelInstaller\Helpers\InstalledFileManager;
 
 class canInstall
 {
@@ -16,45 +17,40 @@ class canInstall
      */
     public function handle($request, Closure $next)
     {
-        if ($this->alreadyInstalled()) {
-            $installedRedirect = config('installer.installedAlreadyAction');
+        $installerEnabled = filter_var(config('installer.installerEnabled', true), FILTER_VALIDATE_BOOLEAN);
+        $ignoreAlreadyInstalled = filter_var(config('installer.ignoreAlreadyInstalled', false), FILTER_VALIDATE_BOOLEAN);
 
-            switch ($installedRedirect) {
+        if(!$ignoreAlreadyInstalled) {
+            if (InstalledFileManager::alreadyInstalled() || !$installerEnabled) {
+                $installedRedirect = config('installer.installedAlreadyAction');
 
-                case 'route':
-                    $routeName = config('installer.installed.redirectOptions.route.name');
-                    $data = config('installer.installed.redirectOptions.route.message');
+                switch ($installedRedirect) {
 
-                    return redirect()->route($routeName)->with(['data' => $data]);
-                    break;
+                    case 'route':
+                        $routeName = config('installer.installed.redirectOptions.route.name');
+                        $data = config('installer.installed.redirectOptions.route.message');
 
-                case 'abort':
-                    abort(config('installer.installed.redirectOptions.abort.type'));
-                    break;
+                        return redirect()->route($routeName)->with(['data' => $data]);
+                        break;
 
-                case 'dump':
-                    $dump = config('installer.installed.redirectOptions.dump.data');
-                    dd($dump);
-                    break;
+                    case 'abort':
+                        abort(config('installer.installed.redirectOptions.abort.type'));
+                        break;
 
-                case '404':
-                case 'default':
-                default:
-                    abort(404);
-                    break;
+                    case 'dump':
+                        $dump = config('installer.installed.redirectOptions.dump.data');
+                        dd($dump);
+                        break;
+
+                    case '404':
+                    case 'default':
+                    default:
+                        abort(404);
+                        break;
+                }
             }
         }
 
         return $next($request);
-    }
-
-    /**
-     * If application is already installed.
-     *
-     * @return bool
-     */
-    public function alreadyInstalled()
-    {
-        return file_exists(storage_path('installed'));
     }
 }

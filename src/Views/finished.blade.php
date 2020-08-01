@@ -11,9 +11,29 @@
 
 @section('container')
 
-	@if(session('message')['dbOutputLog'])
-		<p><strong><small>{{ trans('installer_messages.final.migration') }}</small></strong></p>
-		<pre><code>{{ session('message')['dbOutputLog'] }}</code></pre>
+	@if(session('databaseMessage'))
+		@if( session('databaseMessage')['dbOutputLog'])
+			<p><strong><small>{{ trans('installer_messages.final.migration') }}</small></strong></p>
+			@if(session('databaseMessage')['status'] == 'error')
+				<strong><small>{{ trans('installer_messages.final.error') }}</small></strong>
+				<pre>{{ session('databaseMessage')['message'] }}</pre>
+			@else
+				<pre><code>{{ session('databaseMessage')['dbOutputLog'] }}</code></pre>
+			@endif
+		@endif
+	@endif
+
+	@if(session('commandMessage'))
+		<p><strong><small>{{ trans('installer_messages.final.command') }}</small></strong></p>
+		@foreach (session('commandMessage') as $message)
+			<p><strong><small>{{ $message['command'] }}</small></strong></p>
+			@if($message['status'] == 'error')
+				<strong><small>{{ trans('installer_messages.final.error') }}</small></strong>
+				<pre>{{ $message['message'] }}</pre>
+			@else
+				<pre><code>{{ $message['outputLog'] }}</code></pre>
+			@endif
+		@endif
 	@endif
 
 	<p><strong><small>{{ trans('installer_messages.final.console') }}</small></strong></p>

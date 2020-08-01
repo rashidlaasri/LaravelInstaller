@@ -10,6 +10,7 @@ return [
     'title' => 'Laravel Installer',
     'next' => 'Nächster Schritt',
     'finish' => 'Installieren',
+    'ignore' => 'Ignorieren & weiter',
 
     /*
      *
@@ -17,8 +18,11 @@ return [
      *
      */
     'welcome' => [
+        'templateTitle' => 'Willkommen',
         'title'   => 'Willkommen zum Installer',
         'message' => 'Willkommen zum Laravel Installationsassistent.',
+        'next'    => 'Schrittweise konfigurieren',
+        'skipAndInstall' => 'Überspringen und sofort installieren'
     ],
 
     /*

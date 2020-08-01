@@ -129,6 +129,29 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Ignore Already Installed
+    |--------------------------------------------------------------------------
+    | This setting to ignore, if the installation were already perforemed.
+    | This is maybe helpfull in local enviroments for debugging.
+    | This is not recommended for productive usage. Default boolean false.
+    */
+    'ignoreAlreadyInstalled' => 'false',
+
+    /*
+    |--------------------------------------------------------------------------
+    | List of Commands which should be executed in addition
+    |--------------------------------------------------------------------------
+    | Add your own Artisan commands to the following array.
+    | They will get executed in this order. They will run
+    | after database migration. The output will be shown at the finished page.
+    | The list is by default empty.
+    */
+    'commands'=> [
+
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Updater Enabled
     |--------------------------------------------------------------------------
     | Can the application run the '/update' route with the migrations.
@@ -137,5 +160,26 @@ return [
     |
     */
     'updaterEnabled' => 'true',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Installer Enabled
+    |--------------------------------------------------------------------------
+    | Can the application run the '/install' route with the migrations.
+    | The default option is set to True if none is present.
+    | Boolean value. This is a check on top of "installedAlready".
+    |
+    */
+    'installerEnabled' => 'true',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Installed Log File
+    |--------------------------------------------------------------------------
+    | A file to indicate if the installation were already performed.
+    | Filename within the storage dir.
+    |
+    */
+    'installedFile' => 'installed'
 
 ];

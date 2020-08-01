@@ -32,4 +32,13 @@
         </div>
     @endif
 
+    @if ( isset($permissions['errors']))
+        <div class="buttons">
+            <a href="{{ route('LaravelInstaller::environment') }}" class="button">
+                {{ trans('installer_messages.ignore') }}
+                <i class="fa fa-angle-right fa-fw" aria-hidden="true"></i>
+            </a>
+        </div>
+    @endif
+
 @endsection
