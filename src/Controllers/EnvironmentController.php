@@ -3,13 +3,13 @@
 namespace RachidLaasri\LaravelInstaller\Controllers;
 
 use Exception;
-use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\DB;
 use RachidLaasri\LaravelInstaller\Events\EnvironmentSaved;
 use RachidLaasri\LaravelInstaller\Helpers\EnvironmentManager;
+use Validator;
 
 class EnvironmentController extends Controller
 {
@@ -139,6 +139,8 @@ class EnvironmentController extends Controller
                 ],
             ],
         ]);
+
+        DB::purge();
 
         try {
             DB::connection()->getPdo();
