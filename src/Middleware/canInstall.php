@@ -4,6 +4,8 @@ namespace RachidLaasri\LaravelInstaller\Middleware;
 
 use Closure;
 use DB;
+use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Schema;
 use Redirect;
 
 class canInstall
@@ -11,15 +13,15 @@ class canInstall
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure $next
      * @param Redirector $redirect
+     * @return mixed
      * @return \Illuminate\Http\RedirectResponse
      */
     public function handle($request, Closure $next)
     {
-        if($this->alreadyInstalled()) {
+        if ($this->alreadyInstalled()) {
 
             $installedRedirect = config('installer.installedAlreadyAction');
 
@@ -57,6 +59,10 @@ class canInstall
      */
     public function alreadyInstalled()
     {
-        return file_exists(storage_path('installed'));
+        try {
+            return Schema::hasTable('settings');
+        } catch (QueryException $exception) {
+            return false;
+        }
     }
 }
