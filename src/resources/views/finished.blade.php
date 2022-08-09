@@ -1,4 +1,4 @@
-@extends('vendor.installer.layouts.master')
+@extends('LaravelInstaller::layouts.master')
 
 @section('template_title')
     {{ trans('installer_messages.final.templateTitle') }}

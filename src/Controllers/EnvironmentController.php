@@ -6,13 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Artisan;
-use RachidLaasri\LaravelInstaller\Helpers\EnvironmentManager;
-use RachidLaasri\LaravelInstaller\Events\EnvironmentSaved;
-use Validator;
-use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
+use RachidLaasri\LaravelInstaller\Events\EnvironmentSaved;
+use RachidLaasri\LaravelInstaller\Helpers\EnvironmentManager;
+use Validator;
 
 class EnvironmentController extends Controller
 {
@@ -36,7 +36,7 @@ class EnvironmentController extends Controller
      */
     public function environmentMenu()
     {
-        return view('vendor.installer.environment');
+        return view('LaravelInstaller::environment');
     }
 
     /**
@@ -48,7 +48,7 @@ class EnvironmentController extends Controller
     {
         $envConfig = $this->EnvironmentManager->getEnvContent();
 
-        return view('vendor.installer.environment-wizard', compact('envConfig'));
+        return view('LaravelInstaller::environment-wizard', compact('envConfig'));
     }
 
     /**
@@ -60,7 +60,7 @@ class EnvironmentController extends Controller
     {
         $envConfig = $this->EnvironmentManager->getEnvContent();
 
-        return view('vendor.installer.environment-classic', compact('envConfig'));
+        return view('LaravelInstaller::environment-classic', compact('envConfig'));
     }
 
     /**
@@ -140,7 +140,7 @@ class EnvironmentController extends Controller
             $errors = $validator->errors();
             $envConfig = $this->EnvironmentManager->getEnvContent();
 
-            return view('vendor.installer.environment-wizard', compact('errors', 'envConfig'));
+            return view('LaravelInstaller::environment-wizard', compact('errors', 'envConfig'));
         }
 
         $results = $this->EnvironmentManager->saveFileWizard($request);

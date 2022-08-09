@@ -5,7 +5,7 @@
 @endsection
 
 @section('title')
-    {{ trans('installer_messages.welcome.title') }}1111111
+    {{ trans('installer_messages.welcome.title') }}
 @endsection
 
 @section('container')

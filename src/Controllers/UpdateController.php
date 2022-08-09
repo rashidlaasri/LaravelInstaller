@@ -3,8 +3,8 @@
 namespace RachidLaasri\LaravelInstaller\Controllers;
 
 use Illuminate\Routing\Controller;
-use RachidLaasri\LaravelInstaller\Helpers\InstalledFileManager;
 use RachidLaasri\LaravelInstaller\Helpers\DatabaseManager;
+use RachidLaasri\LaravelInstaller\Helpers\InstalledFileManager;
 
 class UpdateController extends Controller
 {
@@ -23,7 +23,7 @@ class UpdateController extends Controller
             \Illuminate\Support\Facades\Artisan::call('view:clear');
         } catch (\Exception $exception) { }
 
-        return view('vendor.installer.update.welcome');
+        return view('LaravelInstaller::update.welcome');
     }
 
     /**
@@ -36,7 +36,7 @@ class UpdateController extends Controller
         $migrations = $this->getMigrations();
         $dbMigrations = $this->getExecutedMigrations();
 
-        return view('vendor.installer.update.overview', ['numberOfUpdatesPending' => count($migrations) - count($dbMigrations)]);
+        return view('LaravelInstaller::update.overview', ['numberOfUpdatesPending' => count($migrations) - count($dbMigrations)]);
     }
 
     /**
@@ -71,7 +71,7 @@ class UpdateController extends Controller
             \Illuminate\Support\Facades\Artisan::call('view:clear');
         } catch (\Exception $exception) { }
 
-        return view('vendor.installer.update.finished');
+        return view('LaravelInstaller::update.finished');
     }
 
     protected function updateHtaccess()

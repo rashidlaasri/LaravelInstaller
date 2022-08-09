@@ -1,4 +1,4 @@
-@extends('vendor.installer.layouts.master-update')
+@extends('LaravelInstaller::layouts.master-update')
 
 @section('title', trans('installer_messages.updater.welcome.title'))
 @section('container')
