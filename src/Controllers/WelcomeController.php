@@ -4,8 +4,18 @@ namespace RachidLaasri\LaravelInstaller\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
+use RachidLaasri\LaravelInstaller\Events\EnvironmentSaved;
+use RachidLaasri\LaravelInstaller\Helpers\DatabaseManager;
+use RachidLaasri\LaravelInstaller\Helpers\EnvironmentManager;
+use RachidLaasri\LaravelInstaller\Helpers\FinalInstallManager;
 use RachidLaasri\LaravelInstaller\Helpers\PermissionsChecker;
 use RachidLaasri\LaravelInstaller\Helpers\RequirementsChecker;
+use Validator;
 
 class WelcomeController extends Controller
 {
@@ -13,6 +23,19 @@ class WelcomeController extends Controller
     protected $phpSupportInfo;
     protected $requirements;
     protected $permissions;
+
+    /**
+     * @var EnvironmentManager
+     */
+    protected $EnvironmentManager;
+
+    /**
+     * @param EnvironmentManager $environmentManager
+     */
+    public function __construct(EnvironmentManager $environmentManager)
+    {
+        $this->EnvironmentManager = $environmentManager;
+    }
 
     /**
      * Display the installer welcome page.
@@ -32,7 +55,7 @@ class WelcomeController extends Controller
             return view('LaravelInstaller::permissions', ['permissions' => $this->permissions]);
         };
 
-        return view('LaravelInstaller::environment-wizard');
+        return view('LaravelInstaller::welcome');
     }
 
     public function checkRequirements()
@@ -69,4 +92,111 @@ class WelcomeController extends Controller
         return true;
     }
 
+    /**
+     * Processes the newly saved environment configuration (Form Wizard).
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function install(Request $request)
+    {
+        $response = $this->createEnvFile($request);
+
+        if (!is_array($response)) {
+            return $response;
+        }
+
+        $finalMessages = $response['message'] . "\n\n";
+
+        $response = $this->createDatabase();
+
+        if (!is_array($response)) {
+            return $response;
+        }
+
+        $finalMessages .= $response['dbOutputLog'] . "\n\n";
+
+        $finalInstall = new FinalInstallManager();
+
+        $finalMessages .= $finalInstall->runFinal();
+
+        return view('LaravelInstaller::finished', compact('finalMessages'));
+    }
+
+    public function createDatabase()
+    {
+        $databaseManager = new DatabaseManager();
+
+        $response = $databaseManager->migrateAndSeed();
+
+        if ($response['status'] == 'error') {
+            return redirect()->back()->withInput()->withErrors(['message' => $response['message'] . "\n\n" . $response['outputLog']]);
+        }
+
+        return $response;
+    }
+
+    public function createEnvFile($request)
+    {
+        $rules = config('installer.environment.form.rules');
+
+        $validator = Validator::make($request->all(), $rules);
+
+        $testConnection = Str::random(5);
+
+        $validator->after(function ($validator) use ($request, $testConnection) {
+
+            try {
+                $cloneDbConfig = \config('database.connections.mysql');
+
+                $cloneDbConfig["host"] = $request->input('database_hostname');
+                $cloneDbConfig["port"] = $request->input('database_port');
+                $cloneDbConfig["database"] = $request->input('database_name');
+                $cloneDbConfig["username"] = $request->input('database_username');
+                $cloneDbConfig["password"] = $request->input('database_password');
+
+                Config::set('database.connections.' . $testConnection, $cloneDbConfig);
+            } catch (\Exception $exception) {
+                dd($exception->getMessage());
+            }
+
+            $dbConnected = false;
+
+            try {
+                DB::connection($testConnection)->getPdo();
+
+                $dbConnected = true;
+            } catch (\Exception $e) {
+                $request->session()->flash('tab', 'db');
+                $dbConnected = false;
+
+                $validator->errors()->add('database_name', 'Database credentials are not correct.');
+            }
+
+            if ($dbConnected == true) {
+                $tables = DB::connection($testConnection)->select('SHOW TABLES');
+
+                if (sizeof($tables) > 0) {
+                    $request->session()->flash('tab', 'db');
+                    $validator->errors()->add('database_name', 'Database is not empty. Please provide empty database credentials.');
+                }
+            }
+        });
+
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+
+            return redirect()->back()->withInput()->withErrors($errors);
+        }
+
+        $response = $this->EnvironmentManager->saveFileWizard($request);
+
+        if ($response['status'] == 'error') {
+            return redirect()->back()->withInput()->withErrors(['message' => $response['message']]);
+        }
+
+        event(new EnvironmentSaved($request));
+
+        return $response;
+    }
 }

@@ -165,6 +165,7 @@ return [
         ],
         'success' => 'Your .env file settings have been saved.',
         'errors' => 'Unable to save the .env file, Please create it manually.',
+        'htaccess_errors' => 'Unable to save the .env file, Please create it manually.',
     ],
 
     'install' => 'Install',

@@ -59,7 +59,6 @@ class canInstall
      */
     public function alreadyInstalled()
     {
-        return false;
         try {
             return Schema::hasTable('settings');
         } catch (QueryException $exception) {
