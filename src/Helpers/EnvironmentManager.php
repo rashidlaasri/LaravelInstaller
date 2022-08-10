@@ -184,7 +184,7 @@ VITE_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
                     $htaccess
                 );
 
-                file_put_contents(base_path('.htaccess'), $htaccess);
+                file_put_contents(base_path('public\.htaccess'), $htaccess);
             }
         } catch (Exception $e) {
             $status = 'error';
