@@ -74,6 +74,8 @@ return [
                 'name_required' => 'An environment name is required.',
                 'app_name_label' => 'App Name',
                 'app_name_placeholder' => 'App Name',
+                'admin_email_label' => 'Admin Email',
+                'admin_password_label' => 'Admin Password',
                 'app_environment_label' => 'App Environment',
                 'app_environment_label_local' => 'Local',
                 'app_environment_label_developement' => 'Development',
@@ -192,7 +194,7 @@ return [
         'console' => 'Application Console Output:',
         'log' => 'Installation Log Entry:',
         'env' => 'Final .env File:',
-        'exit' => 'Click here to exit',
+        'exit' => 'Click here to login to admin panel',
     ],
 
     /**

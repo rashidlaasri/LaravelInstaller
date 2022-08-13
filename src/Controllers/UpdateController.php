@@ -23,7 +23,7 @@ class UpdateController extends Controller
             \Illuminate\Support\Facades\Artisan::call('view:clear');
         } catch (\Exception $exception) { }
 
-        return view('LaravelInstaller::update.welcome');
+        return view('installer::update.welcome');
     }
 
     /**
@@ -36,7 +36,7 @@ class UpdateController extends Controller
         $migrations = $this->getMigrations();
         $dbMigrations = $this->getExecutedMigrations();
 
-        return view('LaravelInstaller::update.overview', ['numberOfUpdatesPending' => count($migrations) - count($dbMigrations)]);
+        return view('installer::update.overview', ['numberOfUpdatesPending' => count($migrations) - count($dbMigrations)]);
     }
 
     /**
@@ -71,7 +71,7 @@ class UpdateController extends Controller
             \Illuminate\Support\Facades\Artisan::call('view:clear');
         } catch (\Exception $exception) { }
 
-        return view('LaravelInstaller::update.finished');
+        return view('installer::update.finished');
     }
 
     protected function updateHtaccess()

@@ -1,25 +1,36 @@
-@extends('LaravelInstaller::layouts.master')
+@extends('installer::layouts.master')
 
 @section('template_title')
-    {{ trans('installer_messages.final.templateTitle') }}
+    {{ trans('installer::installer_messages.final.templateTitle') }}
 @endsection
 
 @section('title')
     <i class="fa fa-flag-checkered fa-fw" aria-hidden="true"></i>
-    {{ trans('installer_messages.final.title') }}
+    {{ trans('installer::installer_messages.final.title') }}
 @endsection
 
 @section('container')
 
-    @if(!empty(session('message')) && session('message')['dbOutputLog'])
-        <p><strong><small>{{ trans('installer_messages.final.migration') }}</small></strong></p>
-        <pre><code>{{ session('message')['dbOutputLog'] }}</code></pre>
-    @endif
+    <p><strong><small></small></strong></p>
 
-    <p><strong><small>{{ trans('installer_messages.final.console') }}</small></strong></p>
-    <pre><code>{{ $finalMessages }}</code></pre>
+    <p>{{ config('app.name') }} has been installed. Thank you, and enjoy!</p>
+
+    <table class="form-table install-success">
+        <tbody>
+        <tr>
+            <th>Email</th>
+            <td>{{$user->email}}</td>
+        </tr>
+        <tr>
+            <th>Password</th>
+            <td>
+                <p><em>Your chosen password.</em></p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 
     <div class="buttons">
-        <a href="{{ url('/ch-admin') }}" class="button">{{ trans('installer_messages.final.exit') }}</a>
+        <a href="{{ url('/ch-admin') }}" class="button">{{ trans('installer::installer_messages.final.exit') }}</a>
     </div>
 @endsection

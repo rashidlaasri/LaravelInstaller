@@ -3,6 +3,7 @@
 namespace RachidLaasri\LaravelInstaller\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Config;
@@ -45,17 +46,17 @@ class WelcomeController extends Controller
     public function welcome()
     {
         if (!$this->checkRequirements()) {
-            return view('LaravelInstaller::requirements', [
+            return view('installer::requirements', [
                 'phpSupportInfo' => $this->phpSupportInfo,
                 'requirements' => $this->requirements,
             ]);
         };
 
         if (!$this->checkPermissions()) {
-            return view('LaravelInstaller::permissions', ['permissions' => $this->permissions]);
+            return view('installer::permissions', ['permissions' => $this->permissions]);
         };
 
-        return view('LaravelInstaller::welcome');
+        return view('installer::welcome');
     }
 
     public function checkRequirements()
@@ -120,7 +121,13 @@ class WelcomeController extends Controller
 
         $finalMessages .= $finalInstall->runFinal();
 
-        return view('LaravelInstaller::finished', compact('finalMessages'));
+        $user = User::find(1);
+
+        $user->email = $request->admin_email;
+        $user->password = bcrypt($request->admin_password);
+        $user->save();
+
+        return view('installer::finished', compact('user'));
     }
 
     public function createDatabase()

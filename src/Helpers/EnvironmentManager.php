@@ -73,12 +73,12 @@ class EnvironmentManager
      */
     public function saveFileClassic(Request $input)
     {
-        $message = trans('installer_messages.environment.success');
+        $message = trans('installer::installer_messages.environment.success');
 
         try {
             file_put_contents($this->envPath, $input->get('envConfig'));
         } catch (Exception $e) {
-            $message = trans('installer_messages.environment.errors');
+            $message = trans('installer::installer_messages.environment.errors');
         }
 
         return $message;
@@ -92,7 +92,7 @@ class EnvironmentManager
      */
     public function saveFileWizard(Request $request)
     {
-        $message = trans('installer_messages.environment.success');
+        $message = trans('installer::installer_messages.environment.success');
         $status = 'success';
 
         $envFileData =
@@ -133,7 +133,7 @@ MAIL_DRIVER=sendmail
 #MAIL_USERNAME=null
 #MAIL_PASSWORD=null
 #MAIL_ENCRYPTION=null
-MAIL_FROM_ADDRESS="hello@example.com"
+MAIL_FROM_ADDRESS="' . $request->admin_email . '"
 MAIL_FROM_NAME="${APP_NAME}"
 
 AWS_ACCESS_KEY_ID=
@@ -161,7 +161,7 @@ VITE_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
             file_put_contents($this->envPath, $envFileData);
         } catch (Exception $e) {
             $status = 'error';
-            $message = trans('installer_messages.environment.errors');
+            $message = trans('installer::installer_messages.environment.errors');
         }
 
         try {
@@ -188,7 +188,7 @@ VITE_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
             }
         } catch (Exception $e) {
             $status = 'error';
-            $message = trans('installer_messages.environment.htaccess_errors');
+            $message = trans('installer::installer_messages.environment.htaccess_errors');
         }
 
         return [

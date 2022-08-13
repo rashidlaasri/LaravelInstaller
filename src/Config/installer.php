@@ -20,15 +20,22 @@ return [
     'final' => [
         'key' => true,
         'publish' => false
-    ],    
+    ],
     'requirements' => [
         'php' => [
-            'openssl',
-            'pdo',
-            'mbstring',
-            'tokenizer',
-            'JSON',
-            'cURL',
+            'ext' => [
+                'openssl',
+                'pdo',
+                'mbstring',
+                'tokenizer',
+                'JSON',
+                'cURL',
+                'gd',
+                'Fileinfo'
+            ],
+            'class' => [
+                'ZipArchive'
+            ]
         ],
         'apache' => [
             'mod_rewrite',
@@ -62,14 +69,15 @@ return [
     'environment' => [
         'form' => [
             'rules' => [
-                'app_name'              => 'required|string|max:50',
-                'app_url'               => 'required|url',
-                'database_connection'   => 'required|string|max:50',
-                'database_port'         => 'required|numeric',
-                'database_name'         => 'required|string|max:50',
-                'database_username'     => 'required|string|max:50',
-                'database_password'     => 'required|string|max:50',
-                'broadcast_driver'      => 'required|string|max:50',
+                'app_name' => 'required|string|max:50',
+                'app_url' => 'required|url',
+                'admin_email' => 'required|email',
+                'admin_password' => 'required|min:6',
+//                'database_connection'   => 'required|string|max:50',
+                'database_port' => 'required|numeric',
+                'database_name' => 'required|string|max:50',
+                'database_username' => 'required|string|max:50',
+                'database_password' => 'required|string|max:50',
             ],
         ],
     ],
