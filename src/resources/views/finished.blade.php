@@ -19,7 +19,7 @@
         <tbody>
         <tr>
             <th>Email</th>
-            <td>{{$user->email}}</td>
+            <td>{{$admin->email}}</td>
         </tr>
         <tr>
             <th>Password</th>
