@@ -4,7 +4,10 @@ namespace RachidLaasri\LaravelInstaller\Helpers;
 
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
+use RachidLaasri\LaravelInstaller\Exceptions\CantGenerateEnvFile;
 
 class EnvironmentManager
 {
@@ -29,10 +32,15 @@ class EnvironmentManager
 
     public function generateEnvFile()
     {
-        if (!file_exists($this->envPath)) {
-            if (file_exists($this->envExamplePath)) {
-                copy($this->envExamplePath, $this->envPath);
+        try {
+            if (!file_exists($this->envPath)) {
+                if (file_exists($this->envExamplePath)) {
+                    copy($this->envExamplePath, $this->envPath);
+                }
+                Artisan::call('key:generate');
             }
+        } catch (Exception $e) {
+            throw new CantGenerateEnvFile($e);
         }
     }
 

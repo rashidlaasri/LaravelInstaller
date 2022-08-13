@@ -40,7 +40,6 @@ class LaravelInstallerServiceProvider extends ServiceProvider
         if (empty(config('app.key'))) {
             $environment = new EnvironmentManager();
             $environment->generateEnvFile();
-            Artisan::call('key:generate');
         }
 
         $router->middlewareGroup('install', [CanInstall::class]);
