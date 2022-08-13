@@ -24,8 +24,8 @@ class LaravelInstallerServiceProvider extends ServiceProvider
     public function register()
     {
         $this->publishFiles();
-        $this->loadRoutesFrom(__DIR__.'/../Routes/web.php');
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'LaravelInstaller');
+        $this->loadRoutesFrom(__DIR__ . '/../Routes/web.php');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'installer');
     }
 
     /**
@@ -36,7 +36,8 @@ class LaravelInstallerServiceProvider extends ServiceProvider
     public function boot(Router $router)
     {
         $router->middlewareGroup('install',[CanInstall::class]);
-        $router->middlewareGroup('update',[CanUpdate::class]);
+        $router->middlewareGroup('update', [CanUpdate::class]);
+        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'installer');
     }
 
     /**
@@ -47,19 +48,19 @@ class LaravelInstallerServiceProvider extends ServiceProvider
     protected function publishFiles()
     {
         $this->publishes([
-            __DIR__.'/../Config/installer.php' => base_path('config/installer.php'),
-        ], 'laravelinstaller');
+            __DIR__ . '/../Config/installer.php' => base_path('config/installer.php'),
+        ], 'installer');
 
         $this->publishes([
-            __DIR__.'/../assets' => public_path('installer'),
-        ], 'laravelinstaller');
+            __DIR__ . '/../assets' => public_path('installer'),
+        ], 'installer');
 
-        $this->publishes([
-            __DIR__.'/../Views' => base_path('resources/views/vendor/installer'),
-        ], 'laravelinstaller');
+//        $this->publishes([
+//            __DIR__.'/../Views' => base_path('resources/views/vendor/installer'),
+//        ], 'installer');
 
-        $this->publishes([
-            __DIR__.'/../Lang' => base_path('resources/lang'),
-        ], 'laravelinstaller');
+//        $this->publishes([
+//            __DIR__.'/../Lang' => base_path('resources/lang'),
+//        ], 'installer');
     }
 }

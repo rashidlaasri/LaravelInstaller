@@ -6,6 +6,11 @@ Route::group(['prefix' => 'install','as' => 'LaravelInstaller::','namespace' => 
         'uses' => 'WelcomeController@welcome'
     ]);
 
+    Route::post('/', [
+        'as' => 'saveInstallation',
+        'uses' => 'WelcomeController@install'
+    ]);
+
     Route::get('environment', [
         'as' => 'environment',
         'uses' => 'EnvironmentController@environmentMenu'
@@ -44,6 +49,11 @@ Route::group(['prefix' => 'install','as' => 'LaravelInstaller::','namespace' => 
     Route::get('database', [
         'as' => 'database',
         'uses' => 'DatabaseController@database'
+    ]);
+
+    Route::get('final', [
+        'as' => 'final',
+        'uses' => 'FinalController@finish'
     ]);
 
     Route::get('final', [

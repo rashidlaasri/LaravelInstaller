@@ -52,7 +52,7 @@ class FinalInstallManager
     private static function publishVendorAssets($outputLog)
     {
         try{
-            if (config('installer.final.publish')){
+            if (config('installer.final.publish')) {
                 Artisan::call('vendor:publish', ['--all' => true], $outputLog);
             }
         }
