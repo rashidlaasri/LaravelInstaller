@@ -137,7 +137,7 @@ class WelcomeController extends Controller
         $response = $databaseManager->migrateAndSeed();
 
         if ($response['status'] == 'error') {
-            return redirect()->back()->withInput()->withErrors(['message' => $response['message'] . "\n\n" . $response['outputLog']]);
+            return redirect()->back()->withInput()->withErrors(['message' => $response['message'] . "\n\n" . $response['dbOutputLog']]);
         }
 
         return $response;

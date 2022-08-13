@@ -27,6 +27,15 @@ class EnvironmentManager
         $this->envExamplePath = base_path('.env.example');
     }
 
+    public function generateEnvFile()
+    {
+        if (!file_exists($this->envPath)) {
+            if (file_exists($this->envExamplePath)) {
+                copy($this->envExamplePath, $this->envPath);
+            }
+        }
+    }
+
     /**
      * Get the content of the .env file.
      *
