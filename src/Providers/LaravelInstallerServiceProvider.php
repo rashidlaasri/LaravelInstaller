@@ -3,7 +3,9 @@
 namespace RachidLaasri\LaravelInstaller\Providers;
 
 use Illuminate\Routing\Router;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
+use RachidLaasri\LaravelInstaller\Helpers\EnvironmentManager;
 use RachidLaasri\LaravelInstaller\Middleware\canInstall;
 use RachidLaasri\LaravelInstaller\Middleware\canUpdate;
 
@@ -35,7 +37,12 @@ class LaravelInstallerServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
-        $router->middlewareGroup('install',[CanInstall::class]);
+        if (empty(config('app.key'))) {
+            $environment = new EnvironmentManager();
+            $environment->generateEnvFile();
+        }
+
+        $router->middlewareGroup('install', [CanInstall::class]);
         $router->middlewareGroup('update', [CanUpdate::class]);
         $this->loadTranslationsFrom(__DIR__ . '/../lang', 'installer');
     }
