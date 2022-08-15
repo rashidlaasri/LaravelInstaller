@@ -3,7 +3,9 @@
 namespace RachidLaasri\LaravelInstaller\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Config;
@@ -121,13 +123,21 @@ class WelcomeController extends Controller
 
         $finalMessages .= $finalInstall->runFinal();
 
-        $user = User::find(1);
+        $admin_role = Role::where('name', 'administrator')->first();
 
-        $user->email = $request->admin_email;
-        $user->password = bcrypt($request->admin_password);
-        $user->save();
+        $admin = new User([
+            'username' => 'admin',
+            'email' => $request->admin_email,
+            'password' => bcrypt($request->admin_password),
+        ]);
 
-        return view('installer::finished', compact('user'));
+        $admin->email_verified_at = now();
+
+        $admin->save();
+
+        $admin->roles()->attach($admin_role);
+
+        return view('installer::finished', compact('admin'));
     }
 
     public function createDatabase()
