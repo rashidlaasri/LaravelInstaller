@@ -33,10 +33,11 @@ class DatabaseManager
      */
     private function migrate($outputLog)
     {
-        try{
-            Artisan::call('migrate', ["--force"=> true], $outputLog);
-        }
-        catch(Exception $e){
+        try {
+            DB::unprepared(file_get_contents(database_path('schema/mysql-schema.dump')));
+
+            Artisan::call('migrate', ["--force" => true], $outputLog);
+        } catch (Exception $e) {
             return $this->response($e->getMessage(), 'error', $outputLog);
         }
 

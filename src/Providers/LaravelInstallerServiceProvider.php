@@ -12,25 +12,6 @@ use RachidLaasri\LaravelInstaller\Middleware\canUpdate;
 class LaravelInstallerServiceProvider extends ServiceProvider
 {
     /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = false;
-
-    /**
-     * Register the service provider.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        $this->publishFiles();
-        $this->loadRoutesFrom(__DIR__ . '/../Routes/web.php');
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'installer');
-    }
-
-    /**
      * Bootstrap the application events.
      *
      * @param $void
@@ -44,6 +25,9 @@ class LaravelInstallerServiceProvider extends ServiceProvider
 
         $router->middlewareGroup('install', [CanInstall::class]);
         $router->middlewareGroup('update', [CanUpdate::class]);
+        $this->publishFiles();
+        $this->loadRoutesFrom(__DIR__ . '/../Routes/web.php');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'installer');
         $this->loadTranslationsFrom(__DIR__ . '/../lang', 'installer');
     }
 
