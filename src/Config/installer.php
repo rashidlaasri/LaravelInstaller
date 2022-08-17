@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Validation\Rule;
-
 return [
 
     /*
@@ -15,7 +13,7 @@ return [
     |
     */
     'core' => [
-        'minPhpVersion' => '7.0.0'
+        'minPhpVersion' => '8.1',
     ],
     'final' => [
         'key' => true,
@@ -52,9 +50,9 @@ return [
     |
     */
     'permissions' => [
-        'storage/framework/'     => '775',
-        'storage/logs/'          => '775',
-        'bootstrap/cache/'       => '775'
+        'storage/framework/' => '775',
+        'storage/logs/' => '775',
+        'bootstrap/cache/' => '775'
     ],
 
     /*
@@ -74,10 +72,11 @@ return [
                 'admin_email' => 'required|email',
                 'admin_password' => 'required|min:6',
 //                'database_connection'   => 'required|string|max:50',
+                'database_hostname' => 'required|string|max:50',
                 'database_port' => 'required|numeric',
                 'database_name' => 'required|string|max:50',
                 'database_username' => 'required|string|max:50',
-                'database_password' => 'required|string|max:50',
+                'database_password' => 'nullable|string|max:50',
             ],
         ],
     ],
