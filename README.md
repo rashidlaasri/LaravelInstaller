@@ -111,6 +111,16 @@ Register the package with laravel in `config/app.php` under `providers` with the
 ![Laravel web updater | Step 2](https://s3-us-west-2.amazonaws.com/github-project-images/laravel-installer/update/2-updates.jpg)
 ![Laravel web updater | Step 3](https://s3-us-west-2.amazonaws.com/github-project-images/laravel-installer/update/3-finished.jpg)
 
-## License
+### Changelog
 
-Laravel Web Installer is licensed under the MIT license. Enjoy!
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+
+## Treeware
+
+You're free to use this package, but if it makes it to your production environment I would highly appreciate you buying the world a tree.
+
+It’s now common knowledge that one of the best tools to tackle the climate crisis and keep our temperatures from rising above 1.5C is to [plant trees](https://www.bbc.co.uk/news/science-environment-48870920). If you contribute to my forest you’ll be creating employment for local families and restoring wildlife habitats.
+
+You can buy trees at [offset.earth/treeware](https://plant.treeware.earth/rashidlaasri/LaravelInstaller)
+
+Read more about Treeware at https://treeware.earth
