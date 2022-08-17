@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 use RachidLaasri\LaravelInstaller\Events\EnvironmentSaved;
 use RachidLaasri\LaravelInstaller\Helpers\DatabaseManager;
 use RachidLaasri\LaravelInstaller\Helpers\EnvironmentManager;
@@ -103,25 +104,21 @@ class WelcomeController extends Controller
      */
     public function install(Request $request)
     {
-        $response = $this->createEnvFile($request);
+        $rules = config('installer.environment.form.rules');
 
-        if (!is_array($response)) {
-            return $response;
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+
+            return redirect('/install')->withInput()->withErrors($errors);
         }
 
-        $finalMessages = $response['message'] . "\n\n";
+        $this->createEnvFile($request);
 
-        $response = $this->createDatabase();
+        $databaseManager = new DatabaseManager();
 
-        if (!is_array($response)) {
-            return $response;
-        }
-
-        $finalMessages .= $response['dbOutputLog'] . "\n\n";
-
-        $finalInstall = new FinalInstallManager();
-
-        $finalMessages .= $finalInstall->runFinal();
+        $databaseManager->migrateAndSeed();
 
         $admin_role = Role::where('name', 'administrator')->first();
 
@@ -140,80 +137,50 @@ class WelcomeController extends Controller
         return view('installer::finished', compact('admin'));
     }
 
-    public function createDatabase()
-    {
-        $databaseManager = new DatabaseManager();
-
-        $response = $databaseManager->migrateAndSeed();
-
-        if ($response['status'] == 'error') {
-            return redirect()->back()->withInput()->withErrors(['message' => $response['message'] . "\n\n" . $response['dbOutputLog']]);
-        }
-
-        return $response;
-    }
-
     public function createEnvFile($request)
     {
-        $rules = config('installer.environment.form.rules');
-
-        $validator = Validator::make($request->all(), $rules);
-
         $testConnection = Str::random(5);
 
-        $validator->after(function ($validator) use ($request, $testConnection) {
+        try {
+            $cloneDbConfig = \config('database.connections.mysql');
 
-            try {
-                $cloneDbConfig = \config('database.connections.mysql');
+            $cloneDbConfig["host"] = $request->input('database_hostname');
+            $cloneDbConfig["port"] = $request->input('database_port');
+            $cloneDbConfig["database"] = $request->input('database_name');
+            $cloneDbConfig["username"] = $request->input('database_username');
+            $cloneDbConfig["password"] = $request->input('database_password');
 
-                $cloneDbConfig["host"] = $request->input('database_hostname');
-                $cloneDbConfig["port"] = $request->input('database_port');
-                $cloneDbConfig["database"] = $request->input('database_name');
-                $cloneDbConfig["username"] = $request->input('database_username');
-                $cloneDbConfig["password"] = $request->input('database_password');
+            Config::set('database.connections.' . $testConnection, $cloneDbConfig);
+        } catch (\Exception $exception) {
+            throw ValidationException::withMessages([
+                'message' => $exception->getMessage()
+            ]);
+        }
 
-                Config::set('database.connections.' . $testConnection, $cloneDbConfig);
-            } catch (\Exception $exception) {
-                dd($exception->getMessage());
-            }
+        $dbConnected = false;
 
+        try {
+            DB::connection($testConnection)->getPdo();
+
+            $dbConnected = true;
+        } catch (\Exception $e) {
             $dbConnected = false;
-
-            try {
-                DB::connection($testConnection)->getPdo();
-
-                $dbConnected = true;
-            } catch (\Exception $e) {
-                $request->session()->flash('tab', 'db');
-                $dbConnected = false;
-
-                $validator->errors()->add('database_name', 'Database credentials are not correct.');
-            }
-
-            if ($dbConnected == true) {
-                $tables = DB::connection($testConnection)->select('SHOW TABLES');
-
-                if (sizeof($tables) > 0) {
-                    $request->session()->flash('tab', 'db');
-                    $validator->errors()->add('database_name', 'Database is not empty. Please provide empty database credentials.');
-                }
-            }
-        });
-
-        if ($validator->fails()) {
-            $errors = $validator->errors();
-
-            return redirect()->back()->withInput()->withErrors($errors);
+            throw ValidationException::withMessages([
+                'message' => 'Database credentials are not correct.'
+            ]);
         }
 
-        $response = $this->EnvironmentManager->saveFileWizard($request);
-
-        if ($response['status'] == 'error') {
-            return redirect()->back()->withInput()->withErrors(['message' => $response['message']]);
+        if ($dbConnected == true) {
+            $tables = DB::connection($testConnection)->select('SHOW TABLES');
+            if (sizeof($tables) > 0) {
+                throw ValidationException::withMessages([
+                    'message' => 'Database is not empty. Please provide empty database credentials.'
+                ]);
+            }
         }
+
+        $this->EnvironmentManager->saveFileWizard($request);
 
         event(new EnvironmentSaved($request));
-
-        return $response;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace RachidLaasri\LaravelInstaller\Helpers;
 
+use Illuminate\Validation\ValidationException;
 use Exception;
 use Illuminate\Database\SQLiteConnection;
 use Illuminate\Support\Facades\Artisan;
@@ -33,11 +34,14 @@ class DatabaseManager
      */
     private function migrate($outputLog)
     {
-        try{
-            Artisan::call('migrate', ["--force"=> true], $outputLog);
-        }
-        catch(Exception $e){
-            return $this->response($e->getMessage(), 'error', $outputLog);
+        try {
+            DB::unprepared(file_get_contents(database_path('schema/mysql-schema.dump')));
+
+            Artisan::call('migrate', ["--force" => true], $outputLog);
+        } catch (Exception $e) {
+            throw ValidationException::withMessages([
+                'message' => $outputLog
+            ]);
         }
 
         return $this->seed($outputLog);
@@ -55,10 +59,10 @@ class DatabaseManager
             Artisan::call('db:seed', ['--force' => true], $outputLog);
         }
         catch(Exception $e){
-            return $this->response($e->getMessage(), 'error', $outputLog);
+            throw ValidationException::withMessages([
+                'message' => $outputLog
+            ]);
         }
-
-        return $this->response(trans('installer::installer_messages.final.finished'), 'success', $outputLog);
     }
 
     /**

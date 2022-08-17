@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 use RachidLaasri\LaravelInstaller\Exceptions\CantGenerateEnvFile;
 
 class EnvironmentManager
@@ -109,9 +110,6 @@ class EnvironmentManager
      */
     public function saveFileWizard(Request $request)
     {
-        $message = trans('installer::installer_messages.environment.success');
-        $status = 'success';
-
         $envFileData =
             'APP_NAME=\'' . $request->app_name . "'\n" .
             'APP_ENV=' . config('app.env', 'production') . "\n" .
@@ -173,44 +171,35 @@ VITE_PUSHER_PORT="${PUSHER_PORT}"
 VITE_PUSHER_SCHEME="${PUSHER_SCHEME}"
 VITE_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 ';
-
         try {
             file_put_contents($this->envPath, $envFileData);
         } catch (Exception $e) {
-            $status = 'error';
-            $message = trans('installer::installer_messages.environment.errors');
+            throw ValidationException::withMessages([
+                'message' => trans('installer::installer_messages.environment.errors')
+            ]);
         }
 
         try {
-            $segments = array_filter(explode('/', \request()->getRequestUri()), 'strlen');
-            if (isset($segments[0]) && $segments[0] == 'install') {
-                // root directory
-            } else {
-                // sub directory
-                $htaccess = file_get_contents(base_path('public\.htaccess'));
+            // sub directory
+            $htaccess = file_get_contents(base_path('public\.htaccess'));
 
-                $request_uri = \request()->getRequestUri();
+            $request_uri = \request()->getRequestUri();
 
-                $pos = strpos($request_uri, 'install');
+            $pos = strpos($request_uri, 'install');
 
-                $path = substr($request_uri, 0, $pos);
+            $path = substr($request_uri, 0, $pos);
 
-                $htaccess = str_replace(
-                    'RewriteRule ^storage/uploads/(.*) /storage/app/public/uploads/$1 [L]',
-                    'RewriteRule ^storage/uploads/(.*) ' . $path . 'storage/app/public/uploads/$1 [L]',
-                    $htaccess
-                );
+            $htaccess = str_replace(
+                'RewriteRule ^storage/uploads/(.*) /storage/app/public/uploads/$1 [L]',
+                'RewriteRule ^storage/uploads/(.*) ' . $path . 'storage/app/public/uploads/$1 [L]',
+                $htaccess
+            );
 
-                file_put_contents(base_path('public\.htaccess'), $htaccess);
-            }
+            file_put_contents(base_path('public\.htaccess'), $htaccess);
         } catch (Exception $e) {
-            $status = 'error';
-            $message = trans('installer::installer_messages.environment.htaccess_errors');
+            throw ValidationException::withMessages([
+                'message' => trans('installer::installer_messages.environment.htaccess_errors')
+            ]);
         }
-
-        return [
-            'status' => $status,
-            'message' => $message,
-        ];
     }
 }
