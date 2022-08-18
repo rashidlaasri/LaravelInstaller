@@ -171,7 +171,6 @@ VITE_PUSHER_PORT="${PUSHER_PORT}"
 VITE_PUSHER_SCHEME="${PUSHER_SCHEME}"
 VITE_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 ';
-
         try {
             file_put_contents($this->envPath, $envFileData);
         } catch (Exception $e) {
