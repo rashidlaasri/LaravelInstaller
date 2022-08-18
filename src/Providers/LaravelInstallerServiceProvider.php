@@ -18,6 +18,10 @@ class LaravelInstallerServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
+        $this->loadRoutesFrom(__DIR__ . '/../Routes/web.php');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'installer');
+        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'installer');
+
         if (empty(config('app.key'))) {
             $environment = new EnvironmentManager();
             $environment->generateEnvFile();
@@ -26,9 +30,6 @@ class LaravelInstallerServiceProvider extends ServiceProvider
         $router->middlewareGroup('install', [CanInstall::class]);
         $router->middlewareGroup('update', [CanUpdate::class]);
         $this->publishFiles();
-        $this->loadRoutesFrom(__DIR__ . '/../Routes/web.php');
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'installer');
-        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'installer');
     }
 
     /**
@@ -40,18 +41,10 @@ class LaravelInstallerServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../Config/installer.php' => base_path('config/installer.php'),
-        ], 'installer');
+        ], 'installer-config');
 
         $this->publishes([
-            __DIR__ . '/../assets' => public_path('installer'),
-        ], 'installer');
-
-//        $this->publishes([
-//            __DIR__.'/../Views' => base_path('resources/views/vendor/installer'),
-//        ], 'installer');
-
-//        $this->publishes([
-//            __DIR__.'/../Lang' => base_path('resources/lang'),
-//        ], 'installer');
+            __DIR__ . '/../assets' => public_path('assets/installer'),
+        ], 'installer-assets');
     }
 }

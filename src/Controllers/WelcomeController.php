@@ -14,9 +14,7 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use RachidLaasri\LaravelInstaller\Events\EnvironmentSaved;
-use RachidLaasri\LaravelInstaller\Helpers\DatabaseManager;
 use RachidLaasri\LaravelInstaller\Helpers\EnvironmentManager;
-use RachidLaasri\LaravelInstaller\Helpers\FinalInstallManager;
 use RachidLaasri\LaravelInstaller\Helpers\PermissionsChecker;
 use RachidLaasri\LaravelInstaller\Helpers\RequirementsChecker;
 use Validator;
@@ -116,9 +114,32 @@ class WelcomeController extends Controller
 
         $this->createEnvFile($request);
 
-        $databaseManager = new DatabaseManager();
+        try {
+            DB::unprepared(file_get_contents(database_path('schema/mysql-schema.dump')));
 
-        $databaseManager->migrateAndSeed();
+            Artisan::call('migrate', ["--force" => true]);
+        } catch (\Exception $e) {
+            throw ValidationException::withMessages([
+                'message' => $e->getMessage()
+            ]);
+        } catch (\Illuminate\Database\QueryException $e) {
+            dd($e->getMessage());
+            throw ValidationException::withMessages([
+                'message' => $e->getMessage()
+            ]);
+        }
+
+        try {
+            Artisan::call('db:seed', ['--force' => true]);
+        } catch (\Exception $e) {
+            throw ValidationException::withMessages([
+                'message' => $e->getMessage()
+            ]);
+        } catch (\Illuminate\Database\QueryException $e) {
+            throw ValidationException::withMessages([
+                'message' => $e->getMessage()
+            ]);
+        }
 
         $admin_role = Role::where('name', 'administrator')->first();
 
@@ -139,7 +160,7 @@ class WelcomeController extends Controller
 
     public function createEnvFile($request)
     {
-        $testConnection = Str::random(5);
+        $testConnection = 'mysql';
 
         try {
             $cloneDbConfig = \config('database.connections.mysql');
@@ -156,7 +177,7 @@ class WelcomeController extends Controller
                 'message' => $exception->getMessage()
             ]);
         }
-
+        DB::purge($testConnection);
         $dbConnected = false;
 
         try {
@@ -171,12 +192,23 @@ class WelcomeController extends Controller
         }
 
         if ($dbConnected == true) {
-            $tables = DB::connection($testConnection)->select('SHOW TABLES');
-            if (sizeof($tables) > 0) {
+            try {
+                $tables = DB::connection($testConnection)->select('SHOW TABLES');
+                if (sizeof($tables) > 0) {
+                    throw ValidationException::withMessages([
+                        'message' => 'Database is not empty. Please provide empty database credentials.'
+                    ]);
+                }
+            } catch (\Exception $exception) {
                 throw ValidationException::withMessages([
-                    'message' => 'Database is not empty. Please provide empty database credentials.'
+                    'message' => $exception->getMessage()
+                ]);
+            } catch (Illuminate\Database\QueryException $exception) {
+                throw ValidationException::withMessages([
+                    'message' => $exception->getMessage()
                 ]);
             }
+
         }
 
         $this->EnvironmentManager->saveFileWizard($request);
