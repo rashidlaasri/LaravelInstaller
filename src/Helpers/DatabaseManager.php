@@ -2,12 +2,13 @@
 
 namespace RachidLaasri\LaravelInstaller\Helpers;
 
-use Illuminate\Validation\ValidationException;
 use Exception;
 use Illuminate\Database\SQLiteConnection;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\ValidationException;
 use Symfony\Component\Console\Output\BufferedOutput;
 
 class DatabaseManager
@@ -37,6 +38,11 @@ class DatabaseManager
         try {
             DB::unprepared(file_get_contents(database_path('schema/mysql-schema.dump')));
 
+            $countries = Storage::disk('local')->get('countries.sql');
+            DB::unprepared($countries);
+
+            $states = Storage::disk('local')->get('states.sql');
+            DB::unprepared($states);
             Artisan::call('migrate', ["--force" => true], $outputLog);
         } catch (Exception $e) {
             throw ValidationException::withMessages([
