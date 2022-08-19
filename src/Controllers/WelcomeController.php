@@ -5,18 +5,17 @@ namespace RachidLaasri\LaravelInstaller\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
-use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use RachidLaasri\LaravelInstaller\Events\EnvironmentSaved;
+use RachidLaasri\LaravelInstaller\Events\LaravelInstallerFinished;
 use RachidLaasri\LaravelInstaller\Helpers\EnvironmentManager;
 use RachidLaasri\LaravelInstaller\Helpers\PermissionsChecker;
 use RachidLaasri\LaravelInstaller\Helpers\RequirementsChecker;
+use RachidLaasri\LaravelInstaller\Notifications\InstallationSuccessfulNotification;
 use Validator;
 
 class WelcomeController extends Controller
@@ -141,8 +140,6 @@ class WelcomeController extends Controller
             ]);
         }
 
-        $admin_role = Role::where('name', 'administrator')->first();
-
         $admin = new User([
             'username' => 'admin',
             'email' => $request->admin_email,
@@ -153,7 +150,13 @@ class WelcomeController extends Controller
 
         $admin->save();
 
+        $admin_role = Role::where('name', 'administrator')->first();
+
         $admin->roles()->attach($admin_role);
+
+        event(new LaravelInstallerFinished);
+
+        $admin->notify(new InstallationSuccessfulNotification);
 
         return view('installer::finished', compact('admin'));
     }

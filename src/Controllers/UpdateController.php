@@ -3,6 +3,7 @@
 namespace RachidLaasri\LaravelInstaller\Controllers;
 
 use Illuminate\Routing\Controller;
+use RachidLaasri\LaravelInstaller\Events\LaravelInstallerUpdated;
 use RachidLaasri\LaravelInstaller\Helpers\DatabaseManager;
 use RachidLaasri\LaravelInstaller\Helpers\InstalledFileManager;
 
@@ -64,6 +65,8 @@ class UpdateController extends Controller
         $fileManager->update();
 
         $this->updateHtaccess();
+
+        event(new LaravelInstallerUpdated());
 
         try {
             \Illuminate\Support\Facades\Artisan::call('config:clear');
