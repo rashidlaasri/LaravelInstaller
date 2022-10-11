@@ -103,6 +103,7 @@
             </div>
         </div>
         @yield('scripts')
+        @if(session()->has('errors'))
         <script type="text/javascript">
             var x = document.getElementById('error_alert');
             var y = document.getElementById('close_alert');
@@ -110,5 +111,6 @@
                 x.style.display = "none";
             };
         </script>
+        @endif
     </body>
 </html>
