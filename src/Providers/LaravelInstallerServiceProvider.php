@@ -57,8 +57,11 @@ class LaravelInstallerServiceProvider extends ServiceProvider
             __DIR__.'/../Views' => base_path('resources/views/vendor/installer'),
         ], 'laravelinstaller');
 
+        $laravelVersion = (int) app()->version();
+        $langPath = $laravelVersion >= 9 ? app()->langPath() : base_path('resources/lang');
+        
         $this->publishes([
-            __DIR__.'/../Lang' => base_path('resources/lang'),
+            __DIR__.'/../Lang' => $langPath,
         ], 'laravelinstaller');
     }
 }
