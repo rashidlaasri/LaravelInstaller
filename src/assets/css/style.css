@@ -3158,6 +3158,9 @@ input[type=text] {
     -webkit-box-shadow: 0 10px 10px rgba(0, 0, 0, 0.19), 0 6px 3px rgba(0, 0, 0, 0.23);
             box-shadow: 0 10px 10px rgba(0, 0, 0, 0.19), 0 6px 3px rgba(0, 0, 0, 0.23);
     background-color: #2490cb; }
+  .button.warning {
+    background-color: #ffc107;
+    color: #222; }
 
 .button--light {
   padding: 3px 16px;
@@ -3449,6 +3452,29 @@ input[type='number'] {
       margin: 0; }
     .alert.alert-danger ul {
       margin: 0; }
+    .alert.alert-warning {
+      color: #856404;
+      background-color: #fff3cd;
+      border-color: #ffeeba;
+    }
+    .alert.alert-warning .close {
+      border: 0;
+      width: unset;
+      height: unset;
+      padding: 0.75rem 1.25rem;
+      float: right;
+      font-weight: 700;
+      line-height: 1;
+      color: inherit;
+      text-shadow: 0 1px 0 #fff;
+      opacity: 0.5;
+    }
+    .alert.alert-warning .close:hover {
+      background-color: transparent;
+      color: #000;
+      text-decoration: none;
+      opacity: 0.75;
+    }
   .alert .close {
     width: 25px;
     height: 25px;

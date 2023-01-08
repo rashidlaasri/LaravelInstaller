@@ -35,6 +35,18 @@ class RequirementsChecker
                         }
                     }
                     break;
+                // check php function requirements
+                case 'php-function':
+                    foreach ($requirements[$type] as $requirement) {
+                        $results['requirements'][$type][$requirement] = true;
+
+                        if (! function_exists($requirement)) {
+                            $results['requirements'][$type][$requirement] = false;
+
+                            $results['warnings'] = true;
+                        }
+                    }
+                    break;
                 // check apache requirements
                 case 'apache':
                     foreach ($requirements[$type] as $requirement) {

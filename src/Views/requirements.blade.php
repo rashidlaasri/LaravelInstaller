@@ -39,8 +39,20 @@
     @endforeach
 
     @if ( ! isset($requirements['errors']) && $phpSupportInfo['supported'] )
+        @if(isset($requirements['warnings']))
+            <div class="alert alert-warning" id="error_alert">
+                <button type="button" class="close" id="close_alert" data-dismiss="alert" aria-hidden="true">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <div class="alert-icon">
+                    <i class="fa fa-exclamation" aria-hidden="true"></i>
+                    <strong>{{ trans('installer_messages.requirements.warning') }}</strong>
+                </div>
+                <span class="alert-text">{{ trans('installer_messages.requirements.warningNotExistPhpFunction') }}</span>
+            </div>
+        @endif
         <div class="buttons">
-            <a class="button" href="{{ route('LaravelInstaller::permissions') }}">
+            <a @class(['button', 'warning'=> isset($requirements['warnings'])]) href="{{ route('LaravelInstaller::permissions') }}">
                 {{ trans('installer_messages.requirements.next') }}
                 <i class="fa fa-angle-right fa-fw" aria-hidden="true"></i>
             </a>
