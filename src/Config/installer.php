@@ -28,6 +28,9 @@ return [
             'JSON',
             'cURL',
         ],
+        'php-function' => [
+            'apache_get_modules',
+        ],
         'apache' => [
             'mod_rewrite',
         ],
