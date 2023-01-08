@@ -43,7 +43,7 @@ class RequirementsChecker
                         if (! function_exists($requirement)) {
                             $results['requirements'][$type][$requirement] = false;
 
-                            $results['errors'] = true;
+                            $results['warnings'] = true;
                         }
                     }
                     break;

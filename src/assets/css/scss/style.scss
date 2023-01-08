@@ -889,6 +889,10 @@ input[type=text] {
 		box-shadow: 0 10px 10px $color_7, 0 6px 3px $color_8;
 		background-color: $color_16;
 	}
+	&.warning {
+		background-color: $color_40;
+		color: $color_18;
+	}
 }
 .button--light {
 	padding: 3px 16px;
@@ -1236,6 +1240,29 @@ input[type='number'] {
 		}
 		ul {
 			margin: 0;
+		}
+	}
+	&.alert-warning {
+		color: $color_41;
+		background-color: $color_42;
+		border-color: $color_43;
+		.close {
+			border: 0;
+			width: unset;
+			height: unset;
+			padding: .75rem 1.25rem;
+			float: right;
+			font-weight: 700;
+			line-height: 1;
+			color: inherit;
+			text-shadow: 0 1px 0 $color_10;
+			opacity: .5;
+			&:hover {
+				background-color: transparent;
+				color: $color_1;
+				text-decoration: none;
+				opacity: .75;
+			}
 		}
 	}
 	.close {

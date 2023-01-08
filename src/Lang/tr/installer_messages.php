@@ -36,6 +36,8 @@ return [
         'templateTitle' => 'Adım 1 | Sunucu Gereksinimleri',
         'title' => 'Sunucu Gereksinimleri',
         'next'    => 'İzinleri Kontrol Et',
+        'warning' => 'Uyarı',
+        'warningNotExistPhpFunction' => 'Belirtilen PHP fonksiyonları çalışmadığı için yükleme esnasında ve/veya daha sonrasında sorun yaşayabilirsiniz.',
     ],
 
     /*

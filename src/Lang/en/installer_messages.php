@@ -36,6 +36,8 @@ return [
         'templateTitle' => 'Step 1 | Server Requirements',
         'title' => 'Server Requirements',
         'next'    => 'Check Permissions',
+        'warning' => 'Warning',
+        'warningNotExistPhpFunction' => 'You may experience problems during installation and/or later because the specified PHP functions do not work.',
     ],
 
     /*
