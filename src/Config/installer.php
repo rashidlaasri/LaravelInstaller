@@ -13,7 +13,7 @@ return [
     |
     */
     'core' => [
-        'minPhpVersion' => '7.0.0',
+        'minPhpVersion' => '8.1',
     ],
     'final' => [
         'key' => true,
@@ -85,6 +85,8 @@ return [
                 'mail_username'         => 'required|string|max:50',
                 'mail_password'         => 'required|string|max:50',
                 'mail_encryption'       => 'required|string|max:50',
+                'mail_from_addres'      => 'required|string|max:100',
+                'mail_from_name'        => 'required|string|max:50',
                 'pusher_app_id'         => 'max:50',
                 'pusher_app_key'        => 'max:50',
                 'pusher_app_secret'     => 'max:50',

@@ -141,7 +141,10 @@ return [
                     'mail_password_placeholder' => 'Mail Password',
                     'mail_encryption_label' => 'Mail Encryption',
                     'mail_encryption_placeholder' => 'Mail Encryption',
-
+                    'mail_from_addres_label' => 'Mail From Address',
+                    'mail_from_addres_placeholder' => 'Mail From Address',
+                    'mail_from_name_label' => 'Mail From Name',
+                    'mail_from_name_placeholder' => 'Mail From Name',
                     'pusher_label' => 'Pusher',
                     'pusher_app_id_label' => 'Pusher App Id',
                     'pusher_app_id_palceholder' => 'Pusher App Id',
