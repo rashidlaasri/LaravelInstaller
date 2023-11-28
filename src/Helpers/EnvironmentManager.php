@@ -68,7 +68,7 @@ class EnvironmentManager
     /**
      * Save the edited content to the .env file.
      *
-     * @param Request $input
+     * @param  Request  $input
      * @return string
      */
     public function saveFileClassic(Request $input)
@@ -87,7 +87,7 @@ class EnvironmentManager
     /**
      * Save the form content to the .env file.
      *
-     * @param Request $request
+     * @param  Request  $request
      * @return string
      */
     public function saveFileWizard(Request $request)

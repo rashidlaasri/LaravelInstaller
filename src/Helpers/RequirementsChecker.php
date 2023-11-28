@@ -14,7 +14,7 @@ class RequirementsChecker
     /**
      * Check for the server requirements.
      *
-     * @param array $requirements
+     * @param  array  $requirements
      * @return array
      */
     public function check(array $requirements)
@@ -35,7 +35,7 @@ class RequirementsChecker
                         }
                     }
                     break;
-                // check apache requirements
+                    // check apache requirements
                 case 'apache':
                     foreach ($requirements[$type] as $requirement) {
                         // if function doesn't exist we can't check apache modules

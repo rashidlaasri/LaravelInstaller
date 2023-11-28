@@ -13,7 +13,7 @@ class DatabaseController extends Controller
     private $databaseManager;
 
     /**
-     * @param DatabaseManager $databaseManager
+     * @param  DatabaseManager  $databaseManager
      */
     public function __construct(DatabaseManager $databaseManager)
     {
