@@ -34,7 +34,12 @@ class DatabaseManager
     private function migrate(BufferedOutput $outputLog)
     {
         try {
-            Artisan::call('migrate', ['--force'=> true], $outputLog);
+            $other_commands = config('installer.artisan_command');
+            if (!empty($other_commands)) {
+                foreach ($other_commands as $key => $value) {
+                    Artisan::call($key, $value, $outputLog);
+                }
+            }
         } catch (Exception $e) {
             return $this->response($e->getMessage(), 'error', $outputLog);
         }
@@ -50,12 +55,6 @@ class DatabaseManager
      */
     private function seed(BufferedOutput $outputLog)
     {
-        try {
-            Artisan::call('db:seed', ['--force' => true], $outputLog);
-        } catch (Exception $e) {
-            return $this->response($e->getMessage(), 'error', $outputLog);
-        }
-
         return $this->response(trans('installer_messages.final.finished'), 'success', $outputLog);
     }
 
